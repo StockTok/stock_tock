@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -9,11 +9,12 @@ import RegisterScreen from "./components/Register";
 
 const Stack = createStackNavigator();
 
-export default class App extends Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loaded: false,
+      loaded: true,
+      loggedIn: false,
     };
   }
 
@@ -51,6 +52,9 @@ export default class App extends Component {
         </NavigationContainer>
       );
     }
+
+    // if logged in,
+    // return (navigators will be placed here such as main screen, setting, etc..);
   }
 }
 

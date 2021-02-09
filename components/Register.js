@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
-export default class SignupScreen extends Component {
+export default class SignupScreen extends React.Component {
   render() {
     return (
       <View>
