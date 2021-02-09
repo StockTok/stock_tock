@@ -1,10 +1,12 @@
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
   StyleSheet,
-  View,
   Text,
+  View,
   TextInput,
   TouchableOpacity,
+  Image,
 } from "react-native";
 
 export default class LoginScreen extends React.Component {
@@ -16,38 +18,32 @@ export default class LoginScreen extends React.Component {
       password: "",
     };
   }
-
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Sign In</Text>
-        <View style={styles.registerContainer}>
-          <Text style={styles.loginText}> New user? </Text>
-          <TouchableOpacity>
-            <Text style={styles.registerText}>Create an account</Text>
+        <StatusBar backgroundColor="#232323" barStyle="light-content" />
+        <Image style={styles.logo} source={require("../assets/logo.png")} />
+        <TextInput
+          style={styles.input}
+          placeholder="email"
+          placeholderTextColor="#003f5c"
+          onChangeText={(email) => this.setState({ email })}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="password"
+          secureTextEntry={true}
+          placeholderTextColor="#003f5c"
+          onChangeText={(password) => this.setState({ password })}
+        />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.loginBtn}>
+            <Text style={styles.btnTxt}>SignUP</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.loginBtn}>
+            <Text style={styles.btnTxt}>Login</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="email"
-            placeholderTextColor="#003f5c"
-            onChangeText={(email) => this.setState({ email })}
-          />
-        </View>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="password"
-            placeholderTextColor="#003f5c"
-            secureTextEntry={true}
-            onChangeText={(password) => this.setState({ password })}
-          />
-        </View>
-
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Login</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -60,42 +56,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  title: {
-    fontSize: 50,
-    color: "#fefefe",
-    marginBottom: 20,
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 15,
   },
-  registerContainer: {
+  input: {
+    width: "90%",
+    backgroundColor: "grey",
+    padding: 12,
+    marginBottom: 10,
+    borderRadius: 10,
+  },
+  buttonContainer: {
     flexDirection: "row",
-    marginBottom: 30,
+    justifyContent: "space-evenly",
   },
-  inputView: {
-    width: "80%",
-    backgroundColor: "#465881",
-    borderRadius: 25,
-    height: 50,
-    marginBottom: 20,
-    justifyContent: "center",
-    padding: 20,
-  },
-  inputText: {
-    height: 50,
+  btnText: {
     color: "#fefefe",
   },
   loginBtn: {
-    width: "80%",
-    backgroundColor: "#fb5b5a",
-    borderRadius: 25,
-    height: 50,
+    width: 350,
+    backgroundColor: "#808080",
+    borderRadius: 10,
+    height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
-    marginBottom: 10,
-  },
-  loginText: {
-    color: "#fefefe",
-  },
-  registerText: {
-    color: "#3167c5",
+    margin: 10,
   },
 });
