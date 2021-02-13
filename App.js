@@ -6,6 +6,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginScreen from "./components/LoginScreen";
 import RegisterScreen from "./components/Register";
+import MainScreen from "./components/Main";
+import ExploreScreen from "./components/main/Explore";
+import SettingScreen from "./components/main/Setting";
 
 const Stack = createStackNavigator();
 
@@ -53,8 +56,19 @@ export default class App extends React.Component {
       );
     }
 
-    // if logged in,
-    // return (navigators will be placed here such as main screen, setting, etc..);
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initailRouteName="Main">
+          <Stack.Screen
+            name="Main"
+            component={MainScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Explore" component={ExploreScreen} />
+          <Stack.Screen name="Setting" component={SettingScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
 }
 
