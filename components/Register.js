@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default class Resister extends React.Component {
+export default class Register extends React.Component {
   constructor(props) {
     super(props);
 
