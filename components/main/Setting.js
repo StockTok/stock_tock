@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Setting() {
   return (
     <View>
-      <Text></Text>
+      <Text>Setting page</Text>
     </View>
   );
 }

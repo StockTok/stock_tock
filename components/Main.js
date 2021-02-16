@@ -20,7 +20,7 @@ export default class Main extends React.Component {
   }
   render() {
     return (
-      <Tab.Navigator>
+      <Tab.Navigator initialRouteName="Watchlist">
         <Tab.Screen
           name="Watchlist"
           component={WatchlistScreen}
@@ -37,6 +37,12 @@ export default class Main extends React.Component {
         <Tab.Screen
           name="Explore"
           component={ExploreScreen}
+          listeners={({ navigation }) => ({
+            tabPress: (event) => {
+              event.preventDefault();
+              navigation.navigate("Explore");
+            },
+          })}
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="magnify" color={color} size={26} />
@@ -46,6 +52,12 @@ export default class Main extends React.Component {
         <Tab.Screen
           name="Setting"
           component={SettingScreen}
+          listeners={({ navigation }) => ({
+            tabPress: (event) => {
+              event.preventDefault();
+              navigation.navigate("Setting");
+            },
+          })}
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
