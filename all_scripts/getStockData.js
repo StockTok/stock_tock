@@ -8,33 +8,29 @@ let allStockData = {};
 
 let microsoftData;
 let microsoftMonthly;
-let parts; // Added just in case
-let keys;
-let monthsHigh = [];
-/*
-date = new Date()
-date.setDate(date.getDate()-1)
-let printDate = date.toISOString().substring(0, 10);
-console.log(printDate);
-*/
+let parts; // The parts are referring to a specific category in the JSON file (i.e. "Monthly Time Series")
+let keys; // Keys that are contained in parts
+let convertedText; // Converts the values from string to float
+let monthsHighArray = [];
+let priceChange;
+
 
 console.log("Running");
 alphaVantage.data.monthly(`msft`).then(data => {
     microsoftMonthly = data;
-    //console.log(microsoftMonthly);
-    //var jsonMsoft = (JSON.parse(microsoftData));
     parts = microsoftMonthly['Monthly Time Series']; // Obtain the dictionary from Monthly Time series
     keys = Object.keys(parts); // Extract the keys from variable parts (into a list)
-    //console.log(keys);
-    //console.log(microsoftMonthly);//['Monthly Time Series'][0]['2. high']);
     
-    let i;
     // Grab the first 3 indices from keys and push them to a list (months high)
+    let i;
     for (i = 0; i < 3; i++) {
-        monthsHigh.push(microsoftMonthly['Monthly Time Series'][keys[i]]['2. high']);
+        convertedText = parseFloat(microsoftMonthly['Monthly Time Series'][keys[i]]['2. high']) // Converts text to float value
+        monthsHighArray.push(convertedText);
         
     }
-    console.log(monthsHigh);
+    priceChange = ((monthsHighArray[0] - monthsHighArray[2]) / monthsHighArray[0]) * 100; // Calculating price change
+    console.log("Price of stock over 3 months: " + monthsHighArray);
+    console.log(`Price change over 3 month period: ${priceChange.toFixed(2)}%`);
 
 });
 
