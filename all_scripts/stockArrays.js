@@ -1,8 +1,13 @@
 const { Console } = require('console');
 let fs = require('fs') //filesystem
 
-const followedStocks = []; // -----> TODO: Need to read from user's file from account_info to obtain what they followed and whatnot
-const stocksSwipedLeft = []; // Isn't that kind of the same thing as followed stocks?
+let clearJsonFile = false; //pass in a third command line argument can be anything to clear the json files
+const maxFollowedStockAllowed = 5;
+const jsonOutput = {'following' : [], 'notFollowing' : []};
+const followedStocks = [];
+const notFollowedStocks = [];
+
+const stocksSwipedLeft = [];
 const stocks = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'goog', 'brk.b', 'jnj', 'jpm', 'nvda', 'v', 'dis', 'pypl', 'pg', 
 'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'cmcsa', 'adbe', 'vz', 'abt', 'crm', 'xom', 't', 'csco', 'wmt', 'tmo', 'ko', 'avgo', 
 'pfe', 'mrk', 'pep', 'abbv', 'nke', 'cvx', 'qcom', 'txn', 'nee', 'acn', 'lly', 'mdt', 'mcd', 'cost', 'dhr', 'hon', 'unp', 'amgn', 
@@ -10,52 +15,37 @@ const stocks = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'goog', 'brk.b', 
 'blk', 'mmm', 'amt', 'ge', 'de', 'cvs', 'mu', 'tgt', 'isrg', 'chtr', 'gild', 'fis', 'axp', 'lmt', 'schw', 'tjx', 'lrcx', 'spgi',
 'mo', 'syk', 'atvi', 'pld', 'mdlz', 'zts', 'ci', 'cb', 'bdx', 'antm', 'tmus'];
 
-//const stocks = ['aapl', 'tmus', 'potato'];
-
-let tempStocks; // A list of stocks that the user will go through, will copy from currentListStocks
+let tempStocks = []; // A list of stocks that the user will go through, will copy from currentListStocks
 let currentStock;
 
-/* --------- Debug (Like main() function in Java or something---------------- */
-/* __________________________________________________________________________*/
-/* __________________________________________________________________________*/
 
-start(); // Always call start() function
+/* --------- Debug (Like main()---------------- */
+if(process.argv[2] !== undefined)
+    clearJsonFile = true;
 
+if(clearJsonFile)
+    clearJson();
+else
+{
+    start();
+    for (let i = 0; i < 2; i++) {
+        console.log("for loop iteration " + (i + 1));
+        swipeRight(currentStock);
+    }
 
-// USER INPUT/ACTIONS--------------------------------------
+    for (let i = 0; i < 50; i++) {
+        console.log("for loop iteration " + (i + 1));
+        swipeLeft(currentStock);
+    }
 
-/* Let's see what happens :) */
-
-// This is what happens when you swipe all right
-let i;
-for (i = 0; i < stocks.length; i++) {
-    console.log("for loop iteration " + (i + 1));
-    swipeRight(currentStock);
+    console.log(
+    `current stock: ${currentStock}
+    tempStocks length: ${tempStocks.length}
+    followedStocks: [${followedStocks}]`
+    );
+    saveData();
 }
-
-
-
-// swipeLeft(currentStock);
-// swipeLeft(currentStock);
-// swipeRight(currentStock);
-// swipeRight(currentStock);
-
-// reset();
-
-// swipeLeft(currentStock);
-
-// end USER INPUT/ACTIONS--------------------------------------
-
-
-console.log(
-`current stock: ${currentStock}
-tempStocks length: ${tempStocks.length}
-followedStocks: [${followedStocks}]`
-);
-
-/* __________________________________________________________________________*/
-/* __________________________________________________________________________*/
-                /* --------- Debug end ----------- */
+/* _______________________________________________*/
 
 
 
@@ -65,15 +55,15 @@ followedStocks: [${followedStocks}]`
     Probably should use currentListStocks and followedStocks as saved data in a user account
 */
 function start() {
-    tempStocks = [...stocks];
-    currentStock = stocks[randomNumber(0, stocks.length - 1)];
-
+    readData();
+    tempStocks = [...notFollowedStocks];
+    currentStock = tempStocks[getRandomInt()];
 }
 
 // Resets the stack, basically it creates a shallow copy of the stocks list
 function reset() {
     console.log("\n---reset has been called---\n");
-    tempStocks = [...stocks];
+    tempStocks.push(...stocksSwipedLeft);
     getNextStock();
 }
 
@@ -84,9 +74,15 @@ function getCurrentStock() {
 
 // Will add stock to followedStocks array
 // Will also delete from shallow copy
-function swipeLeft(currentStock) {
+function swipeRight(currentStock) {
+    if(followedStocks.length === maxFollowedStockAllowed)
+    {
+        console.log("Max stocks already followed. Delete one to continue adding.");
+        return;
+    }
+    
     if (followedStocks.length === stocks.length) {
-        console.log("You've liked everything, there's nothing to see/do here");
+        console.log("Liked everything");
         return;
     }
     
@@ -101,16 +97,17 @@ function swipeLeft(currentStock) {
 }
 
 // Will delete from shallow copy
-function swipeRight(currentStock) {
+function swipeLeft(currentStock) {
 
     if (followedStocks.length === stocks.length) {
-        console.log("You've liked everything, there's nothing to see/do here");
+        console.log("Liked everything");
         return;
     }
 
-    console.log("----Swiped right on: " + currentStock);
+    console.log("----Swiped left on: " + currentStock);
 
     let index = tempStocks.indexOf(currentStock);
+    stocksSwipedLeft.push(currentStock)
     tempStocks.splice(index, 1);
     getNextStock();
 
@@ -121,61 +118,65 @@ function swipeRight(currentStock) {
 // TODO: If the length of the currentListStocks is 0, then that means the user had already followed every one of the stocks
 function getNextStock() {
     if (followedStocks.length === stocks.length) {
-        console.log("You followed all stocks, there's nothing to reset");
+        console.log("Followed all stocks, nothing to reset");
         return;
     }
-    // Miiight need to put reset in the swipe functions
-    else if (tempStocksIsEmpty()) {
-        console.log("You have reached the end, reset() to restart stack");
+
+    else if (tempStocks.length === 0) {
+        console.log("Reached the end, reset()");
         currentStock = null;
+        reset();
         return;
     }
 
-    let foundNext = false;
-    let suggestedStock;
-    while (foundNext === false) {
-        suggestedStock = stocks[randomNumber(0, stocks.length - 1)];
-
-        // If the suggestedStock is already being followed, continue on to the next stock
-        if (followedStocks.includes(suggestedStock)) {
-            continue;
-        }
-
-        // If the suggestedStock is a repeat of the currentStock, search for another
-        if (suggestedStock.localeCompare(currentStock) === 0 && tempStocks > 1) {
-            console.log("Searching for a different one")
-            continue;
-        }
-
-        // Reassign currentStock and set foundNext to true
-        currentStock = suggestedStock;
-        foundNext = true;
-        
-
-    }
-
+    currentStock = notFollowedStocks[getRandomInt()];
 }
-
-// Chekcs if the tempStock is empty
-function tempStocksIsEmpty() {
-    if (tempStocks.length === 0) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-// Not implemented yet, but maybe this will be called before the user closes the app or update it every time they swipe left
-function saveData() {
-    return;
-}
-
 
 // Generates a random int number between min an max (inclusive)
-/* geeksforgeeks.org/how-to-generate-random-number-in-given-range-using-javascript/ */
-function randomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * (tempStocks.length-1));
+}
+
+//file systems
+function saveData() {
+    reset();
+    jsonOutput.following = followedStocks;
+    jsonOutput.notFollowing = tempStocks;
+    let JSONdata = JSON.stringify(jsonOutput);
+    fs.writeFileSync('stockData.json', JSONdata);
+
+    console.log(`${jsonOutput.following.length} Following: ${jsonOutput.following}`);
+    console.log(`${jsonOutput.notFollowing.length} Not Following: ${jsonOutput.notFollowing}`);
+}
+
+function readData()
+{
+    let file;
+    let retrievedData;
+    try {
+        file = fs.readFileSync('stockData.json');
+        retrievedData = JSON.parse(file);
+        console.log(retrievedData);
+        if(retrievedData.following.length > 0)
+            followedStocks.push(...retrievedData.following);
+        if(retrievedData.notFollowing.length > 0)
+            notFollowedStocks.push(...retrievedData.notFollowing);
+        else
+            notFollowedStocks.push(...stocks);
+        
+    } catch (error) {
+        notFollowedStocks.push(...stocks);
+    }
+
+    console.log(`Following: ${followedStocks}`);
+    console.log(`Not Following: ${notFollowedStocks}`);
+}
+
+function clearJson()
+{
+    jsonOutput.following = [];
+    jsonOutput.notFollowing = [];
+    let JSONdata = JSON.stringify(jsonOutput);
+    fs.writeFileSync('stockData.json', JSONdata);
 }
