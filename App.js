@@ -17,7 +17,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       loaded: true,
-      loggedIn: true,
+      loggedIn: false,
     };
   }
 
@@ -50,8 +50,8 @@ export default class App extends React.Component {
               component={LoginScreen}
               options={{ headerShown: false }}
             />
+            <Stack.Screen name="Register" component={RegisterScreen} />
           </Stack.Navigator>
-          <Stack.Screen name="Register" component={RegisterScreen} />
         </NavigationContainer>
       );
     }
