@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState } from "react";
 import {
   StyleSheet,
   View,
@@ -7,74 +7,78 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default class Register extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-    };
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome!</Text>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="name"
-            placeholderTextColor="white"
-            onChangeText={(name) => this.setState({ name })}
-          />
-        </View>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="email"
-            placeholderTextColor="white"
-            onChangeText={(email) => this.setState({ email })}
-          />
-        </View>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="password"
-            placeholderTextColor="white"
-            secureTextEntry={true}
-            onChangeText={(password) => this.setState({ password })}
-          />
-        </View>
-
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Sign Up</Text>
-        </TouchableOpacity>
+const Register = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Sign Up</Text>
+      <View style={styles.loginContainer}>
+      <Text style={styles.loginText}> Already a user? </Text>
+      <TouchableOpacity>
+        <Text
+          style={styles.loginLink}
+          onPress={() => navigation.navigate("LoginScreen")}
+        >
+          Sign In
+        </Text>
+      </TouchableOpacity>
       </View>
-    );
-  }
-}
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Name"
+          placeholderTextColor="#F2F3F7"
+          onChangeText={(name) => setName(name)}
+        />
+      </View>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Email"
+          placeholderTextColor="#F2F3F7"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.inputText}
+          placeholder="Password"
+          placeholderTextColor="#F2F3F7"
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+        />
+      </View>
+
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text style={styles.loginText}>Sign Up</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export default Register;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#292a2b",
+    backgroundColor: "#212121",
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
-    fontSize: 50,
-    color: "#fefefe",
+    fontSize: 25,
+    color: "#EEEEEE",
     marginBottom: 20,
   },
-  registerContainer: {
+  loginContainer: {
     flexDirection: "row",
     marginBottom: 30,
   },
   inputView: {
     width: "80%",
-    backgroundColor: "#3F5259",
+    backgroundColor: "#2F2F2F",
     borderRadius: 25,
     height: 50,
     marginBottom: 20,
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     height: 50,
-    color: "#fefefe",
+    color: "#F2F3F7",
   },
   loginBtn: {
     width: "80%",
@@ -92,13 +96,13 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 30,
     marginBottom: 10,
   },
   loginText: {
-    color: "#fefefe",
+    color: "#F2F3F7",
   },
-  registerText: {
+  loginLink: {
     color: "#F2A950",
   },
 });
