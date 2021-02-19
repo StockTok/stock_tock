@@ -15,6 +15,7 @@
     "alphavantage": "^2.2.0",
     "expo": "^40.0.1",
     "expo-status-bar": "~1.0.3",
+    "newsapi": "^2.4.1",
     "prompt": "^1.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
