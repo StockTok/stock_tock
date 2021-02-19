@@ -22,15 +22,50 @@ function deletePrompt(){
 
 }
 
-deletePrompt();
+//checks to make sure the stock entered by user is in their current stock followed list.
+function checkingFollowedList(userStock, StockFollowList){
+
+    var stockInList = true;
+
+    for( var i = 0; i < StockFollowList.length; i++){
+        if(userStock === StockFollowList[i]){
+            stockInList = true;
+            break;
+        }
+        stockInList = false;
+    }
+
+    if(!stockInList){
+        console.log(`Stock is not in list!`);
+        deletePrompt();
+    }
+}
+
+//copies the follow list from the file to the new follow list. 
+function parseFollowedList(originalFollowedList){
+    var i = 0;
+    while(i< originalFollowedList.length){
+      followedStocks[i] = originalFollowedList[i];
+       i++;
+    }
+    if(followedStocks.length === originalFollowedList.length){
+        console.log("Sucessful parsing");
+        console.log(followedStocks);
+    }
+    else{
+        console.log('problem!');
+    }
+}
 
 function deleteStock(stockToDelete) {
       var file = JSON.parse(fs.readFileSync('stockDataDelete.json', 'utf-8'));
       console.log(file.following);
 
+      checkingFollowedList(stockToDelete, file.following);
+      parseFollowedList(file.following);
+
       let JSONdata = JSON.stringify(jsonOutput);
       fs.writeFileSync('stockData.json', JSONdata);
     }
 
-
-
+    deletePrompt();
