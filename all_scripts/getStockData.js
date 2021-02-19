@@ -1,4 +1,5 @@
 let fs = require('fs'); //filesystem
+const { symbol, name } = require('./stockDictionary.js');
 //const { getDefaultSettings } = require('http2');
 //const { get } = require('react-native/Libraries/Utilities/PixelRatio');
 const alphaVantage = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});

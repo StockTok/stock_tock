@@ -1,5 +1,6 @@
 const { Console } = require('console');
 let fs = require('fs') //filesystem
+const { symbol, name } = require('./stockDictionary.js');
 
 let clearJsonFile = false; //pass in a third command line argument can be anything to clear the json files
 const maxFollowedStockAllowed = 5;
