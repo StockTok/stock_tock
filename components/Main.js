@@ -20,7 +20,15 @@ export default class Main extends React.Component {
   }
   render() {
     return (
-      <Tab.Navigator initialRouteName="Watchlist">
+      <Tab.Navigator 
+        initialRouteName="Watchlist"
+        tabBarOptions={{
+          activeTintColor: '#F2A950',
+          style: {
+            backgroundColor: '#232323'
+          }
+        }}  
+      >
         <Tab.Screen
           name="Watchlist"
           component={WatchlistScreen}

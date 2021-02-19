@@ -5,6 +5,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 export default class Register extends React.Component {
@@ -20,38 +22,40 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome!</Text>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="name"
-            placeholderTextColor="white"
-            onChangeText={(name) => this.setState({ name })}
-          />
-        </View>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="email"
-            placeholderTextColor="white"
-            onChangeText={(email) => this.setState({ email })}
-          />
-        </View>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.inputText}
-            placeholder="password"
-            placeholderTextColor="white"
-            secureTextEntry={true}
-            onChangeText={(password) => this.setState({ password })}
-          />
-        </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Welcome!</Text>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              placeholder="name"
+              placeholderTextColor="white"
+              onChangeText={(name) => this.setState({ name })}
+            />
+          </View>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              placeholder="email"
+              placeholderTextColor="white"
+              onChangeText={(email) => this.setState({ email })}
+            />
+          </View>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.inputText}
+              placeholder="password"
+              placeholderTextColor="white"
+              secureTextEntry={true}
+              onChangeText={(password) => this.setState({ password })}
+            />
+          </View>
 
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text style={styles.loginText}>Sign Up</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity style={styles.loginBtn}>
+            <Text style={styles.loginText}>Sign Up</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
