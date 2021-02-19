@@ -27,16 +27,16 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          placeholder="email"
-          placeholderTextColor="white"
+          placeholder="Email"
+          placeholderTextColor="#F2F3F7"
           onChangeText={(email) => setEmail(email)}
         />
       </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          placeholder="password"
-          placeholderTextColor="white"
+          placeholder="Password"
+          placeholderTextColor="#F2F3F7"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
@@ -54,13 +54,13 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#292a2b",
+    backgroundColor: "#212121",
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
-    fontSize: 50,
-    color: "#fefefe",
+    fontSize: 25,
+    color: "#EEEEEE",
     marginBottom: 20,
   },
   registerContainer: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     width: "80%",
-    backgroundColor: "#3F5259",
+    backgroundColor: "#2F2F2F",
     borderRadius: 25,
     height: 50,
     marginBottom: 20,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     height: 50,
-    color: "#fefefe",
+    color: "#F2F3F7",
   },
   loginBtn: {
     width: "80%",
@@ -87,11 +87,11 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 30,
     marginBottom: 10,
   },
   loginText: {
-    color: "#fefefe",
+    color: "#F2F3F7",
   },
   registerText: {
     color: "#F2A950",

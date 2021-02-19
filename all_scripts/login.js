@@ -5,8 +5,6 @@ const accountInfo = {
   'password': undefined
 };
 
-
-
 const createAccount =
     (username, password) => {
       accountInfo.username = username;
