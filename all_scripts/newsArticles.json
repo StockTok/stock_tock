@@ -1,0 +1,377 @@
+{
+  "NFLX": {
+    "name": "Netflix",
+    "articles": [
+      {
+        "title": "What's New on Netflix in February 2021",
+        "description": "Netflix’s marketing department is excited to let you know that the streaming service will be debuting at least one new movie every week in 2021. This is, perhaps, an attempt to distract from the fact that while Warner Bros., Disney, and NBC Universal, etc. al…",
+        "author": "Joel Cunningham",
+        "url": "https://lifehacker.com/whats-new-on-netflix-in-february-2021-1846085308"
+      },
+      {
+        "title": "Netflix delivers 'studio-quality' sound upgrade for Android viewers",
+        "description": "Don’t be surprised if Netflix sounds nicer the next time you marathon a show on your Android phone. Netflix has upgraded its Android app to stream audio in xHE-AAC (Extended HE-AAC with MPEG-D DRC; yes, it’s a mouthful), promising “studio-quality” sound that’…",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/netflix-improves-android-audio-221457366.html"
+      },
+      {
+        "title": "Netflix is testing a sleep timer on Android",
+        "description": "If you enjoy watching an episode or two of a show before you drift off, Netflix's latest feature might be useful. It's testing a sleep timer function on Android devices. A select number of users will see a clock icon when they watch something. If you tap it, …",
+        "author": "Kris Holt",
+        "url": "https://www.engadget.com/netflix-sleep-timer-test-android-181916376.html"
+      },
+      {
+        "title": "What's on TV this week: 'Judas and the Black Messiah' and 'Clarice'",
+        "description": "This week HBO Max is premiering another movie from the 2021 Warner Bros. slate with Judas and the Black Messiah, starring Daniel Kaluyya and Lakieth Stanfield. Meanwhile, Netflix presents the third and final movie in its To All The Boys trilogy, Always and Fo…",
+        "author": "Richard Lawler",
+        "url": "https://www.engadget.com/judas-tatbilb-super-mario-world-3d-042411991.html"
+      },
+      {
+        "title": "Netflix shares soar as it passes 200M paying subscribers",
+        "description": "Netflix capped off a year of rapid streaming growth by adding 8.5 million net new paying subscribers during the fourth quarter. That means the streaming giant now has a total of 204 million paying subscribers worldwide — net growth of 37 million new subscribe…",
+        "author": "Anthony Ha",
+        "url": "http://techcrunch.com/2021/01/19/netflix-q4-earnings-4/"
+      },
+      {
+        "title": "Netflix’s ‘Shuffle Play’ feature will roll out to all users worldwide this year",
+        "description": "Netflix is always in search of a better way to instantly connect users to something to watch, instead of having them waste time unsuccessfully scrolling through all the available programming options. Now, the company says a recent test focused on solving this…",
+        "author": "Sarah Perez",
+        "url": "http://techcrunch.com/2021/01/19/netflixs-shuffle-play-feature-will-roll-out-to-all-users-worldwide-this-year/"
+      },
+      {
+        "title": "What's on TV this week: 'Hitman 3,' 'They Live' and 'Pixar Popcorn'",
+        "description": "This week’s highlight game release is Hitman 3, closing out a trilogy of murder-for-hire simulators. The game stretches across last-gen consoles, has upgrades for PS5 and Xbox Series X, and is even playable on Switch thanks to cloud streaming. Disney+ will dr…",
+        "author": "Richard Lawler",
+        "url": "https://www.engadget.com/hitman-3-030917724.html"
+      },
+      {
+        "title": "Unblock and watch American Netflix with PureVPN",
+        "description": "SAVE 70%: A two-year subscription to PureVPN is on sale for £2.46 per month as of Feb. 13, saving you 70% on list price.\n\nPureVPN is one of the best VPN providers when it comes to server network, customer support, security, and the number of simultaneous conn…",
+        "author": "Joseph Green",
+        "url": "https://mashable.com/uk/shopping/feb-13-pure-vpn-netflix-deal/"
+      },
+      {
+        "title": "Gain access to American Netflix with ExpressVPN",
+        "description": "SAVE 49%: A one-year subscription to ExpressVPN is on sale for £5 per month as of Feb. 7, and includes three extra months for free.\n\nVPNs are getting more and more popular, and this is not down to everyone becoming more conscious of the importance of cybersec…",
+        "author": "Joseph Green",
+        "url": "https://mashable.com/uk/shopping/feb-7-express-vpn-netflix-deal/"
+      },
+      {
+        "title": "Netflix picks up an animated movie from 'Into The Spider-Verse' producers",
+        "description": "Netflix has added another movie to the mammoth slate of original films it's releasing this year. It scooped up the worldwide rights (excluding China) to animated flick The Mitchells vs. The Machines, which was previously called Connected.Sony Pictures planned…",
+        "author": "Kris Holt",
+        "url": "https://www.engadget.com/netflix-connected-the-mitchells-vs-the-machines-into-the-spider-verse-194128342.html"
+      },
+      {
+        "title": "Netflix's 'Space Sweepers' trailer looks like a fun robot-filled romp through the stars",
+        "description": "If you're looking for a hectic space romp to fill the Guardians Against the Galaxy void, Sung-hee Jo's upcoming movie Space Sweepers could well be worth a look.\nFollowing a crew of space junk collectors in the year 2092, the story revolves around the discover…",
+        "author": "Sam Haysom",
+        "url": "https://mashable.com/video/space-sweepers-netflix-trailer/"
+      },
+      {
+        "title": "Review: ‘We Are: The Brooklyn Saints’ Will Tackle Your Heart",
+        "description": "In this Netflix docu-series, an outer borough children’s football program offers a community, and a chance.",
+        "author": "James Poniewozik",
+        "url": "https://www.nytimes.com/2021/01/28/arts/television/brooklyn-saints-review.html"
+      },
+      {
+        "title": "Netflix's 'Bridgerton' gets obvious Season 2 renewal",
+        "description": "Get yourself to the modiste! Netflix and Shondaland's Bridgerton will officially get a second season, this time focused on Anthony (god help us all).\nNetflix confirmed the expected renewal with an adorable video montage of Season 1 highlights, ending with Ant…",
+        "author": "Proma Khosla",
+        "url": "https://mashable.com/video/bridgerton-season-2-announcement/"
+      },
+      {
+        "title": "Everybody Loves Fran. But Why?",
+        "description": "Fran Lebowitz, professional wit, offers her take on New York in a new Netflix series. But for a city that’s always changing, her shtick remains the same.",
+        "author": "Ginia Bellafante",
+        "url": "https://www.nytimes.com/2021/01/22/nyregion/fran-lebowitz-nyc.html"
+      },
+      {
+        "title": "Here's how to watch American Netflix from the UK",
+        "description": "SAVE 49%: A one-year subscription to ExpressVPN is on sale for £5.05 per month as of Jan. 24, and includes an extra three months for free.\n\nThe Sunday Scaries are very real, but there is something you can do to instantly reduce your stress levels. Don't worry…",
+        "author": "Joseph Green",
+        "url": "https://mashable.com/uk/shopping/jan-24-express-vpn-deal/"
+      },
+      {
+        "title": "Unblock and watch American Netflix for under £2 a month",
+        "description": "SAVE 85%: A three-year subscription to ZenMate VPN is on sale for £1.44 per month as of Feb. 4, saving you 85% on list price.\n\nWe're all looking for more shows and films to watch at the moment, but it doesn't make sense to subscribe to every streaming service…",
+        "author": "Joseph Green",
+        "url": "https://mashable.com/uk/shopping/feb-4-zenmate-vpn-deal/"
+      },
+      {
+        "title": "How the dark and sordid past of the Cecil Hotel inspired Netflix's latest crime show",
+        "description": "Something you have on your 2021 bingo card? Netflix is adding another true-crime series to its ever-growing roster.",
+        "author": "Marika Gerken and Alan Duke, CNN",
+        "url": "https://www.cnn.com/2021/02/14/entertainment/cecil-hotel-netflix-trnd/index.html"
+      },
+      {
+        "title": "Apple just paid a record $25 million to buy a Sundance movie",
+        "description": "Apple hasn’t been shy about spending lots of money to make TV+ a success, and that’s true even in an era when it can’t negotiate deals in person. Deadline and Variety report that Apple has bought Siân Heder’s coming-of-age tale CODA (“Children of Deaf Adults”…",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/apple-buys-coda-sundance-movie-for-record-price-212335293.html"
+      },
+      {
+        "title": "Save 81% on the cheapest VPN for unblocking Netflix",
+        "description": "SAVE 81%: A two-year subscription to Surfshark is on sale for £1.82 per month as of Jan. 30, saving you 81% on list price.\n\nWe've said it before and we'll say it again: ExpressVPN is the best VPN for unblocking and watching Netflix libraries from other locati…",
+        "author": "Joseph Green",
+        "url": "https://mashable.com/uk/shopping/jan-30-surfshark-vpn-netflix-deal/"
+      },
+      {
+        "title": "Want to watch American Netflix from the UK? Here's how.",
+        "description": "SAVE 49%: A one-year subscription to ExpressVPN is on sale for £5.02 per month as of Jan. 31, and includes an extra three months for free.\n\nAre you short on content options at the moment? Join the club. If it feels like you've exhausted every show and film th…",
+        "author": "Joseph Green",
+        "url": "https://mashable.com/uk/shopping/jan-31-watch-us-netflix-with-express-vpn/"
+      }
+    ]
+  },
+  "TSLA": {
+    "name": "TESLA",
+    "articles": [
+      {
+        "title": "Elon Musk says Tesla Semi is ready for production, but limited by battery cell output",
+        "description": "Tesla CEO Elon Musk said on the company’s 2020 Q4 earnings call that all engineering work is now complete on the Tesla Semi, the freight-hauling semi truck that the company is building with an all-electric powertrain. The company expects to begin deliveries o…",
+        "author": "Darrell Etherington",
+        "url": "http://techcrunch.com/2021/01/27/elon-musk-says-tesla-semi-is-ready-for-production-but-limited-by-battery-cell-output/"
+      },
+      {
+        "title": "The redesigned Tesla Model S interior swaps in a steering yoke",
+        "description": "Nestled in its latest earnings report, Tesla included images of its upcoming Model S refresh. The renders provide a sneak peek of the vehicle’s interior, showcasing a cockpit that’s more in line with the Model Y and Model 3. \r\n Tesla\r\n At the front of the car…",
+        "author": "Igor Bonifacic",
+        "url": "https://www.engadget.com/tesla-model-s-redesign-interior-221606865.html"
+      },
+      {
+        "title": "Tesla cuts prices for entry-level Model 3 and Model Y",
+        "description": "Tesla is determined to keep its sales strong, and it's using the time-honored tactic of price cuts to make sure that happens. As Reuters reports, Tesla has slashed the prices of entry-level Model 3 and Model Y electric cars. A Standard Range Plus Model 3 now …",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/tesla-cuts-entry-level-model-3-y-prices-151853489.html"
+      },
+      {
+        "title": "Tesla offers collision repairs in its service centers",
+        "description": "Tesla’s Service Centers can now perform various forms of collision repair in-house, according to CNBC. The automaker has reportedly sent out a message to customers entitled “Collision Repair is Here,” telling them that their local Tesla Service Centers can no…",
+        "author": "Mariella Moon",
+        "url": "https://www.engadget.com/tesla-collision-repairs-service-centers-193555593.html"
+      },
+      {
+        "title": "Tesla recalls almost 135,000 vehicles over touchscreen failures",
+        "description": "Tesla is acting on the NHTSA’s pressure to recall cars over touchscreen failures, if begrudgingly. The Wall Street Journal reports the EV maker will recall just under 135,000 cars, including 2012-2018 Model S sedans and 2016-2018 Model X SUVs, over potential …",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/tesla-recalls-model-s-x-over-touchscreen-failures-142444006.html"
+      },
+      {
+        "title": "Tesla recalls 135,000 vehicles over touchscreen failures",
+        "description": "Own a Tesla Model S or Model X? It might have a recall, and it’s serious. Tesla today issued one of its largest recalls to date, covering roughly 135,000 Model S and Model X. The touchscreen is the concern. According to the National Highway Traffic Safety Adm…",
+        "author": "Matt Burns",
+        "url": "http://techcrunch.com/2021/02/02/tesla-recalls-135000-vehicles-over-touchscreen-failures/"
+      },
+      {
+        "title": "Would You Trade a Bitcoin for a Tesla?",
+        "description": "The maker of electric vehicles said it had invested $1.5 billion in bitcoin and plans to accept the cryptocurrency as payment for its cars.",
+        "author": "Gregory Barber",
+        "url": "https://www.wired.com/story/would-you-trade-bitcoin-tesla/"
+      },
+      {
+        "title": "Tesla sues a former employee for allegedly taking automation files",
+        "description": "Tesla hired and then almost immediately fired a software automation engineer earlier in January for allegedly stealing proprietary information about the electric car company. Now the company is suing the engineer.\nIn a court filing from Friday, Tesla sued sof…",
+        "author": "Sasha Lekach",
+        "url": "https://mashable.com/article/tesla-sues-former-employee-download-files/"
+      },
+      {
+        "title": "Tesla is willing to license Autopilot and has already had “preliminary discussions” about it with other automakers",
+        "description": "Tesla is open to licensing its software, including its Autopilot highly-automated driving technology, and the neural network training it has built to improve its autonomous driving technology. Tesla CEO Elon Musk revealed those considerations on the company’s…",
+        "author": "Darrell Etherington",
+        "url": "http://techcrunch.com/2021/01/27/tesla-is-willing-to-license-autopilot-and-has-already-had-preliminary-discussions-about-it-with-other-automakers/"
+      },
+      {
+        "title": "Tesla summoned by Chinese regulators for quality concerns",
+        "description": "Tesla, which is seeing rapid growth in China as it ramps up local manufacturing capacity, has been called upon by the Chinese government for talks over quality issues in its electric cars. A group of Chinese authorities, including the country’s top market reg…",
+        "author": "Rita Liao",
+        "url": "http://techcrunch.com/2021/02/08/tesla-summoned-by-chinese-regulators-for-quality-concerns/"
+      },
+      {
+        "title": "Tesla unveils redesigned Model S with new interior and 520-mile range option",
+        "description": "The new Tesla Model S starts at $79,990 for a dual-motor version or $119,000 and up for the new, more powerful powertrain. All new versions have a Roadster-like steering wheel and a Model 3-like screen.",
+        "author": "Sean O'Kane",
+        "url": "https://www.theverge.com/2021/1/27/22252832/tesla-model-s-redesign-plaid-mile-range-interior-refresh"
+      },
+      {
+        "title": "Tesla buys $1.5 in Bitcoin, will soon accept it as payment",
+        "description": "Elon Musk’s cryptocurrency hype was more than just idle talk. CNBC reports that Tesla not only bought $1.5 billion worth of Bitcoin to help “diversify and maximize” its returns, but will start taking payments using the digital asset sometime in the “near futu…",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/tesla-to-take-bitcoin-payments-140109988.html"
+      },
+      {
+        "title": "This is the new interior of Tesla’s Model S",
+        "description": "The Model S will see some significant changes to its interior this year. After months of rumors, Tesla confirmed the revisions in a few images released just ahead of its quarterly earnings call scheduled for later this afternoon. Some of the changes — like th…",
+        "author": "Greg Kumparak",
+        "url": "http://techcrunch.com/2021/01/27/this-is-the-new-interior-of-teslas-model-s/"
+      },
+      {
+        "title": "Don’t buy Teslas during a production ramp, Elon Musk says",
+        "description": "In an unusually candid interview with industry analyst Sandy Munro, Musk admitted that Tesla has quality control problems when it’s ramping up vehicle production. Munro previously did a teardown of Model 3 in 2018, where he compared the quality to a 1990s Kia.",
+        "author": "Sean O'Kane",
+        "url": "https://www.theverge.com/2021/2/3/22265351/tesla-paint-quality-production-elon-musk"
+      },
+      {
+        "title": "Elon Musk addresses some of the Model 3's production issues",
+        "description": "In a conversation with Canadian-American automotive engineer Sandy Munro, Tesla chief Elon Musk explained some of Model 3’s production issues. Munro sat with Musk for an interview at the SpaceX facility in Boca Chica, Texas where he asked the executive why so…",
+        "author": "Mariella Moon",
+        "url": "https://www.engadget.com/tesla-elon-musk-model-3-production-issues-120515595.html"
+      },
+      {
+        "title": "Tesla buys $1.5B in bitcoin, may accept the cryptocurrency as payment in the future",
+        "description": "Today in an SEC filing, Tesla disclosed that it has acquired $1.5 billion in bitcoin, the popular cryptocurrency. Moreover, the company noted that it may also accept bitcoin in the future as a form of payment for its cars, though it did allow that there is so…",
+        "author": "Alex Wilhelm",
+        "url": "http://techcrunch.com/2021/02/08/tesla-buys-1-5b-in-bitcoin-may-accept-the-cryptocurrency-as-payment-in-the-future/"
+      },
+      {
+        "title": "Bitcoin Continues to Soar, Fueled by Tesla Announcement",
+        "description": "Bitcoin topped $48,000 per coin after Tesla said that it bought $1.5 billion worth of the digital currency. Read the latest economic updates.",
+        "author": "The New York Times",
+        "url": "https://www.nytimes.com/live/2021/02/09/business/stock-market-today"
+      },
+      {
+        "title": "Ford to start building electric Mustangs in China",
+        "description": "The US carmaker wants to compete with the likes of Tesla and other Chinese electric carmakers.",
+        "author": "https://www.facebook.com/bbcnews",
+        "url": "https://www.bbc.co.uk/news/business-55838413"
+      },
+      {
+        "title": "Tesla lowers base Model 3 and Model Y prices",
+        "description": "Fully-electric cars still command a premium price, but Tesla is slowly but surely making its vehicles more affordable. Today, the price of the Model 3 and Model Y fell, but only for the base models.\nAs Business Insider reports, the Model 3 is $1,000 cheaper, …",
+        "author": "PCMag",
+        "url": "https://mashable.com/article/tesla-model-3-model-y-price-drop/"
+      },
+      {
+        "title": "Span, the smart fusebox replacement founded by an ex-Tesla engineer, gets an Alexa upgrade",
+        "description": "Automating and controlling devices and energy usage in homes has potentially become a bit easier thanks to an integration between Span, the startup making a digital fusebox replacement, and  Amazon’s voice recognition interface, Alexa. The integration also co…",
+        "author": "Jonathan Shieber",
+        "url": "http://techcrunch.com/2021/01/26/span-the-smart-fusebox-replacement-founded-by-an-ex-tesla-engineer-gets-an-alexa-upgrade/"
+      }
+    ]
+  },
+  "MSFT": {
+    "name": "Microsoft",
+    "articles": [
+      {
+        "title": "Make Microsoft Word's 'Dark Mode' Actually Dark",
+        "description": "Microsoft’s Word app has a dark mode that you can use right now, but it’s not as dark as you might prefer it if you’re the kind of person who likes working on projects in the wee hours of the night.Read more...",
+        "author": "David Murphy",
+        "url": "https://lifehacker.com/make-microsoft-words-dark-mode-actually-dark-1846240633"
+      },
+      {
+        "title": "Microsoft's mobile 365 apps are getting conversational Cortana AI tech",
+        "description": "Microsoft has unveiled a raft of new updates for its 365 mobile apps, with new AI and natural language features in Outlook, Teams, Office Lens (now Microsoft Lens) and Office mobile, the company announced. It also introduced a new feature called “micro tasks”…",
+        "author": "Steve Dent",
+        "url": "https://www.engadget.com/microsoft-unveiled-some-big-updates-for-its-mobile-365-apps-132502804.html"
+      },
+      {
+        "title": "Daily Crunch: Microsoft backs Cruise",
+        "description": "Autonomous vehicle company Cruise raises a $2 billion new round, Netflix keeps growing and WhatsApp faces more privacy concerns. This is your Daily Crunch for January 19, 2021. The big story: Microsoft backs Cruise Cruise announced today that it has raised $2…",
+        "author": "Anthony Ha",
+        "url": "http://techcrunch.com/2021/01/19/daily-crunch-microsoft-backs-cruise/"
+      },
+      {
+        "title": "Microsoft planning special gaming, cloud, and Windows events in coming months",
+        "description": "Microsoft is taking a different approach to news events for 2021. A series of special events will take place in the coming months, focused on Microsoft 365, gaming, cloud, Windows, security, and more.",
+        "author": "Tom Warren",
+        "url": "https://www.theverge.com/2021/2/2/22261997/microsoft-news-events-gaming-cloud-windows"
+      },
+      {
+        "title": "How to Transfer Outlook Attachments to Microsoft Teams",
+        "description": "You can finally drag-and-drop email attachments from Outlook into Microsoft Teams. Sure, it took nearly five years for the feature to show up, but it’s here.Read more...",
+        "author": "Brendan Hesse",
+        "url": "https://lifehacker.com/how-to-transfer-outlook-attachments-to-microsoft-teams-1846127835"
+      },
+      {
+        "title": "How to Enable Microsoft Edge's New 'Kids Mode'",
+        "description": "Microsoft is testing a new “Kids Mode” for Edge that makes the browser safer for younger users with just a few clicks.Read more...",
+        "author": "Brendan Hesse",
+        "url": "https://lifehacker.com/how-to-enable-microsoft-edges-new-kids-mode-1846307455"
+      },
+      {
+        "title": "Microsoft Edge gets smarter about handling annoying website notifications",
+        "description": "Website notifications are a plague on the modern internet. Typically, they ask for your permission to receive automatic updates from specific sites, but many people just find them to be an annoyance that gets in the way of their web browsing. To alleviate tha…",
+        "author": "Devindra Hardawar",
+        "url": "https://www.engadget.com/microsoft-edge-website-notifications-adaptive-151011484.html"
+      },
+      {
+        "title": "SolarWinds hackers accessed Microsoft source code for 3 products",
+        "description": "Microsoft has been looking into the SolarWinds attacks after it discovered an unusual activity in its systems back in December. Now, the tech giant has completed its investigation and has determined that the hackers didn't get their hands on customer data. It…",
+        "author": "Mariella Moon",
+        "url": "https://www.engadget.com/solarwinds-hackers-microsoft-source-code-3-products-063418253.html"
+      },
+      {
+        "title": "Microsoft starts testing a Kids Mode in its Edge browser",
+        "description": "Microsoft has started testing a Kids Mode in its Edge browser to help protect children while they're navigating the web. The company, which created the mode primarily for kids aged 5-12, is rolling it out to Edge Insiders testers on the Dev and Canary channel…",
+        "author": "Kris Holt",
+        "url": "https://www.engadget.com/microsoft-edge-kids-mode-testing-204110888.html"
+      },
+      {
+        "title": "'Microsoft Flight Simulator' update brings better UK and Ireland visuals",
+        "description": "The third major Microsoft Flight Simulator world update has arrived and, following upgrades for the Japan\r\n and US regions\r\n, it's the UK and Ireland's turn for a makeover. The patch adds high-res 3D photogrammetry to London, Birmingham, Bristol, Cambridge an…",
+        "author": "Kris Holt",
+        "url": "https://www.engadget.com/microsoft-flight-simulator-world-update-uk-ireland-challenges-175459057.html"
+      },
+      {
+        "title": "Microsoft teams up with Cruise and GM on self-driving cars",
+        "description": "Cruise and GM have enlisted an important ally in their quest to make self-driving cars a practical reality. The two have entered a “long-term strategic relationship” with Microsoft to speed up the commercialization of autonomous vehicles. Cruise will use Micr…",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/cruise-gm-microsoft-self-driving-car-partnership-152251242.html"
+      },
+      {
+        "title": "Microsoft will uninstall its old Edge browser from Windows PCs on April 13th",
+        "description": "It may have taken Microsoft the better part of a decade to get people off of Internet Explorer, but the company has a more decisive retirement plan for the previous version of its Edge browser. On April 13th, Microsoft will release a cumulative monthly securi…",
+        "author": "Igor Bonifacic",
+        "url": "https://www.engadget.com/microsoft-edge-legacy-phase-out-232116614.html"
+      },
+      {
+        "title": "Microsoft PAC blacklists election objectors and shifts lobbying weight towards progressive organizations",
+        "description": "After “pausing” political giving to any politician who voted to overturn the 2020 election, Microsoft has clarified changes to its lobbying policy, doubling down on its original intention and changing gears with an eye towards funding impactful organizations.…",
+        "author": "Devin Coldewey",
+        "url": "http://techcrunch.com/2021/02/05/microsoft-pac-blacklists-election-objectors-and-shifts-lobbying-weight-towards-progressive-organizations/"
+      },
+      {
+        "title": "Microsoft’s Dapr open-source project to help developers build cloud-native apps hits 1.0",
+        "description": "Dapr, the Microsoft-incubated open-source project that aims to make it easier for developers to build event-driven, distributed cloud-native applications, hit its 1.0 milestone today, signifying the project’s readiness for production use cases. Microsoft laun…",
+        "author": "Frederic Lardinois",
+        "url": "http://techcrunch.com/2021/02/17/microsofts-dapr-open-source-project-hits-1-0/"
+      },
+      {
+        "title": "Microsoft announces the next perpetual release of Office",
+        "description": "If you use Office, Microsoft would really, really, really like you to buy a cloud-enabled subscription to Microsoft 365 (formerly Office 365). But as the company promised, it will continue to make a stand-alone, perpetual license for Office available for the …",
+        "author": "Frederic Lardinois",
+        "url": "http://techcrunch.com/2021/02/18/microsoft-announces-the-next-perpetual-release-of-office/"
+      },
+      {
+        "title": "How to Back Up Your Most Important Emails",
+        "description": "Google, Microsoft, or Apple may deliver and store your emails, but the most valuable ones deserve a second home, just in case.",
+        "author": "David Nield",
+        "url": "https://www.wired.com/story/how-to-back-up-email/"
+      },
+      {
+        "title": "Microsoft's new tools help you adapt to the realities of remote work",
+        "description": "There’s a real chance you’ll be working from home long after it’s safe to return to the office, and Microsoft thinks it can make that remote work easier to handle. It just introduced Viva, an “employee experience platform” that helps you connect with and grow…",
+        "author": "Jon Fingas",
+        "url": "https://www.engadget.com/microsoft-viva-remote-work-employee-experience-152219710.html"
+      },
+      {
+        "title": "Microsoft announces new Xbox Wireless Headset, available March 16th for $99",
+        "description": "Microsoft is launching a new Xbox Wireless Headset. It’s the first one since the Xbox 360 days, and it supports all Xbox consoles.",
+        "author": "Tom Warren",
+        "url": "https://www.theverge.com/2021/2/16/22285247/microsoft-xbox-wireless-headset-release-date-price-features"
+      },
+      {
+        "title": "Microsoft invests in Cruise in new $2 billion round",
+        "description": "Cruise has raised $2 billion in a new equity round that has pushed its valuation up to $30 billion and delivered Microsoft as a cloud computing partner and investor. GM, Honda and other institutional investors have also put more capital into Cruise as the aut…",
+        "author": "Kirsten Korosec",
+        "url": "http://techcrunch.com/2021/01/19/microsoft-invests-in-cruise-in-new-2-billion-round/"
+      },
+      {
+        "title": "Microsoft Office 2021 is coming to Windows PCs and Macs later this year",
+        "description": "Microsoft will release two new versions of Office later this year, the company announced on Thursday. Office 2021 will be available on both Mac and Windows PCs in the second half of the year, and, like Office 2019 before it, it will be a one-and-done purchase…",
+        "author": "Igor Bonifacic",
+        "url": "https://www.engadget.com/microsoft-office-2021-annoucement-102005266.html"
+      }
+    ]
+  }
+}
