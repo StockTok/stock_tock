@@ -15,6 +15,7 @@ function deletePrompt(){
     prompt.get(['option'], (err,result) =>{
         if(err)
         throw err;
+
         console.log(`The user entered: ${result.option}`);
         deleteStock(result.option);
     });
@@ -24,7 +25,6 @@ function deletePrompt(){
 
 //checks to make sure the stock entered by user is in their current stock followed list.
 function checkingFollowedList(userStock, StockFollowList){
-
     var stockInList = true;
 
     for( var i = 0; i < StockFollowList.length; i++){
@@ -35,10 +35,9 @@ function checkingFollowedList(userStock, StockFollowList){
         stockInList = false;
     }
 
-    if(!stockInList){
-        console.log(`Stock is not in list!`);
-        deletePrompt();
-    }
+    console.log(stockInList);
+    return stockInList;
+
 }
 
 //copies the follow list from the file to the new follow list. 
@@ -49,23 +48,48 @@ function parseFollowedList(originalFollowedList){
        i++;
     }
     if(followedStocks.length === originalFollowedList.length){
-        console.log("Sucessful parsing");
-        console.log(followedStocks);
+        console.log("Sucessful following list parsing");
     }
     else{
         console.log('problem!');
     }
 }
 
+// copies the notFollowed list from the file to the new notFollow list.
+function parseNotFollowedList(originalNotFollowedList) {
+  var i = 0;
+  while (i < originalNotFollowedList.length) {
+    notFollowedStocks[i] = originalNotFollowedList[i];
+    i++;
+  }
+  if (notFollowedStocks.length === originalNotFollowedList.length) {
+    console.log('Sucessful notFollowed list parsing');
+  } else {
+    console.log('problem!');
+  }
+}
+
 function deleteStock(stockToDelete) {
-      var file = JSON.parse(fs.readFileSync('stockDataDelete.json', 'utf-8'));
-      console.log(file.following);
+    var file = JSON.parse(fs.readFileSync('stockDataDelete.json', 'utf-8'));
+    //  console.log(file.following);
+   // console.log(file.notFollowing);
 
-      checkingFollowedList(stockToDelete, file.following);
-      parseFollowedList(file.following);
+    const inFollowedList = checkingFollowedList(stockToDelete, file.following);
+    if (inFollowedList == false) {
+      console.log(`Stock is not in list!`);
+      deletePrompt();
+    } else {
+     
+//  console.log(stockToDelete);
 
+    parseFollowedList(file.following);
+    parseNotFollowedList(file.notFollowing);
+
+//    console.log(followedStocks); 
+//    console.log(notFollowedStocks);
       let JSONdata = JSON.stringify(jsonOutput);
       fs.writeFileSync('stockData.json', JSONdata);
     }
+}
 
     deletePrompt();
