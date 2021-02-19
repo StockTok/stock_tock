@@ -1,66 +1,44 @@
-let fs = require('fs') //filesystem
-const prompt = require('prompt');
-prompt.start();
+let fs = require('fs')  // filesystem
 
-const accountInfo = 
-{
-    "username": undefined,
-    "password": undefined
+const accountInfo = {
+  'username': undefined,
+  'password': undefined
 };
 
-function startup()
-{
-    console.log('1 for create account, 2 for login')
-    prompt.get(['option'], (err,result) => 
-    {
-        if(err)
-            throw err;
-        if(result.option === '1')
-            createAccount();
-        else
-            loginToAccount();
-    })
-}
 
-function createAccount()
-{
-    prompt.get(['username', 'password'], (err, result) => 
-    {
-        if (err)
-            throw err;
-        // print user details
-        console.log(`Username: ${result.username}\nPassword: ${result.password}`);
-        accountInfo.username = result.username;
-        accountInfo.password = result.password;
-        writeJsonData();
+
+const createAccount =
+    (username, password) => {
+      accountInfo.username = username;
+      accountInfo.password = password;
+      console.log(`After created\n\tusername: ${
+          accountInfo.username}\n\tpassword: ${accountInfo.password}`);
+
+      jsonData = JSON.stringify(accountInfo);
+      fs.writeFile('account_info.json', jsonData, function(err) {
+        if (err) console.log('error occured');
+      });
+      if (accountInfo.username === undefined) {
+        console.log('The Username field is required');
+      }
+      if (accountInfo.password === undefined) {
+        console.log('The Password field is required');
+      } else
+        console.log('Account Created');
     }
-)};
+// createAccount('hello','world')
 
-function loginToAccount()
-{
-    var file = JSON.parse(fs.readFileSync('account_info.json', 'utf-8'));
-    console.log(file);
-    
-    prompt.get(['username', 'password'], (err, result) => 
-    {
-        if (err)
-            throw err;    
-        if(result.username === file.username && result.password === file.password)
-            console.log("Login Successful");
-        else
-            console.log("Login Not Successful");
-    }
-)};
 
-function writeJsonData()
-{
-    jsonData = JSON.stringify(accountInfo);
-    fs.writeFile("account_info.json", jsonData, function(err) 
-    {
-        if(err)
-            console.log("error occured");
-    });
-    console.log("Goodbye");
-}
+const confirmAccount = (username, password) => {
+  var file = JSON.parse(fs.readFileSync('account_info.json', 'utf-8'));
+  console.log(file);
 
-startup();
+  if (username === file.username && password === file.password) {
+    return 1;
+  } else if (username != file.username) {
+    return -1;
+  } else if (password != file.password) {
+    return 0;
+  }
+} 
+console.log(confirmAccount('hello', 'world'));
