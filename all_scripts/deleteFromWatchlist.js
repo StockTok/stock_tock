@@ -84,6 +84,8 @@ function deleteStock(stockToDelete) {
     }else {
       parseFollowedList(file.following);
       parseNotFollowedList(file.notFollowing);
+      console.log('Follow List before removal: ', followedStocks);
+      console.log('Not followed List:', notFollowedStocks);
 
       for(var i = 0; i < followedStocks.length;i++) {
         if(followedStocks[i] == stockToDelete){
@@ -99,7 +101,9 @@ function deleteStock(stockToDelete) {
     writeToFile(jsonOutput.following, jsonOutput.notFollowing);
     let JSONdata = JSON.stringify(jsonOutput);
     fs.writeFileSync('stockData.json', JSONdata);
-    console.log(`'${stockToDelete}' is now removed from the watchlist.`);
+    console.log('\nFollow List after removal: ', followedStocks);
+    console.log('Not followed List:', notFollowedStocks);
+    console.log(`\n'${stockToDelete}' is now removed from the watchlist.`);
     }
 }
 
