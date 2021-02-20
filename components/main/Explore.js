@@ -4,7 +4,7 @@ import CardStack, { Card } from "react-native-card-stack-swiper";
 
 export default function Explore() {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <CardStack
         style={styles.content}
         renderNoMoreCards={() => (
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#212121",
   },
   content: {
     flex: 5,
