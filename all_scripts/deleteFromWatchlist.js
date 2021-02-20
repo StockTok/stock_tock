@@ -38,7 +38,6 @@ function checkingFollowedList(userStock, StockFollowList){
         stockInList = false;
     }
 
-    //console.log(stockInList);
     return stockInList;
 
 }
@@ -50,12 +49,7 @@ function parseFollowedList(originalFollowedList){
       followedStocks[i] = originalFollowedList[i];
        i++;
     }
-    if(followedStocks.length === originalFollowedList.length){
-      console.log('\nBefore removal for followed list', followedStocks);
-    }
-    else{
-        console.log('problem!');
-    }
+
 }
 
 // copies the notFollowed list from the file to the new notFollow list.
@@ -65,21 +59,26 @@ function parseNotFollowedList(originalNotFollowedList) {
     notFollowedStocks[i] = originalNotFollowedList[i];
     i++;
   }
-  if (notFollowedStocks.length === originalNotFollowedList.length) {
-    console.log('notFollowed list:  ', notFollowedStocks);
-  } else {
-    console.log('problem!');
+
+}
+
+//Writes the updated stock lists onto the file.
+function writeToFile(fileFollowing, fileNotFollowing){
+  for (var i = 0; i < followedStocks.length; i++) {
+        fileFollowing[i] = followedStocks[i];
+  }
+  for(var i = 0; i < notFollowedStocks.length;i++){
+      fileNotFollowing[i] = notFollowedStocks[i];
   }
 }
 
 function deleteStock(stockToDelete) {
     var file = JSON.parse(fs.readFileSync('stockDataDelete.json', 'utf-8'));
-    //  console.log(file.following);
-   // console.log(file.notFollowing);
+
 
     const inFollowedList = checkingFollowedList(stockToDelete, file.following);
     if (inFollowedList == false) {
-      console.log(`Cannot delete stock you are not currently following`);
+      console.log(`\nCannot delete stock you are not currently following`);
       console.log(`Enter 'exit' if you want to quit the program or `);
       deletePrompt();
     }else {
@@ -92,12 +91,15 @@ function deleteStock(stockToDelete) {
             break;
         }
     }
-    console.log('\nAfter removal for followed list:', followedStocks);
-    notFollowedStocks.push(stockToDelete);
-    console.log('notFollowed list:  ', notFollowedStocks);
 
-      let JSONdata = JSON.stringify(jsonOutput);
-      fs.writeFileSync('stockData.json', JSONdata);
+    notFollowedStocks.push(stockToDelete);
+
+
+
+    writeToFile(jsonOutput.following, jsonOutput.notFollowing);
+    let JSONdata = JSON.stringify(jsonOutput);
+    fs.writeFileSync('stockData.json', JSONdata);
+    console.log(`'${stockToDelete}' is now removed from the watchlist.`);
     }
 }
 
