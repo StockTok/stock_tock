@@ -17,6 +17,9 @@ function deletePrompt(){
         throw err;
 
         console.log(`The user entered: ${result.option}`);
+        if (result.option === 'exit' || result.option === 'Exit') {
+          return process.exit();
+        }
         deleteStock(result.option);
     });
 
@@ -35,7 +38,7 @@ function checkingFollowedList(userStock, StockFollowList){
         stockInList = false;
     }
 
-    console.log(stockInList);
+    //console.log(stockInList);
     return stockInList;
 
 }
@@ -48,7 +51,7 @@ function parseFollowedList(originalFollowedList){
        i++;
     }
     if(followedStocks.length === originalFollowedList.length){
-        console.log("Sucessful following list parsing");
+      console.log('\nBefore removal for followed list', followedStocks);
     }
     else{
         console.log('problem!');
@@ -63,7 +66,7 @@ function parseNotFollowedList(originalNotFollowedList) {
     i++;
   }
   if (notFollowedStocks.length === originalNotFollowedList.length) {
-    console.log('Sucessful notFollowed list parsing');
+    console.log('notFollowed list:  ', notFollowedStocks);
   } else {
     console.log('problem!');
   }
@@ -76,20 +79,26 @@ function deleteStock(stockToDelete) {
 
     const inFollowedList = checkingFollowedList(stockToDelete, file.following);
     if (inFollowedList == false) {
-      console.log(`Stock is not in list!`);
+      console.log(`Cannot delete stock you are not currently following`);
+      console.log(`Enter 'exit' if you want to quit the program or `);
       deletePrompt();
-    } else {
-     
-//  console.log(stockToDelete);
+    }else {
+      parseFollowedList(file.following);
+      parseNotFollowedList(file.notFollowing);
 
-    parseFollowedList(file.following);
-    parseNotFollowedList(file.notFollowing);
+      for(var i = 0; i < followedStocks.length;i++) {
+        if(followedStocks[i] == stockToDelete){
+            followedStocks.splice(i,1);
+            break;
+        }
+    }
+    console.log('\nAfter removal for followed list:', followedStocks);
+    notFollowedStocks.push(stockToDelete);
+    console.log('notFollowed list:  ', notFollowedStocks);
 
-//    console.log(followedStocks); 
-//    console.log(notFollowedStocks);
       let JSONdata = JSON.stringify(jsonOutput);
       fs.writeFileSync('stockData.json', JSONdata);
     }
 }
 
-    deletePrompt();
+deletePrompt();
