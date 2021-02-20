@@ -21,10 +21,7 @@ export default function Explore() {
         <Card style={[styles.card, styles.card1]}>
           <Text style={styles.label}>A</Text>
         </Card>
-        <Card
-          style={[styles.card, styles.card2]}
-          onSwipedLeft={() => alert("onSwipedLeft")}
-        >
+        <Card style={[styles.card, styles.card2]}>
           <Text style={styles.label}>B</Text>
         </Card>
         <Card style={[styles.card, styles.card1]}>
