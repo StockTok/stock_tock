@@ -30,7 +30,7 @@ const getData = () =>
           try 
           {
             let newsObject  = {};
-            newsObject = {title : articles[j]['title'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']}
+            newsObject = {title : articles[j]['title'], source : articles[j]['source']['name'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']}
             outNewsJsonData[stockSymbol].articles.push(newsObject);
           } 
           catch (error) 
