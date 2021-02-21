@@ -30,6 +30,9 @@ const getData = () =>
           try 
           {
             let newsObject  = {};
+            let titleOfArticle = articles[j]['title'].toLowerCase();
+            if(titleOfArticle.includes('your') || titleOfArticle.includes('you') || titleOfArticle.includes('how') || !titleOfArticle.includes(stockName.toLowerCase()))
+              continue;
             newsObject = {title : articles[j]['title'], source : articles[j]['source']['name'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']}
             outNewsJsonData[stockSymbol].articles.push(newsObject);
           } 
