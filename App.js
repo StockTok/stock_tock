@@ -10,6 +10,19 @@ import MainScreen from "./components/Main";
 import ExploreScreen from "./components/main/Explore";
 import SettingScreen from "./components/main/Setting";
 
+import * as firebase from "firebase";
+import "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
+  authDomain: "stock-tock.firebaseapp.com",
+  databaseURL: "https://stock-tock-default-rtdb.firebaseio.com",
+  projectId: "stock-tock",
+  storageBucket: "stock-tock.appspot.com",
+  messagingSenderId: "253435229851",
+  appId: "1:253435229851:web:c330f33e863eb8fdb7b83e",
+};
+
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
@@ -17,7 +30,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       loaded: true,
-      loggedIn: true,
+      loggedIn: false,
     };
   }
 
@@ -29,6 +42,20 @@ export default class App extends React.Component {
     // we will show the login page
     // Otherwise (database is borken or unable to access the database)
     // we will show just message "Loading..."
+    firebase.auth().onAuthStateChanged((user) => {
+      // user isn't logged in
+      if (!user) {
+        this.setState({
+          loggedIn: false,
+          loaded: true,
+        });
+      } else {
+        this.setState({
+          loggedIn: true,
+          loaded: true,
+        });
+      }
+    });
   }
 
   render() {
