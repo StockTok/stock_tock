@@ -44,7 +44,12 @@ const LoginScreen = ({ navigation }) => {
         />
       </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={() =>
+          firebase.auth().signInWithEmailAndPassword(email, password)
+        }
+      >
         <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
     </View>
