@@ -6,10 +6,12 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import firebase from "firebase";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign In</Text>

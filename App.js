@@ -13,6 +13,7 @@ import SettingScreen from "./components/main/Setting";
 import * as firebase from "firebase";
 import "firebase/firestore";
 
+// API from firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
   authDomain: "stock-tock.firebaseapp.com",
@@ -22,6 +23,12 @@ const firebaseConfig = {
   messagingSenderId: "253435229851",
   appId: "1:253435229851:web:c330f33e863eb8fdb7b83e",
 };
+
+//make sure that we are not running the firebase instant at the moment
+//because if you try to run firebase initialized app, the app will be crushed
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const Stack = createStackNavigator();
 
