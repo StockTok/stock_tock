@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import firebase from "firebase";
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -16,6 +17,29 @@ export default class Register extends React.Component {
       email: "",
       password: "",
     };
+
+    this.onSignUp = this.onSignUp.bind(this);
+  }
+
+  onSignUp() {
+    const { name, email, password } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid)
+          .set({
+            name,
+            email,
+          });
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -48,7 +72,11 @@ export default class Register extends React.Component {
           />
         </View>
 
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => this.onSignUp()}
+          title="Sign Up"
+        >
           <Text style={styles.loginText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
