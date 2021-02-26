@@ -5,7 +5,11 @@ const { symbol, name } = require('./stockDictionary.js');
 const alphaVantage = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});
 
 // let allStocks = ['msft', 'gme', 'aapl', 'tsla'];
-let allStockData = {}; // This will record the symbol and their data
+let allStockData = {
+   googl : "Google",
+   amat :  "Applied Materials",
+   amd : "Advanced Micro Devices"
+};
 
 let stockMonthly;
 let parts; // The parts are referring to a specific category in the JSON file (i.e. "Monthly Time Series")
@@ -55,11 +59,12 @@ function readData() {
     //console.log(`Not Following: ${notFollowedStocks}`);
 }
 
+/* Obtains the monthlyData of a particular stock and prints the data */
 function getMonthlyData(symbol) {
     let monthsHighArray = []; // Initialize monthsHigh array 
     
     console.log("getMonthlyData method called");
-    console.log(`Looking at "${symbol}"`);
+    console.log(`Looking at ${symbol}`);
     
     alphaVantage.data.monthly(`${symbol}`).then(data => {
     stockMonthly = data;
@@ -73,10 +78,8 @@ function getMonthlyData(symbol) {
         monthsHighArray.push(convertedText);
     }
     priceChange = ((monthsHighArray[0] - monthsHighArray[2]) / monthsHighArray[0]) * 100; // Calculating price change
-    console.log(`\n----------\nPrice of ${symbol} over 3 months: `, monthsHighArray[0], monthsHighArray[1], monthsHighArray[2]);
-    console.log(`Price change over 3 month period: ${priceChange.toFixed(2)}%` + "\n----------");
-
-    //allStockData[symbol] = priceChange; // Couldn't figure out how dictionaries work in javascript
+    console.log(`\n----------\n${allStockData[symbol]} (${symbol})\nPrice over 3 months:\n` + "(1) " + monthsHighArray[0].toFixed(2) + " - (2) " + monthsHighArray[1].toFixed(2) + " - (3) " + monthsHighArray[2].toFixed(2));
+    console.log("Percentage: " + (priceChange > 0 ? "+" : "") + priceChange.toFixed(2) + "%\n----------");
 
     });
 
