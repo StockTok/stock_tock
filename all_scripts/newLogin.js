@@ -19,6 +19,7 @@ const createAccount = (username, password) =>
   });
 }
 
+module.exports = {createAccount};
 //createAccount('Mason','StockTock');
 
 /*

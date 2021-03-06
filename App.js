@@ -12,6 +12,7 @@ import SettingScreen from "./components/main/Setting";
 
 import * as firebase from "firebase";
 import "firebase/firestore";
+import {createAccount} from "./all_scripts/newLogin.js"
 
 // API from firebase
 const firebaseConfig = {

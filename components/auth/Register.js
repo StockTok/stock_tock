@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import firebase from "firebase";
+import {createAccount} from "../../all_scripts/newLogin.js"
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class Register extends React.Component {
   }
 
   onSignUp() {
+    /*
     const { name, email, password } = this.state;
     firebase
       .auth()
@@ -39,7 +41,9 @@ export default class Register extends React.Component {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });*/
+    const { name, email, password } = this.state;
+    createAccount(name, password);
   }
 
   render() {
