@@ -1,4 +1,7 @@
 import React from "react";
+// module.exports = {createAccount};
+import{ createAccount } from "../../all_scripts/newLogin.js";
+
 import {
   StyleSheet,
   View,
@@ -6,8 +9,43 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import firebase from "firebase";
-import {createAccount} from "../../all_scripts/newLogin.js"
+
+
+/**
+import Parse from "parse/react-native.js";
+
+Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
+
+Parse.serverURL = 'https://parseapi.back4app.com/';
+
+
+async function saveNewPerson(username, password) {
+
+const Account = Parse.Object.extend("Account");
+const account  = new Account()
+//{
+  account.set("username", username);
+  account.set("password", password);
+
+  try{
+    let result = await account.save()
+    alert('New object created with objectId: ' + result.id);
+  }catch(error){
+      alert('Failed to create new object, with error code: ' + error.message);
+  }
+
+ // const Person = Parse.Object.extend("Person");
+  //const person = new Person();
+
+ // person.set("name", "John Snow");
+ // person.set("age", 27);
+ // try{
+ //     let result = await person.save()
+ //     alert('New object created with objectId: ' + result.id);
+  //}catch(error){
+  //    alert('Failed to create new object, with error code: ' + error.message);
+ // }
+}  */
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -22,26 +60,9 @@ export default class Register extends React.Component {
     this.onSignUp = this.onSignUp.bind(this);
   }
 
+
   onSignUp() {
-    /*
-    const { name, email, password } = this.state;
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        firebase
-          .firestore()
-          .collection("users")
-          .doc(firebase.auth().currentUser.uid)
-          .set({
-            name,
-            email,
-          });
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });*/
+
     const { name, email, password } = this.state;
     createAccount(name, password);
   }
