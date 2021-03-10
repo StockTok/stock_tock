@@ -1,69 +1,98 @@
-import React, { useState } from "react";
-import Swipeout from 'react-native-swipeout';
-import { StyleSheet, 
-  Text, 
-  View, 
-  ToucableOpacity,
-  TextInput,
-  TouchableHighlight,
-  ScrollView,
-} from "react-native";
+// Searching using Search Bar Filter in React Native List View
+// https://aboutreact.com/react-native-search-bar-filter-on-listview/
 
-// import { TouchableOpacity } from "react-native-gesture-handler";
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, Text, StyleSheet, View, FlatList } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 
 export default function Watchlist() {
-
-  const [search, setSearch] = useState("");
-
-  let find = ['GME', 'AMC', 'NOK', 'BB'];
+  const [search, setSearch] = useState('');
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
   
-    let swipeoutBtn = [{
-      text: 'Delete',
-      backgroundColor: 'red',
-      underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-      onPress: () => { consolelog.onDelete}
-    }];
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        setFilteredDataSource(responseJson);
+        setMasterDataSource(responseJson);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const searchFilterFunction = (text) => {
+    if (text) {
+      const newData = masterDataSource.filter(function (item) {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      setFilteredDataSource(masterDataSource);
+      setSearch(text);
+    }
+  };
+
+  const ItemView = ({ item }) => {
+    return (
+      <Text style={styles.itemStyle} onPress={() => getItem(item)}>
+        {item.id}
+        {'.'}
+        {item.title.toUpperCase()}
+      </Text>
+    );
+  };
+
+  const ItemSeparatorView = () => {
+    return (
+      <View
+        style={{
+          height: 0.5,
+          width: '100%',
+          backgroundColor: '#C8C8C8',
+        }}
+      />
+    );
+  };
+
+  const getItem = (item) => {
+    alert('Id : ' + item.id + ' Title : ' + item.title);
+  };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.searchBar}> 
-          <TextInput
-            style={styles.inputText}
-            placeholder = "Search"
-            placeholderTextColor = "#F2F3F7"
-            onChangeText = {(search) => setSearch(search)}
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <SearchBar
+          round
+          searchIcon={{ size: 24 }}
+          onChangeText={(text) => searchFilterFunction(text)}
+          onClear={(text) => searchFilterFunction('')}
+          placeholder="Type Here..."
+          value={search}
+        />
+        <FlatList
+          data={filteredDataSource}
+          keyExtractor={(item, index) => index.toString()}
+          ItemSeparatorComponent={ItemSeparatorView}
+          renderItem={ItemView}
         />
       </View>
-      <Swipeout right={swipeoutBtn}>
-      <View>
-      <Text>Swipe me left</Text>
-      </View>
-      </Swipeout>
-    </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#212121", // Background Color 
-    alignItems: "center",
-    // justifyContent: "center",
+    backgroundColor: 'white',
   },
-  inputText: {
-    color: "#F2F3F7",
-    height: 50,
-  },
-  searchBar: { 
-    backgroundColor: "#2F2F2F",
-    justifyContent: 'flex-start',
-    height: 50,
-    marginTop: 50,
-   // paddingTop: 50,
-    width: "80%",
-    alignItems: "center", 
-    borderRadius: 25,
-   // height: "%",
+  itemStyle: {
+    padding: 10,
   },
 });
-
