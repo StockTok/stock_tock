@@ -39,22 +39,6 @@ const readData = async (username) => {
     }
 } 
 
-/*
-const createAccount = async (username, password) => {
-
-const Account = Parse.Object.extend("Account");
-const account  = new Account()
-    account.set("username", username);
-    account.set("password", password);
-
-    try{
-    let result = await account.save()
-    alert('New object created with objectId: ' + result.id);
-    }catch(error){
-        alert('Failed to create new object, with error code: ' + error.message);
-    }
-}*/
-
 module.exports = {
     readData
 }
