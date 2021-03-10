@@ -28,9 +28,9 @@ const readData = async (username) => {
         query.equalTo("username", username)
         
 
-        const person = await query.first().then(function(response){
-            const name = person.get("username");
-            const age = person.get("password");
+            await query.first().then(function(response){
+            const name = response.get("username");
+            const age = response.get("password");
 
             alert(`Name: ${name} age: ${age}`);
         })
