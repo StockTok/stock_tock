@@ -1,7 +1,5 @@
 import Parse from "parse/react-native.js";
-
 Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
-
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
 
@@ -19,6 +17,7 @@ const account  = new Account()
       alert('Failed to create new object, with error code: ' + error.message);
   }
 }
+
 
 module.exports = {
   createAccount

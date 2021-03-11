@@ -56,4 +56,7 @@ const name = {
 "Gamestop": "GME"
 };
 
-module.exports = { symbol, name }
+const stocksLowerCase = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'goog', 'brk.b', 'jnj', 'jpm', 'nvda', 'v', 'dis', 'pypl', 'pg', 
+'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'cmcsa', 'adbe', 'vz', 'gme']
+
+module.exports = { symbol, name, stocksLowerCase }

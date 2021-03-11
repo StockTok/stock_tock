@@ -32,7 +32,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       loaded: true,
-      loggedIn: true,
+      loggedIn: false,
     };
   }
 

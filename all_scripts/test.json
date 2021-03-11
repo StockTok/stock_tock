@@ -1,0 +1,177 @@
+{
+  "aapl": {
+    "name": "Apple",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "msft": {
+    "name": "Microsoft",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "amzn": {
+    "name": "Amazon",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "fb": {
+    "name": "Facebook",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "googl": {
+    "name": "Alphabet",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "tsla": {
+    "name": "TESLA",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "goog": {
+    "name": "Alphabet Inc. Class C",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "brk.b": {
+    "name": "Berkshire Hathaway",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "jnj": {
+    "name": "Johnson & Johnson",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "jpm": {
+    "name": "JPMorgan Chase",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "nvda": {
+    "name": "NVDIA Corporation",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "v": {
+    "name": "Visa",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "dis": {
+    "name": "Walt Disney Company",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "pypl": {
+    "name": "Paypal",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "pg": {
+    "name": "Procter & Gamble Company",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "unh": {
+    "name": "UnitedHealth Group",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "ma": {
+    "name": "Mastercard",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "hd": {
+    "name": "Home Depot",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "bac": {
+    "name": "Bank of America",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "intc": {
+    "name": "Intel",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "nflx": {
+    "name": "Netflix",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "cmcsa": {
+    "name": "Comcast",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "adbe": {
+    "name": "Adobe",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "vz": {
+    "name": "Verizon",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  },
+  "gme": {
+    "name": "Gamestop",
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "percent": "4"
+  }
+}

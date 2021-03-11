@@ -1,99 +1,128 @@
-let fs = require('fs'); //filesystem
-const { symbol, name } = require('./stockDictionary.js');
-//const { getDefaultSettings } = require('http2');
-//const { get } = require('react-native/Libraries/Utilities/PixelRatio');
-const alphaVantage = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});
-//Key2 LRYPE1SFTV3IB20I
-//key3 4DC9TBV26C1MXSQV
-//FS91QNJX525CJ7I5
-//H519FCGYYRX90RPE
+import Parse from "parse/react-native.js";
+Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
+Parse.serverURL = 'https://parseapi.back4app.com/';
+//let fs = require('fs')  // filesystem
 
-// let allStocks = ['msft', 'gme', 'aapl', 'tsla'];
-let allStockData = {
-   googl : "Google",
-   amat :  "Applied Materials",
-   amd : "Advanced Micro Devices"
-};
+const { symbol, name, stocksLowerCase } = require('./newDictionary');
 
-let stockMonthly;
-let parts; // The parts are referring to a specific category in the JSON file (i.e. "Monthly Time Series")
-let keys; // Keys that are contained in parts
-let convertedText; // Converts the values from string to float
-let priceChange;
-const followedStocks = []; // Obtained from reading from stockData.json
+const alphaVantage1 = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});
+const alphaVantage2 = require('alphavantage') ({key: 'LRYPE1SFTV3IB20I'});
+const alphaVantage3 = require('alphavantage') ({key: '4DC9TBV26C1MXSQV'});
+const alphaVantage4 = require('alphavantage') ({key: 'FS91QNJX525CJ7I5'});
+const alphaVantage5 = require('alphavantage') ({key: 'H519FCGYYRX90RPE'});
 
-/* --------- Debug (Like main()---------------- */
-readData();
-
-for (let i = 0; i < followedStocks.length; i++) {
-    //console.log(`Looking at ${followedStocks[i]}`);
-    getMonthlyData(followedStocks[i]);
-}
-
-// for (var key in allStockData) {
-//     console.log(key + " : " + allStockData[key]);
-// }
-
-
-/* _______________________________________________*/
-
-/* Reads data from JSON file.
-   For this code, I'm only focusing on the followed
-   list since that is what we're obtaining the data from (for now) */
-function readData() {
-    let file;
-    let retrievedData;
-    try {
-        file = fs.readFileSync('stockData.json');
-        retrievedData = JSON.parse(file);
-        console.log(retrievedData);
-        if(retrievedData.following.length > 0)
-            followedStocks.push(...retrievedData.following);
-        // if(retrievedData.notFollowing.length > 0)
-        //     notFollowedStocks.push(...retrievedData.notFollowing);
-        // else
-        //     notFollowedStocks.push(...stocks);
-        
-    } catch (error) {
-        console.error("File read error");
-        //notFollowedStocks.push(...stocks);
-    }
-
-    console.log(`Following: ${followedStocks}`);
-    //console.log(`Not Following: ${notFollowedStocks}`);
-}
-
-/* Obtains the monthlyData of a particular stock and prints the data */
-function getMonthlyData(symbol) {
-    let monthsHighArray = []; // Initialize monthsHigh array 
-    
-    console.log("getMonthlyData method called");
-    console.log(`Looking at ${symbol}`);
-    
-    alphaVantage.data.monthly(`${symbol}`).then(data => {
-    stockMonthly = data;
-    parts = stockMonthly['Monthly Time Series']; // Obtain the dictionary from Monthly Time series
-    keys = Object.keys(parts); // Extract the keys from variable parts (into a list)
-    
-    // Grab the first 3 indices from keys and push them to a list (months high)
-    let i;
-    for (i = 0; i < 3; i++) {
-        convertedText = parseFloat(stockMonthly['Monthly Time Series'][keys[i]]['2. high']) // Converts text to float value
-        monthsHighArray.push(convertedText);
-    }
-    priceChange = ((monthsHighArray[0] - monthsHighArray[2]) / monthsHighArray[0]) * 100; // Calculating price change
-    console.log(`\n----------\n${allStockData[symbol]} (${symbol})\nPrice over 3 months:\n` + "(1) " + monthsHighArray[0].toFixed(2) + " - (2) " + monthsHighArray[1].toFixed(2) + " - (3) " + monthsHighArray[2].toFixed(2));
-    console.log("Percentage: " + (priceChange > 0 ? "+" : "") + priceChange.toFixed(2) + "%\n----------");
-
-    });
-
-}
-
-
+const alphaVantageArray = [alphaVantage1,alphaVantage2,alphaVantage3,alphaVantage4,alphaVantage5];
+let currentAlphaVantageNum = 0;
 
 /*
-console.log('\n\n\n\n\n');
-alphaVantage.data.daily(`msft`).then(data => {
-    microsoftData = data
-    //console.log(microsoftData);
-});*/
+const saveAllData = async () => 
+{
+    const Stocks = Parse.Object.extend("Stocks");
+    const stocks  = new Parse.Query(Stocks);
+    
+    /*
+    try {
+        stocks.equalTo("name", "stocks");
+        await stocks.first().then(function(response){
+            response.set("allStocks", allStocksObject);
+            response.save();
+            //alert(allStocksObject['aapl']['name']);
+            alert(response.get('allStocks'));
+        });
+        
+    } catch (error) {
+        alert('Error Occured Oh No!')
+    }
+    
+}*/
+
+/*
+const createStock = async (symbol, name) => {
+
+    const Stock = Parse.Object.extend("Stocks");
+    const stocks  = new Stock()
+    stocks.set("symbol", symbol);
+    stocks.set("name", name);
+    stocks.set("prices", 
+    {  
+        one : '1',
+        two : '2',
+        three : '3',
+        percent : '%'
+    });
+    
+    try{
+        let result = await stocks.save()
+        alert('New object created with objectId: ' + result.id);
+    } catch(error){
+        alert('Failed to create new object, with error code: ' + error.message);
+    }
+}*/
+
+const getAllData = () =>
+{
+    for(let i = 0; i<2; i++)
+    {
+        getMonthlyData(stocksLowerCase[i]);   
+    }
+}
+
+async function getMonthlyData(symbol) {
+    let dailyHighArray = []; // Initialize monthsHigh array   
+    console.log(`Looking at ${symbol}`);
+    
+    if(currentAlphaVantageNum>4)
+        return;
+    try
+    {
+        await alphaVantageArray[currentAlphaVantageNum].data.daily(`${symbol}`).then(data => 
+        {
+            console.log(data);
+            stockDaily = data;
+            let parts = stockDaily['Time Series (Daily)']; // Obtain the dictionary from Monthly Time series
+            let keys = Object.keys(parts); // Extract the keys from variable parts (into a list)
+            
+            // Grab the first 3 indices from keys and push them to a list (months high)
+            let i;
+            for (i = 0; i < 3; i++) {
+                let text = parseFloat(stockDaily['Time Series (Daily)'][keys[i]]['2. high']) // Converts text to float value
+                dailyHighArray.push(text);
+            }
+            
+            let percentChange = ((dailyHighArray[0] - dailyHighArray[2]) / dailyHighArray[0]) * 100; // Calculating percent change
+            percentChange = percentChange<0 ? percentChange.toFixed(2) : `+${percentChange.toFixed(2)}%`;
+            for(i=0; i<3; i++)
+            {
+                dailyHighArray[i] = dailyHighArray[i].toFixed(2)
+            }
+            updateStock(symbol, dailyHighArray,percentChange);
+        });
+    } 
+    catch (error)
+    {
+        currentAlphaVantageNum++;
+        getMonthlyData(symbol);
+    }
+
+}
+
+async function updateStock(symbol,array,percentChange)
+{
+    const Stocks = Parse.Object.extend("Stocks");
+    const stocks  = new Parse.Query(Stocks);
+    
+    try {
+        stocks.equalTo("symbol", symbol);
+        await stocks.first().then(function(response){
+            response.set("prices", {one : array[0], two : array[1], three : array[2], percent : percentChange});
+            response.save();
+            //alert(allStocksObject['aapl']['name']);
+            alert(symbol);
+        });
+        
+    } catch (error) {
+        alert('Error Occured Oh No!')
+    }
+}
+
+module.exports = {getAllData};
