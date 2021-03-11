@@ -2,14 +2,22 @@
 // https://aboutreact.com/react-native-search-bar-filter-on-listview/
 
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Text, StyleSheet, View, FlatList } from 'react-native';
+import { 
+  SafeAreaView, 
+  Text, 
+  StyleSheet, 
+  View, 
+  FlatList, 
+  Modal,
+  TouchableOpacity, 
+} from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
 export default function Watchlist() {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
-  
+  const [modalVisible, setModalVisable] = useState(false);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
@@ -25,6 +33,7 @@ export default function Watchlist() {
 
   const searchFilterFunction = (text) => {
     if (text) {
+      setModalVisable(true);
       const newData = masterDataSource.filter(function (item) {
         const itemData = item.title
           ? item.title.toUpperCase()
@@ -69,20 +78,39 @@ export default function Watchlist() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <SearchBar
+        <TouchableOpacity style = {styles.searchBtn} 
+          onPress={() => setModalVisable(!modalVisible)}>
+            <Text style = {styles.search}>Search</Text>
+        </TouchableOpacity>
+        
+        <Modal
+          animationType = "slide"
+          //transparent = {true}
+          visible = {modalVisible}
+          onRequestClose = {() => {
+            setModalVisable(!modalVisible);
+          }}
+        >
+          <View style = {styles.modalView}>
+          <SearchBar
           round
           searchIcon={{ size: 24 }}
           onChangeText={(text) => searchFilterFunction(text)}
-          onClear={(text) => searchFilterFunction('')}
+          //onClear={(text) => searchFilterFunction('')}
+          onClear = {() => setModalVisable(!modalVisible)}
           placeholder="Type Here..."
           value={search}
         />
-        <FlatList
-          data={filteredDataSource}
-          keyExtractor={(item, index) => index.toString()}
-          ItemSeparatorComponent={ItemSeparatorView}
-          renderItem={ItemView}
-        />
+             
+            <FlatList
+              data={filteredDataSource}
+              keyExtractor={(item, index) => index.toString()}
+              ItemSeparatorComponent={ItemSeparatorView}
+              renderItem={ItemView}
+            />
+          </View> 
+        </Modal>
+        
       </View>
     </SafeAreaView>
   );
@@ -91,8 +119,25 @@ export default function Watchlist() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    justifyContent: "center"
   },
   itemStyle: {
     padding: 10,
   },
+  modalView: {
+    padding : 10,
+  },
+  searchBtn: {
+    width: "80%",
+    backgroundColor: "#F2A950",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+    marginBottom: 10,
+  },
+  search:{
+    color: "#F2F3F7",  
+  }
 });
