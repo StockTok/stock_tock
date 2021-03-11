@@ -118,14 +118,15 @@ export default function Watchlist() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
-    justifyContent: "center"
+    backgroundColor: "#212121",
+    justifyContent: "center", 
+    alignItems: "center"
   },
   itemStyle: {
     padding: 10,
   },
   modalView: {
-    padding : 10,
+    paddingTop: 50,
   },
   searchBtn: {
     width: "80%",
