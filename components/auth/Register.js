@@ -2,6 +2,7 @@ import React from "react";
 // module.exports = {createAccount};
 import{ createAccount } from "../../all_scripts/newLogin.js";
 import{ readData } from "../../all_scripts/newStockArrays.js";
+import{ getAllData} from "../../all_scripts/newStockData.js";
 
 import {
   StyleSheet,
@@ -66,8 +67,9 @@ export default class Register extends React.Component {
 
     //const { name, email, password } = this.state;
     //createAccount(name, password);
-    const {name, password} = this.state;
-    readData(name);
+    //const {name, password} = this.state;
+    //readData(name);
+    getAllData();
   }
 
   render() {

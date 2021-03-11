@@ -1,7 +1,7 @@
 import Parse from "parse/react-native.js";
 Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
 Parse.serverURL = 'https://parseapi.back4app.com/';
-const { symbol, name } = require('./stockDictionary.js');
+const { symbol, name } = require('./newDictionary.js');
 
 let clearJsonFile = false; //pass in a third command line argument can be anything to clear the json files
 const maxFollowedStockAllowed = 5;
@@ -11,11 +11,7 @@ const notFollowedStocks = [];
 
 const stocksSwipedLeft = [];
 const stocks = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'goog', 'brk.b', 'jnj', 'jpm', 'nvda', 'v', 'dis', 'pypl', 'pg', 
-'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'cmcsa', 'adbe', 'vz', 'abt', 'crm', 'xom', 't', 'csco', 'wmt', 'tmo', 'ko', 'avgo', 
-'pfe', 'mrk', 'pep', 'abbv', 'nke', 'cvx', 'qcom', 'txn', 'nee', 'acn', 'lly', 'mdt', 'mcd', 'cost', 'dhr', 'hon', 'unp', 'amgn', 
-'bmy', 'wfc', 'pm', 'lin', 'c', 'low', 'sbux', 'orcl', 'ups', 'now', 'ba', 'amd', 'rtx', 'cat', 'ibm', 'intu', 'ms', 'gs', 'amat',
-'blk', 'mmm', 'amt', 'ge', 'de', 'cvs', 'mu', 'tgt', 'isrg', 'chtr', 'gild', 'fis', 'axp', 'lmt', 'schw', 'tjx', 'lrcx', 'spgi',
-'mo', 'syk', 'atvi', 'pld', 'mdlz', 'zts', 'ci', 'cb', 'bdx', 'antm', 'tmus'];
+'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'cmcsa', 'adbe', 'vz', 'gme']
 
 let tempStocks = []; // A list of stocks that the user will go through, will copy from currentListStocks
 let currentStock;
@@ -25,7 +21,7 @@ const readData = async (username) => {
     const Account = Parse.Object.extend("Account");
     const query = new Parse.Query(Account);
     try {
-        query.equalTo("username", username)
+            query.equalTo("username", username)
         
 
             await query.first().then(function(response){
@@ -38,22 +34,6 @@ const readData = async (username) => {
         alert(`Failed to retrieve the object, with error code: ${error.message}`);
     }
 } 
-
-/*
-const createAccount = async (username, password) => {
-
-const Account = Parse.Object.extend("Account");
-const account  = new Account()
-    account.set("username", username);
-    account.set("password", password);
-
-    try{
-    let result = await account.save()
-    alert('New object created with objectId: ' + result.id);
-    }catch(error){
-        alert('Failed to create new object, with error code: ' + error.message);
-    }
-}*/
 
 module.exports = {
     readData
