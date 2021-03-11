@@ -91,6 +91,7 @@ export default function Watchlist() {
             setModalVisable(!modalVisible);
           }}
         >
+          <SafeAreaView sytle = {{ flex: 1 }}>
           <View style = {styles.modalView}>
           <SearchBar
           round
@@ -109,6 +110,7 @@ export default function Watchlist() {
               renderItem={ItemView}
             />
           </View> 
+          </SafeAreaView>
         </Modal>
         
       </View>
@@ -126,7 +128,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   modalView: {
-    paddingTop: 50,
+    //paddingTop: 50,
   },
   searchBtn: {
     width: "80%",
