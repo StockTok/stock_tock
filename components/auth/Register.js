@@ -3,6 +3,7 @@ import React from "react";
 import{ createAccount } from "../../all_scripts/newLogin.js";
 import{ readData } from "../../all_scripts/newStockArrays.js";
 import{ getAllData} from "../../all_scripts/newStockData.js";
+import{ getAllNews} from "../../all_scripts/newNews.js";
 
 import {
   StyleSheet,
@@ -69,7 +70,8 @@ export default class Register extends React.Component {
     //createAccount(name, password);
     //const {name, password} = this.state;
     //readData(name);
-    getAllData();
+    //getAllData();
+    getAllNews();
   }
 
   render() {

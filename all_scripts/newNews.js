@@ -1,9 +1,14 @@
 //let fs = require('fs'); //filesystem
 import Parse from "parse/react-native.js";
-Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
-Parse.serverURL = 'https://parseapi.back4app.com/';
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('2bc6b32f847f4361ab90a79c93fe9474');
+//Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
+//Parse.serverURL = 'https://parseapi.back4app.com/';
+
+//const NewsAPI = require('newsapi');
+//const newsapi = new NewsAPI('2bc6b32f847f4361ab90a79c93fe9474');
+let newsURL = "http://newsapi.org/v2/everything?q=tesla&language=en&sortBy=publishedAt&apiKey=2bc6b32f847f4361ab90a79c93fe9474";
+//let newsURL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=2bc6b32f847f4361ab90a79c93fe9474`
+//http://newsapi.org/v2/everything?q=tesla&from=2021-02-12&sortBy=publishedAt&apiKey=API_KEY
+
 const { symbol, name, stocksLowerCase } = require('./newDictionary.js');
 
 const getNews = async (stockSymbol) =>
@@ -13,10 +18,13 @@ const getNews = async (stockSymbol) =>
   let stockName = symbol[symbolOfStock];
 
   console.log(stockName);
-  await newsapi.v2.everything({
-    q: stockName,
-    language: 'en'
-    }).then(response => {
+  //let result;
+  let result = await fetch(newsURL).then((response) => (response = response.json()));
+  //await fetch(newsURL).then((response) => {result = response});
+  console.log(result.articles);
+    /*{
+      
+      console.log(JSON.stringify(response));
       let articles = response['articles'];
       let j;
       for(j = 0; j<5;j++)
@@ -35,10 +43,11 @@ const getNews = async (stockSymbol) =>
           break;
         }
       }
-      updateNews(stockSymbol, outNewsArticleArray);
-  });
+      
+      //updateNews(stockSymbol, outNewsArticleArray);
+  });*/
 }
-
+/*
 async function updateNews(stockSymbol, newsArray)
 {
     const Stocks = Parse.Object.extend("Stocks");
@@ -56,11 +65,11 @@ async function updateNews(stockSymbol, newsArray)
     } catch (error) {
         alert('Error Occured Oh No!')
     }
-}
+}*/
 
 const getAllNews = () =>
 {
-    for(let i = 0; i<2; i++)
+    for(let i = 0; i<1; i++)
     {
         getNews(stocksLowerCase[i]);   
     }
