@@ -1,53 +1,72 @@
-let fs = require('fs'); //filesystem
+//let fs = require('fs'); //filesystem
+import Parse from "parse/react-native.js";
+Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
+Parse.serverURL = 'https://parseapi.back4app.com/';
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('2bc6b32f847f4361ab90a79c93fe9474');
-const { symbol, name } = require('./stockDictionary.js');
+const { symbol, name, stocksLowerCase } = require('./newDictionary.js');
 
-const file = JSON.parse(fs.readFileSync('stockDataForNews.json', 'utf-8'));
-const stocksFollowed = file.following;
-const outNewsJsonData = {};
-
-const getData = () =>
+const getNews = async (stockSymbol) =>
 {
-  let i;
-  let exit = 0;
-  for(i = 0; i < stocksFollowed.length;i++)
-  {
-    let stockSymbol = stocksFollowed[i].toUpperCase();
-    let stockName = symbol[stocksFollowed[i].toUpperCase()];
-    outNewsJsonData[stockSymbol] = {name : stockName};
+  const outNewsArticleArray = [];
+  let symbolOfStock = stockSymbol.toUpperCase();
+  let stockName = symbol[symbolOfStock];
 
-    outNewsJsonData[stockSymbol].articles = [];
-    console.log(stockName);
-    newsapi.v2.everything({
-      q: stockName,
-      language: 'en'
-      }).then(response => {
-        let articles = response['articles'];
-        let j;
-        for(j = 0; ;j++)
+  console.log(stockName);
+  await newsapi.v2.everything({
+    q: stockName,
+    language: 'en'
+    }).then(response => {
+      let articles = response['articles'];
+      let j;
+      for(j = 0; j<5;j++)
+      {
+        try 
         {
-          try 
-          {
-            let newsObject  = {};
-            let titleOfArticle = articles[j]['title'].toLowerCase();
-            if(titleOfArticle.includes('your') || titleOfArticle.includes('you') || titleOfArticle.includes('how') || !titleOfArticle.includes(stockName.toLowerCase()))
-              continue;
-            newsObject = {title : articles[j]['title'], source : articles[j]['source']['name'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']}
-            outNewsJsonData[stockSymbol].articles.push(newsObject);
-          } 
-          catch (error) 
-          {
-            exit++;
-            if((exit === stocksFollowed.length)) //reached the end of all company articles
-              writeData();
-            break;
-          }
+          let newsObject  = {};
+          let titleOfArticle = articles[j]['title'].toLowerCase();
+          if(titleOfArticle.includes('your') || titleOfArticle.includes('you') || titleOfArticle.includes('how') || !titleOfArticle.includes(stockName.toLowerCase()))
+            continue;
+          newsObject = {title : articles[j]['title'], source : articles[j]['source']['name'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']}
+          outNewsArticleArray.push(newsObject);
+        } 
+        catch (error) 
+        {
+          break;
         }
-    });
-  }
+      }
+      updateNews(stockSymbol, outNewsArticleArray);
+  });
 }
 
+async function updateNews(stockSymbol, newsArray)
+{
+    const Stocks = Parse.Object.extend("Stocks");
+    const stocks = new Parse.Query(Stocks);
+    
+    try {
+        stocks.equalTo("symbol", stockSymbol);
+        await stocks.first().then(function(response){
+            response.set("news", newsArray);
+            response.save();
+            //alert(allStocksObject['aapl']['name']);
+            alert(symbol);
+        });
+        
+    } catch (error) {
+        alert('Error Occured Oh No!')
+    }
+}
+
+const getAllNews = () =>
+{
+    for(let i = 0; i<2; i++)
+    {
+        getNews(stocksLowerCase[i]);   
+    }
+}
+
+/*
 function writeData()
 {
   console.log("goodbye world");
@@ -57,8 +76,9 @@ function writeData()
   /*
   stocksFollowed.forEach(element => {
     console.log(outNewsJsonData[element.toUpperCase()].articles[0].title)
-  });*/
-}
+  });
+}*/
 
-getData();
+//getData();
+module.exports = {getAllNews};
 
