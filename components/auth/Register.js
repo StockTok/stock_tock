@@ -71,7 +71,7 @@ export default class Register extends React.Component {
     //const {name, password} = this.state;
     //readData(name);
     //getAllData();
-    getAllNews();
+    //getAllNews();
   }
 
   render() {
