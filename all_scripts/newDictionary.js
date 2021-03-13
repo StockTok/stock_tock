@@ -5,26 +5,26 @@ const symbol = {
 "AMZN": "Amazon",
 "FB": "Facebook",
 "GOOGL": "Alphabet",
-"TSLA": "TESLA",
-"GOOG": "Alphabet Inc. Class C",
-"BRK.B": "Berkshire Hathaway",
+"TSLA": "Tesla",
+"TGT": "Target",
+"NKE": "Nike",
 "JNJ": "Johnson & Johnson",
-"JPM": "JPMorgan Chase",
-"NVDA": "NVDIA Corporation",
-"V": "Visa",
+"BA": "Boeing",
+"MU": "Micron",
+"MCD": "McDonald's",
 "DIS": "Walt Disney Company",
 "PYPL": "Paypal",
-"PG": "Procter & Gamble Company",
+"KO": "Coca-Cola",
 "UNH": "UnitedHealth Group",
 "MA": "Mastercard",
 "HD": "Home Depot",
 "BAC": "Bank of America",
 "INTC": "Intel",
 "NFLX": "Netflix",
-"CMCSA": "Comcast",
+"XOM": "Exxon Mobil",
 "ADBE": "Adobe",
 "VZ" : "Verizon",
-"GME" : "Gamestop"
+"ATVI" : "Activison"
 };
 
 
@@ -34,29 +34,29 @@ const name = {
 "Amazon": "AMZN",
 "Facebook": "FB",
 "Alphabet": "GOOGL",
-"TESLA": "TSLA",
-"Alphabet Inc. Class C": "GOOG",
-"Berkshire Hathaway": "BRK.B",
+"Tesla": "TSLA",
+"Target": "TGT",
+"Nike": "NKE",
 "Johnson & Johnson": "JNJ",
-"JPMorgan Chase": "JPM",
-"NVDIA Corporation": "NVDA",
-"Visa": "V",
+"Boeing": "BA",
+"Micron": "MU",
+"McDonald's": "MCD",
 "Walt Disney Company": "DIS",
 "Paypal": "PYPL",
-"Procter & Gamble Company": "PG",
+"Coca-Cola": "KO",
 "UnitedHealth Group": "UNH",
 "Mastercard": "MA",
 "Home Depot": "HD",
 "Bank of America": "BAC",
 "Intel": "INTC",
 "Netflix": "NFLX",
-"Comcast": "CMCSA",
+"Exxom Mobil": "XOM",
 "Adobe": "ADBE",
 "Verizon" : "VZ",
-"Gamestop": "GME"
+"Activision" : "ATVI"
 };
 
-const stocksLowerCase = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'goog', 'brk.b', 'jnj', 'jpm', 'nvda', 'v', 'dis', 'pypl', 'pg', 
-'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'cmcsa', 'adbe', 'vz', 'gme']
+const stocksLowerCase = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'tgt', 'nke', 'jnj', 'mu', 'mcd', 'ko', 'dis', 'pypl', 'xom', 
+'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'atvi', 'adbe', 'vz', 'ba']
 
 module.exports = { symbol, name, stocksLowerCase }

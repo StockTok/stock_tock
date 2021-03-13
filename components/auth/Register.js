@@ -2,8 +2,9 @@ import React from "react";
 // module.exports = {createAccount};
 import{ createAccount } from "../../all_scripts/newLogin.js";
 import{ readData } from "../../all_scripts/newStockArrays.js";
-import{ getAllData} from "../../all_scripts/newStockData.js";
+import{ getAllStockData} from "../../all_scripts/newStockData.js";
 import{ getAllNews} from "../../all_scripts/newNews.js";
+import{ getAllDataMethod} from "../../all_scripts/getAllData.js";
 
 import {
   StyleSheet,
@@ -12,43 +13,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-
-
-/**
-import Parse from "parse/react-native.js";
-
-Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
-
-Parse.serverURL = 'https://parseapi.back4app.com/';
-
-
-async function saveNewPerson(username, password) {
-
-const Account = Parse.Object.extend("Account");
-const account  = new Account()
-//{
-  account.set("username", username);
-  account.set("password", password);
-
-  try{
-    let result = await account.save()
-    alert('New object created with objectId: ' + result.id);
-  }catch(error){
-      alert('Failed to create new object, with error code: ' + error.message);
-  }
-
- // const Person = Parse.Object.extend("Person");
-  //const person = new Person();
-
- // person.set("name", "John Snow");
- // person.set("age", 27);
- // try{
- //     let result = await person.save()
- //     alert('New object created with objectId: ' + result.id);
-  //}catch(error){
-  //    alert('Failed to create new object, with error code: ' + error.message);
- // }
-}  */
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -64,14 +28,17 @@ export default class Register extends React.Component {
   }
 
 
-  onSignUp() {
+  async onSignUp() {
 
     //const { name, email, password } = this.state;
     //createAccount(name, password);
-    //const {name, password} = this.state;
+    const {name, password} = this.state;
     //readData(name);
-    //getAllData();
-    //getAllNews();
+    await getAllStockData();
+    //await getAllNews();
+    //let userData = await getAllDataMethod(name);
+    //console.log("\nuserdata====\n")
+    //console.log(userData);
   }
 
   render() {

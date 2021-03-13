@@ -31,7 +31,7 @@ const getNews = async (stockSymbol, url) =>
       newsObject = {title : articles[j]['title'], source : articles[j]['source']['name'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']};
       outNewsArticleArray.push(newsObject);
       //console.log(newsObject);
-      console.log(outNewsArticleArray);
+      //console.log(outNewsArticleArray);
     } 
     catch (error) 
     {
@@ -69,19 +69,5 @@ const getAllNews = () =>
     }
 }
 
-/*
-function writeData()
-{
-  console.log("goodbye world");
-  let JSONdata = JSON.stringify(outNewsJsonData,null,2);
-  fs.writeFileSync('newsArticles.json', JSONdata);
-
-  /*
-  stocksFollowed.forEach(element => {
-    console.log(outNewsJsonData[element.toUpperCase()].articles[0].title)
-  });
-}*/
-
-//getData();
 module.exports = {getAllNews};
 
