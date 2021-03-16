@@ -1,6 +1,6 @@
-import Parse from "parse/react-native.js";
-Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
-Parse.serverURL = 'https://parseapi.back4app.com/';
+//import Parse from "parse/react-native.js";
+//Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
+//Parse.serverURL = 'https://parseapi.back4app.com/';
 //let fs = require('fs')  // filesystem
 
 const { symbol, name, stocksLowerCase } = require('./newDictionary');
@@ -13,6 +13,7 @@ const alphaVantage5 = require('alphavantage') ({key: 'H519FCGYYRX90RPE'});
 
 const alphaVantageArray = [alphaVantage1,alphaVantage2,alphaVantage3,alphaVantage4,alphaVantage5];
 let currentAlphaVantageNum = 0;
+let allStocks = [];
 
 /*
 const saveAllData = async () => 
@@ -59,26 +60,26 @@ const createStock = async (symbol, name) => {
     }
 }*/
 
-const getAllData = () =>
+const getAllStockData = async() =>
 {
-    for(let i = 0; i<2; i++)
+    let numInArray = -1;
+    for(let i = 0; i<10; i++)
     {
-        getMonthlyData(stocksLowerCase[i]);   
+        numInArray = numInArray == 4 ? 0 : numInArray + 1;
+        console.log(numInArray);
+        await getDailyData(stocksLowerCase[i], numInArray);
     }
+    console.log(allStocks);
 }
 
-async function getMonthlyData(symbol) {
+async function getDailyData(symbol, numberInArray) {
     let dailyHighArray = []; // Initialize monthsHigh array   
     console.log(`Looking at ${symbol}`);
-    
-    if(currentAlphaVantageNum>4)
-        return;
     try
     {
-        await alphaVantageArray[currentAlphaVantageNum].data.daily(`${symbol}`).then(data => 
+        await (alphaVantageArray[numberInArray]).data.daily(`${symbol}`).then(data => 
         {
-            console.log(data);
-            stockDaily = data;
+            let stockDaily = data;
             let parts = stockDaily['Time Series (Daily)']; // Obtain the dictionary from Monthly Time series
             let keys = Object.keys(parts); // Extract the keys from variable parts (into a list)
             
@@ -95,13 +96,14 @@ async function getMonthlyData(symbol) {
             {
                 dailyHighArray[i] = dailyHighArray[i].toFixed(2)
             }
-            updateStock(symbol, dailyHighArray,percentChange);
+            console.log(symbol);
+            allStocks.push(dailyHighArray);
+            //updateStock(symbol, dailyHighArray,percentChange);
         });
     } 
     catch (error)
     {
-        currentAlphaVantageNum++;
-        getMonthlyData(symbol);
+        console.log(error);
     }
 
 }
@@ -125,4 +127,4 @@ async function updateStock(symbol,array,percentChange)
     }
 }
 
-module.exports = {getAllData};
+module.exports = {getAllStockData};
