@@ -1,6 +1,3 @@
-// Searching using Search Bar Filter in React Native List View
-// https://aboutreact.com/react-native-search-bar-filter-on-listview/
-
 import React, { useState, useEffect } from 'react';
 import { 
   SafeAreaView, 
@@ -20,7 +17,7 @@ export default function Watchlist() {
   const [modalVisible, setModalVisable] = useState(false);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://api.npoint.io/565c60051f6b1592e9da')
       .then((response) => response.json())
       .then((responseJson) => {
         setFilteredDataSource(responseJson);
@@ -102,7 +99,6 @@ export default function Watchlist() {
           placeholder="Type Here..."
           value={search}
         />
-             
             <FlatList
               data={filteredDataSource}
               keyExtractor={(item, index) => index.toString()}
