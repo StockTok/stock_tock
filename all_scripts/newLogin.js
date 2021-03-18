@@ -18,8 +18,7 @@ const account  = new Account()
   }
 }
 
-const confirmAccount = async (username) => {
-  followedArray = [];
+const confirmAccount = async (username, password) => {
   const Account = Parse.Object.extend("Account");
   const query = new Parse.Query(Account);
   try 
@@ -29,11 +28,18 @@ const confirmAccount = async (username) => {
     {
       const name = response.get("username");
       const pass = response.get("password");
-
-      alert(`Username: ${name} Password: ${pass}`);
+      if((username === name) && (password === pass))
+      {
+        let followed = response.get("followed");
+        alert(`Username: ${name} Password: ${pass} Followed: ${followed}`);
+        return followed;
+      }
+      else
+        return false;
     })
   } catch (error) {
-      alert(`Failed to retrieve the object, with error code: ${error.message}`);
+      alert(`User does not exist`);
+      return false;
   }
 }
 

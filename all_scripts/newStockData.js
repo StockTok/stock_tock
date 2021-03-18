@@ -1,18 +1,19 @@
-//import Parse from "parse/react-native.js";
-//Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
-//Parse.serverURL = 'https://parseapi.back4app.com/';
+import Parse from "parse/react-native.js";
+Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
+Parse.serverURL = 'https://parseapi.back4app.com/';
 //let fs = require('fs')  // filesystem
 
 const { symbol, name, stocksLowerCase } = require('./newDictionary');
 
-const alphaVantage1 = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});
+const alphaVantage = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});
+/*
 const alphaVantage2 = require('alphavantage') ({key: 'LRYPE1SFTV3IB20I'});
 const alphaVantage3 = require('alphavantage') ({key: '4DC9TBV26C1MXSQV'});
 const alphaVantage4 = require('alphavantage') ({key: 'FS91QNJX525CJ7I5'});
-const alphaVantage5 = require('alphavantage') ({key: 'H519FCGYYRX90RPE'});
+const alphaVantage5 = require('alphavantage') ({key: 'H519FCGYYRX90RPE'});*/
 
-const alphaVantageArray = [alphaVantage1,alphaVantage2,alphaVantage3,alphaVantage4,alphaVantage5];
-let currentAlphaVantageNum = 0;
+//const alphaVantageArray = [alphaVantage1,alphaVantage2,alphaVantage3,alphaVantage4,alphaVantage5];
+//let currentAlphaVantageNum = 0;
 let allStocks = [];
 
 /*
@@ -62,22 +63,18 @@ const createStock = async (symbol, name) => {
 
 const getAllStockData = async() =>
 {
-    let numInArray = -1;
-    for(let i = 0; i<10; i++)
+    for(let i = 0; i<5; i++)
     {
-        numInArray = numInArray == 4 ? 0 : numInArray + 1;
-        console.log(numInArray);
-        await getDailyData(stocksLowerCase[i], numInArray);
+        await getDailyData(stocksLowerCase[i]);
     }
-    console.log(allStocks);
 }
 
-async function getDailyData(symbol, numberInArray) {
+async function getDailyData(symbol) {
     let dailyHighArray = []; // Initialize monthsHigh array   
     console.log(`Looking at ${symbol}`);
     try
     {
-        await (alphaVantageArray[numberInArray]).data.daily(`${symbol}`).then(data => 
+        await alphaVantage.data.daily(`${symbol}`).then(data => 
         {
             let stockDaily = data;
             let parts = stockDaily['Time Series (Daily)']; // Obtain the dictionary from Monthly Time series
@@ -98,7 +95,7 @@ async function getDailyData(symbol, numberInArray) {
             }
             console.log(symbol);
             allStocks.push(dailyHighArray);
-            //updateStock(symbol, dailyHighArray,percentChange);
+            updateStock(symbol, dailyHighArray,percentChange);
         });
     } 
     catch (error)

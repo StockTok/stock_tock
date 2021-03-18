@@ -17,7 +17,7 @@ const getNews = async (stockSymbol, url) =>
   let symbolOfStock = stockSymbol.toUpperCase();
   let stockName = symbol[symbolOfStock];
 
-  console.log(stockName);
+  //console.log(stockName);
   let result = await fetch(url).then((response) => (response = response.json()));
   let articles = result.articles;
   for(let j = 0; ;j++)
@@ -30,11 +30,10 @@ const getNews = async (stockSymbol, url) =>
         continue;
       newsObject = {title : articles[j]['title'], source : articles[j]['source']['name'], description : articles[j]['description'], author : articles[j]['author'], url : articles[j]['url']};
       outNewsArticleArray.push(newsObject);
-      //console.log(newsObject);
-      //console.log(outNewsArticleArray);
     } 
     catch (error) 
     {
+      //console.log(outNewsArticleArray);
       updateNews(stockSymbol, outNewsArticleArray);
       break;
     }
@@ -60,11 +59,12 @@ async function updateNews(stockSymbol, newsArray)
 
 const getAllNews = () =>
 {
-    for(let i = 0; i<stocksLowerCase.length; i++)
+    for(let i = 0; i<5; i++)
     {
+      //console.log(i);
       let stockName = symbol[stocksLowerCase[i].toUpperCase()];
       stockName = stockName.toLowerCase();
-      let newsURL = `http://newsapi.org/v2/everything?q=${stockName}&language=en&sortBy=publishedAt&apiKey=2bc6b32f847f4361ab90a79c93fe9474`;
+      let newsURL = `http://newsapi.org/v2/everything?q=${stockName}&language=en&sortBy=business&apiKey=2bc6b32f847f4361ab90a79c93fe9474`;
       getNews(stocksLowerCase[i], newsURL);   
     }
 }

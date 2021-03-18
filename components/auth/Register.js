@@ -1,10 +1,10 @@
 import React from "react";
 // module.exports = {createAccount};
 import{ createAccount } from "../../all_scripts/newLogin.js";
-import{ readData } from "../../all_scripts/newStockArrays.js";
 import{ getAllStockData} from "../../all_scripts/newStockData.js";
 import{ getAllNews} from "../../all_scripts/newNews.js";
 import{ getAllDataMethod} from "../../all_scripts/getAllData.js";
+import{getFollowedArray} from "../../all_scripts/newStockArrays.js";
 
 import {
   StyleSheet,
@@ -13,6 +13,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { Alert } from "react-native";
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -33,12 +34,37 @@ export default class Register extends React.Component {
     //const { name, email, password } = this.state;
     //createAccount(name, password);
     const {name, password} = this.state;
-    //readData(name);
-    await getAllStockData();
+    
+    //await getAllStockData();
     //await getAllNews();
-    //let userData = await getAllDataMethod(name);
-    //console.log("\nuserdata====\n")
-    //console.log(userData);
+    let userData = await getAllDataMethod(name, password);
+    if (userData === false) 
+    {
+      alert("User does not exit");
+      console.log("User does not exit");
+    }
+    else
+    {
+      console.log(userData.username);
+      console.log(userData.password);
+      console.log(userData.followed);
+    }
+    /*
+    else
+    {
+      console.log('\nStockUserObject ===\n')
+      console.log(userData.username);
+      console.log(userData.password);
+      console.log(userData.followed);
+      let stockKeys = Object.keys(userData.stocks);
+      for(let i = 0; i<5; i++)
+      {
+        console.log(userData.stocks[stockKeys[i]].symbol);
+        console.log(userData.stocks[stockKeys[i]].name);
+        console.log(userData.stocks[stockKeys[i]].prices);
+        console.log(userData.stocks[stockKeys[i]].news);
+      }
+    }*/
   }
 
   render() {

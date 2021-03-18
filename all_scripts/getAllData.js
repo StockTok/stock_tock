@@ -1,19 +1,26 @@
 import Parse from "parse/react-native.js";
 Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
 Parse.serverURL = 'https://parseapi.back4app.com/';
-import {getFollowedArray} from "./newStockArrays.js";
+import {createAccount, confirmAccount} from "./newLogin.js";
 const { symbol, name, stocksLowerCase } = require('./newDictionary.js');
 
-const getAllDataMethod = async (user) => {
+const getAllDataMethod = async (user, password) => {
   let stockUserObject = 
   {
     username:user,
-    followedArray:[],
+    password:password,
+    followed:[],
     stocks : {}
   };
 
-  followedArray = getFollowedArray();
-  for(let i = 0; i < stocksLowerCase.length; i++)
+  stockUserObject.followed = await confirmAccount(user,password);
+  if(stockUserObject.followed === false) return false;
+  return stockUserObject;
+}
+  /*
+  const Stocks = Parse.Object.extend("Stocks");
+  const query = new Parse.Query(Stocks);
+  for(let i = 0; i < 5; i++)
   {
     try 
     {
@@ -24,25 +31,17 @@ const getAllDataMethod = async (user) => {
         stockUserObject.stocks[stockSymbol] = 
         {
           symbol : stockSymbol.toUpperCase(), 
-          name : "",
-          prices: "",
-          news:""
+          name : symbol[stockSymbol.toUpperCase()],
+          prices: response.get("prices"),
+          news: response.get("news")
         };
-
-        const name = response.get("name");
-        const prices = response.get("prices");
-        const news = response.get("news");
-
-        stockUserObject.stocks.stockSymbol.name = name;
-        stockUserObject.stocks.stockSymbol.prices = prices;
-        stockUserObject.stocks.stockSymbol.news = news;
       })
     } catch (error) {
-        alert(`Failed to retrieve the object, with error code: ${error.message}`);
+        alert(`Failed: ${error.message}`);
     }
   }
-  console.log(stockUserObject);
+  //console.log(stockUserObject);
   return stockUserObject;
 }
-
+*/
 module.exports = {getAllDataMethod}
