@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>566</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>newLogin.js
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>396</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>login.js
 --
 Attributes:
 -Account
@@ -10,7 +10,7 @@ Operations:
 -account.set()
 -Parse.initialize()
 -Parse.Query()
--Parse.Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>386</x><y>310</y><w>210</w><h>190</h></coordinates><panel_attributes>back4app.js
+-Parse.Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>126</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>back4app.js
 --
 Attributes:
 -Stocks
@@ -23,7 +23,7 @@ Operations:
 -Parse.Query()
 -stock.get()
 -stock.set()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>906</x><y>110</y><w>210</w><h>200</h></coordinates><panel_attributes>getAllData.js
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>646</x><y>50</y><w>210</w><h>200</h></coordinates><panel_attributes>getAllData.js
 --
 Attributes:
 -stockUserObject
@@ -37,7 +37,7 @@ Operations:
 -require()
 -query.equalTo()
 -response.get()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>836</x><y>590</y><w>210</w><h>190</h></coordinates><panel_attributes>newDelete.js
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>376</x><y>330</y><w>210</w><h>190</h></coordinates><panel_attributes>delete.js
 --
 Attributes:
 -jsonOutput
@@ -50,13 +50,13 @@ Operations:
 -parseFollowedList()
 -parseNotFollowedList()
 -writeToFile()
--deleteStock()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>876</x><y>380</y><w>210</w><h>90</h></coordinates><panel_attributes>newDictonary
+-deleteStock()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>106</x><y>340</y><w>210</w><h>90</h></coordinates><panel_attributes>dictonary
 --
 Attributes:
 -symbol
 -name
 -stocksLowerCase
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1320</x><y>120</y><w>210</w><h>190</h></coordinates><panel_attributes>newNews.js
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>40</y><w>210</w><h>190</h></coordinates><panel_attributes>news.js
 --
 Attributes:
 -symbols
@@ -67,7 +67,7 @@ Operations:
 -Parse.initialize()
 -getNews()
 -updateNews()
--getAllNews()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1160</x><y>530</y><w>210</w><h>190</h></coordinates><panel_attributes>newStockArrays.js
+-getAllNews()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>330</y><w>210</w><h>190</h></coordinates><panel_attributes>stockArrays.js
 --
 Attributes:
 -symbol
@@ -81,7 +81,7 @@ Operations:
 -getFollowedArray()
 Parse.initialize()
 Parse.Object.extend()
-Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>580</y><w>250</w><h>240</h></coordinates><panel_attributes>newStockData.js
+Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>30</y><w>250</w><h>240</h></coordinates><panel_attributes>stockData.js
 --
 Attributes:
 - alphaVantageArray
@@ -95,4 +95,4 @@ Operations:
 -getAllStockData()
 -getDailyData()
 -updateStock()
--Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>230</y><w>220</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;80;200;10</additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>430</y><w>300</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>280;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>956</x><y>300</y><w>60</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>110</y><w>180</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>160;10;80;150;40;190;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1074</x><y>280</y><w>270</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>250;10;10;150</additional_attributes></element></diagram>
+-Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element></diagram>
