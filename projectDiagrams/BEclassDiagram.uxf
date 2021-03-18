@@ -1,4 +1,4 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>396</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>login.js
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>127</x><y>520</y><w>210</w><h>230</h></coordinates><panel_attributes>login.js
 --
 Attributes:
 -Account
@@ -10,20 +10,7 @@ Operations:
 -account.set()
 -Parse.initialize()
 -Parse.Query()
--Parse.Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>126</x><y>50</y><w>210</w><h>190</h></coordinates><panel_attributes>back4app.js
---
-Attributes:
--Stocks
--stock
---
-Operations:
--require()
--Parse.initialize()
--Parse.Object.extend()
--Parse.Query()
--stock.get()
--stock.set()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>646</x><y>50</y><w>210</w><h>200</h></coordinates><panel_attributes>getAllData.js
+-Parse.Object()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>487</x><y>500</y><w>210</w><h>200</h></coordinates><panel_attributes>getAllData.js
 --
 Attributes:
 -stockUserObject
@@ -37,26 +24,13 @@ Operations:
 -require()
 -query.equalTo()
 -response.get()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>376</x><y>330</y><w>210</w><h>190</h></coordinates><panel_attributes>delete.js
---
-Attributes:
--jsonOutput
--followedStocks
--notfollowedStocks
---
-Operations:
--deletePrompt()
--checkingFollowedList()
--parseFollowedList()
--parseNotFollowedList()
--writeToFile()
--deleteStock()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>106</x><y>340</y><w>210</w><h>90</h></coordinates><panel_attributes>dictonary
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>207</x><y>860</y><w>210</w><h>90</h></coordinates><panel_attributes>dictonary
 --
 Attributes:
 -symbol
 -name
 -stocksLowerCase
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>40</y><w>210</w><h>190</h></coordinates><panel_attributes>news.js
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>801</x><y>650</y><w>210</w><h>190</h></coordinates><panel_attributes>news.js
 --
 Attributes:
 -symbols
@@ -67,7 +41,7 @@ Operations:
 -Parse.initialize()
 -getNews()
 -updateNews()
--getAllNews()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>330</y><w>210</w><h>190</h></coordinates><panel_attributes>stockArrays.js
+-getAllNews()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1171</x><y>490</y><w>210</w><h>240</h></coordinates><panel_attributes>stockArrays.js
 --
 Attributes:
 -symbol
@@ -81,7 +55,7 @@ Operations:
 -getFollowedArray()
 Parse.initialize()
 Parse.Object.extend()
-Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>30</y><w>250</w><h>240</h></coordinates><panel_attributes>stockData.js
+Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>791</x><y>260</y><w>250</w><h>240</h></coordinates><panel_attributes>stockData.js
 --
 Attributes:
 - alphaVantageArray
@@ -95,4 +69,4 @@ Operations:
 -getAllStockData()
 -getDailyData()
 -updateStock()
--Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+-Parse.Query()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>610</y><w>190</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>170;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>690</y><w>230</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>210;10;210;220;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>830</y><w>330</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>310;10;310;80;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>910</x><y>490</y><w>220</w><h>440</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;110;200;110;200;420;10;420</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>730</y><w>210</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>190;10;190;180;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>370</y><w>120</w><h>270</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;70;10;70;250;10;250</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>610</y><w>130</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>110;130;70;130;70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>750</x><y>610</y><w>440</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>420;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>690</y><w>520</w><h>200</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;180;500;180;500;50;450;50</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>610</y><w>990</w><h>400</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;90;10;380;970;380;970;10;870;10</additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>210</y><w>580</w><h>310</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;290;10;10;560;10;560;170;460;170</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>570</y><w>180</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;160;10</additional_attributes></element></diagram>
