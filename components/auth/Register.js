@@ -29,6 +29,7 @@ export default class Register extends React.Component {
   }
 
 
+  //enter user name and password then hit button
   async onSignUp() {
 
     //const { name, email, password } = this.state;
