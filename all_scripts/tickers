@@ -1,0 +1,66 @@
+{
+ "status": "OK",
+ "from": "2020-10-14",
+ "symbol": "AAPL",
+ "open": 121,
+ "high": 123.03,
+ "low": 119.62,
+ "close": 121.19,
+ "volume": 151057198,
+ "afterHours": 120.81,
+ "preMarket": 121.55
+}
+
+symbol.item
+open.item
+high.item
+low.item
+close.item
+volume.item
+preMarket.item
+
+https://api.npoint.io/565c60051f6b1592e9da 
+
+  const searchFilterFunction = (text) => {
+    if (text) {
+      setModalVisable(true);
+      const newData = masterDataSource.filter(function (item) {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      setFilteredDataSource(masterDataSource);
+      setSearch(text);
+    }
+  };
+
+  const ItemView = ({ item }) => {
+    return (
+      <Text style={styles.itemStyle} onPress={() => getItem(item)}>
+        {item.id}
+        {'.'}
+        {item.title.toUpperCase()}
+      </Text>
+    );
+  };
+
+  const ItemSeparatorView = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: 500,
+          backgroundColor: '#C8C8C8',
+        }}
+      />
+    );
+  };
+
+  const getItem = (item) => {
+    alert(' Title: ' + item.title);
+  };

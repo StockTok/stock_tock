@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -58,6 +58,7 @@ export default class Main extends React.Component {
         <Tab.Screen
           name="Setting"
           component={SettingScreen}
+          // navigation = {props.navigation}
           listeners={({ navigation }) => ({
             tabPress: (event) => {
               event.preventDefault();

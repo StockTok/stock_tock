@@ -60,8 +60,8 @@ export default function Watchlist() {
     return (
       <View
         style={{
-          height: 0.5,
-          width: '100%',
+          height: 1,
+          width: 500,
           backgroundColor: '#C8C8C8',
         }}
       />
@@ -69,32 +69,20 @@ export default function Watchlist() {
   };
 
   const getItem = (item) => {
-    alert('Id : ' + item.id + ' Title : ' + item.title);
+    alert(' Title: ' + item.title);
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 5 }}>
       <View style={styles.container}>
-        <TouchableOpacity style = {styles.searchBtn} 
-          onPress={() => setModalVisable(!modalVisible)}>
-            <Text style = {styles.search}>Search</Text>
-        </TouchableOpacity>
+
         
-        <Modal
-          animationType = "slide"
-          //transparent = {true}
-          visible = {modalVisible}
-          onRequestClose = {() => {
-            setModalVisable(!modalVisible);
-          }}
-        >
-          <SafeAreaView sytle = {{ flex: 1 }}>
+          <SafeAreaView sytle = {{ flex: 5 }}>
           <View style = {styles.modalView}>
           <SearchBar
           round
           searchIcon={{ size: 24 }}
           onChangeText={(text) => searchFilterFunction(text)}
-          //onClear={(text) => searchFilterFunction('')}
           onClear = {() => setModalVisable(!modalVisible)}
           placeholder="Type Here..."
           value={search}
@@ -107,8 +95,6 @@ export default function Watchlist() {
             />
           </View> 
           </SafeAreaView>
-        </Modal>
-        
       </View>
     </SafeAreaView>
   );
@@ -116,18 +102,15 @@ export default function Watchlist() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#212121",
+    backgroundColor: "#dff9fb",
     justifyContent: "center", 
     alignItems: "center"
   },
   itemStyle: {
     padding: 10,
   },
-  modalView: {
-    //paddingTop: 50,
-  },
   searchBtn: {
-    width: "80%",
+    width: "100%",
     backgroundColor: "#F2A950",
     borderRadius: 25,
     height: 50,
