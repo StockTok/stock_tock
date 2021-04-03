@@ -9,7 +9,7 @@ const getAllDataMethod = async (user, password) => {
   {
     username:user,
     password:password,
-    followed:1,
+    followed:[],
     stocks : {}
   };
 
