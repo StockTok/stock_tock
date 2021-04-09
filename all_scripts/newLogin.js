@@ -1,4 +1,5 @@
 import Parse from "parse/react-native.js";
+import { Flow } from "react-native-animated-spinkit";
 Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
@@ -32,6 +33,7 @@ const confirmAccount = async (username, password) => {
       {
         let followed = response.get("followed");
         alert(`Username: ${name} Password: ${pass} Followed: ${followed}`);
+        console.log("confirm accout " + followed);
         return followed;
       }
       else

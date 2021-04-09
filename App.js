@@ -32,8 +32,33 @@ export default class App extends React.Component {
     this.state = {
       loaded: true,
       loggedIn: true,
-    };
+    }
+    this.logout = this.logout.bind(this)
   }
+
+  logout() {
+    this.setState({
+      loggedIn: false,
+    })
+    // console.log("ParentPress")
+  }
+
+/**
+ * 
+ * export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {status: 'initial'}
+    this.changeState = this.changeState.bind(this)
+  }
+
+  changeState() {
+    this.setState({
+      status: 'logged'
+    })
+  }
+
+ */
 
   render() {
     const { loggedIn, loaded } = this.state;
@@ -80,7 +105,11 @@ export default class App extends React.Component {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Explore" component={ExploreScreen} />
-          <Stack.Screen name="Setting" component={SettingScreen} />
+          <Stack.Screen name="Setting" 
+            component={SettingScreen} 
+            logout = {this.logout} 
+           // navigation = {props.navigation}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

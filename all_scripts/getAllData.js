@@ -13,20 +13,44 @@ const getAllDataMethod = async (user, password) => {
     stocks : {}
   };
 
-  stockUserObject.followed = await confirmAccount(user,password);
+  let tempFollowed;
+  const Account = Parse.Object.extend("Account");
+  const query = new Parse.Query(Account);
+  try 
+  {
+    query.equalTo("username", user)
+    await query.first().then(function(response)
+    {
+      const name = response.get("username");
+      const pass = response.get("password");
+      if((user === name) && (password === pass))
+      {
+        let followed = response.get("followed");
+        alert(`Username: ${name} Password: ${pass} Followed: ${followed}`);
+        console.log("confirm accout " + followed);
+        tempFollowed = followed;
+      }
+      else
+        return false;
+    })
+  } catch (error) {
+      alert(`User does not exist`);
+      return false;
+  }
+
+  stockUserObject.followed = tempFollowed;
+  console.log("get all data " + stockUserObject.followed);
   if(stockUserObject.followed === false) return false;
-  return stockUserObject;
-}
-  /*
+  
   const Stocks = Parse.Object.extend("Stocks");
-  const query = new Parse.Query(Stocks);
+  const queryStock = new Parse.Query(Stocks);
   for(let i = 0; i < 5; i++)
   {
     try 
     {
       let stockSymbol = stocksLowerCase[i];
-      query.equalTo("symbol", stockSymbol);
-      await query.first().then(function(response)
+      queryStock.equalTo("symbol", stockSymbol);
+      await queryStock.first().then(function(response)
       {
         stockUserObject.stocks[stockSymbol] = 
         {
@@ -40,8 +64,6 @@ const getAllDataMethod = async (user, password) => {
         alert(`Failed: ${error.message}`);
     }
   }
-  //console.log(stockUserObject);
   return stockUserObject;
 }
-*/
 module.exports = {getAllDataMethod}

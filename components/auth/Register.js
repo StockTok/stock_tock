@@ -29,6 +29,7 @@ export default class Register extends React.Component {
   }
 
 
+  //enter user name and password then hit button
   async onSignUp() {
 
     //const { name, email, password } = this.state;
@@ -45,17 +46,8 @@ export default class Register extends React.Component {
     }
     else
     {
-      console.log(userData.username);
-      console.log(userData.password);
-      console.log(userData.followed);
-    }
-    /*
-    else
-    {
       console.log('\nStockUserObject ===\n')
-      console.log(userData.username);
-      console.log(userData.password);
-      console.log(userData.followed);
+      
       let stockKeys = Object.keys(userData.stocks);
       for(let i = 0; i<5; i++)
       {
@@ -64,7 +56,10 @@ export default class Register extends React.Component {
         console.log(userData.stocks[stockKeys[i]].prices);
         console.log(userData.stocks[stockKeys[i]].news);
       }
-    }*/
+      console.log(userData.username);
+      console.log(userData.password);
+      console.log(userData.followed);
+    }
   }
 
   render() {
