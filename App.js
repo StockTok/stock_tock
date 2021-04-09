@@ -12,8 +12,8 @@ import SettingScreen from "./components/main/Setting";
 
 // In a React Native application
 import Parse from "parse/react-native.js";
-import AsyncStorage from '@react-native-community/async-storage';
-import keys from './constants/keys.js';
+import AsyncStorage from "@react-native-community/async-storage";
+import keys from "./constants/keys.js";
 
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
@@ -27,7 +27,6 @@ Parse.serverURL = keys.serverURL;
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
@@ -41,13 +40,13 @@ export default class App extends React.Component {
     if (!loaded) {
       useEffect(() => {
         createInstallation = async () => {
-          const  Installation = Parse.Object.extend(Parse.Installation);
-          const  installation = new  Installation();
-            
-          installation.set('deviceType', Platform.OS);
-          await  installation.save();
+          const Installation = Parse.Object.extend(Parse.Installation);
+          const installation = new Installation();
+
+          installation.set("deviceType", Platform.OS);
+          await installation.save();
         };
-        
+
         createInstallation();
       }, []);
       return (
