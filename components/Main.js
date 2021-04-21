@@ -24,7 +24,10 @@ export default class Main extends React.Component {
         initialRouteName="Explore"
         tabBarOptions={{
           activeTintColor: "#f2a950",
-          style: { backgroundColor: "#212121" },
+          style: { 
+            backgroundColor: "#fff",
+            
+          },
         }}
       >
         <Tab.Screen

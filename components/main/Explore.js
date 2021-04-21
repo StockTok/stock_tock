@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
+import Watchlist from './Watchlist.js';
+import stocks from '../test.json';
 
 export default function Explore() {
   return (
@@ -18,19 +20,19 @@ export default function Explore() {
         onSwiped={() => console.log("onSwiped")}
         onSwipedLeft={() => console.log("onSwipedLeft")}
       >
-        <Card style={[styles.card, styles.card1]}>
+        <Card style={[styles.card]}>
           <Text style={styles.label}>A</Text>
         </Card>
-        <Card style={[styles.card, styles.card2]}>
+        <Card style={[styles.card]}>
           <Text style={styles.label}>B</Text>
         </Card>
-        <Card style={[styles.card, styles.card1]}>
+        <Card style={[styles.card]}>
           <Text style={styles.label}>C</Text>
         </Card>
-        <Card style={[styles.card, styles.card2]}>
+        <Card style={[styles.card]}>
           <Text style={styles.label}>D</Text>
         </Card>
-        <Card style={[styles.card, styles.card1]}>
+        <Card style={[styles.card]}>
           <Text style={styles.label}>E</Text>
         </Card>
       </CardStack>
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#dff9fb",
+    backgroundColor: "#ebf5fc",
   },
   content: {
     flex: 5,
@@ -59,15 +61,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.5,
-  },
-  card1: {
-    backgroundColor: "#FE474C",
-  },
-  card2: {
-    backgroundColor: "#FEB12C",
+    shadowOpacity: 0.2,
   },
   label: {
+    loader: 'json-loader',
     lineHeight: 400,
     textAlign: "center",
     fontSize: 55,
