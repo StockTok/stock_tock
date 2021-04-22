@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import firebase from "firebase";
+import GlobalState from "../GlobalState";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -47,7 +48,8 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity
         style={styles.loginBtn}
         onPress={() =>
-          firebase.auth().signInWithEmailAndPassword(email, password)
+        //  firebase.auth().signInWithEmailAndPassword(email, password)
+          console.log(GlobalState.username)
         }
       >
         <Text style={styles.loginText}>Login</Text>

@@ -9,7 +9,8 @@ import {
 
 import { withNavigation } from 'react-navigation';
 import LoginScreen from '../auth/LoginScreen';
-
+// import GlobalState from '../GlobalState';
+GLOBAL = require("../GlobalState");
 
 /** 
 class LoginBox extends Component {
@@ -36,10 +37,14 @@ class LoginBox extends Component {
 }
 } */ 
 
+
+
 export default class Setting extends React.Component {
+  
   constructor(props) {
     super(props);
     this.signOut =  this.signOut.bind(this);
+  //  this._username = GlobalState.username;
   }
 
   signOut(){
@@ -56,7 +61,10 @@ export default class Setting extends React.Component {
         <Text style={styles.SettingsTitle}>Settings page</Text>
           <TouchableOpacity
             style={styles.SignOutBtn}
-            onPress={() => this.signOut() }
+            onPress={() => 
+            //  console.log(GlobalState.username)
+                console.log(GLOBAL.USERNAME)
+            }
           >
           <Text style={styles.SignOutText}>Sign Out</Text>
           </TouchableOpacity>
