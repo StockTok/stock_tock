@@ -15,6 +15,23 @@ import Parse from "parse/react-native.js";
 import AsyncStorage from "@react-native-community/async-storage";
 import keys from "./constants/keys.js";
 
+import * as firebase from "firebase";
+import "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
+  authDomain: "stock-tock.firebaseapp.com",
+  databaseURL: "https://stock-tock-default-rtdb.firebaseio.com",
+  projectId: "stock-tock",
+  storageBucket: "stock-tock.appspot.com",
+  messagingSenderId: "253435229851",
+  appId: "1:253435229851:web:c330f33e863eb8fdb7b83e",
+};
+
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 //Before using the SDK...
 Parse.setAsyncStorage(AsyncStorage);
 Parse.initialize(keys.applicationId, keys.javascriptKey);
@@ -31,35 +48,26 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       loaded: true,
-      loggedIn: true,
-    }
-    this.logout = this.logout.bind(this)
-  }
-
-  logout() {
-    this.setState({
       loggedIn: false,
-    })
-    // console.log("ParentPress")
+    };
   }
 
-/**
- * 
- * export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {status: 'initial'}
-    this.changeState = this.changeState.bind(this)
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      // user isn't logged in
+      if (!user) {
+        this.setState({
+          loggedIn: false,
+          loaded: true,
+        });
+      } else {
+        this.setState({
+          loggedIn: true,
+          loaded: true,
+        });
+      }
+    });
   }
-
-  changeState() {
-    this.setState({
-      status: 'logged'
-    })
-  }
-
- */
-
   render() {
     const { loggedIn, loaded } = this.state;
     if (!loaded) {
@@ -105,10 +113,11 @@ export default class App extends React.Component {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Explore" component={ExploreScreen} />
-          <Stack.Screen name="Setting" 
-            component={SettingScreen} 
-            logout = {this.logout} 
-           // navigation = {props.navigation}
+          <Stack.Screen
+            name="Setting"
+            component={SettingScreen}
+            logout={this.logout}
+            // navigation = {props.navigation}
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -24,9 +24,8 @@ export default class Main extends React.Component {
         initialRouteName="Explore"
         tabBarOptions={{
           activeTintColor: "#f2a950",
-          style: { 
+          style: {
             backgroundColor: "#fff",
-            
           },
         }}
       >
@@ -61,7 +60,6 @@ export default class Main extends React.Component {
         <Tab.Screen
           name="Setting"
           component={SettingScreen}
-          // navigation = {props.navigation}
           listeners={({ navigation }) => ({
             tabPress: (event) => {
               event.preventDefault();
