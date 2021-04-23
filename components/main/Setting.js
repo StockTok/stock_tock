@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { withNavigation } from 'react-navigation';
-import LoginScreen from '../auth/LoginScreen';
+import { withNavigation } from "react-navigation";
+import LoginScreen from "../auth/LoginScreen";
 // import GlobalState from '../GlobalState';
-GLOBAL = require("../GlobalState");
+// GLOBAL = require("../GlobalState");
 
 /** 
 class LoginBox extends Component {
@@ -35,42 +35,39 @@ class LoginBox extends Component {
     )
   }
 }
-} */ 
-
-
+} */
 
 export default class Setting extends React.Component {
-  
   constructor(props) {
     super(props);
-    this.signOut =  this.signOut.bind(this);
-  //  this._username = GlobalState.username;
+    this.signOut = this.signOut.bind(this);
+    //  this._username = GlobalState.username;
   }
 
-  signOut(){
+  signOut() {
     this.props.logout;
     // this.props.navigation.navigate("LoginScreen");
     console.log("onPress");
   }
-  
-  render(){
-  //  const { navigation } = useNavigation(); 
+
+  render() {
+    //  const { navigation } = useNavigation();
 
     return (
       <View style={styles.container}>
         <Text style={styles.SettingsTitle}>Settings page</Text>
-          <TouchableOpacity
-            style={styles.SignOutBtn}
-            onPress={() => 
-            //  console.log(GlobalState.username)
-                console.log(GLOBAL.USERNAME)
-            }
-          >
+        <TouchableOpacity
+          style={styles.SignOutBtn}
+          // onPress={() =>
+          //   //  console.log(GlobalState.username)
+          //   // console.log(GLOBAL.USERNAME)
+          // }
+        >
           <Text style={styles.SignOutText}>Sign Out</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
-    )
-  };
+    );
+  }
 }
 
 const styles = StyleSheet.create({
