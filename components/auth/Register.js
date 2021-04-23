@@ -95,7 +95,7 @@ export default class Register extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#292a2b",
+    backgroundColor: "#212121",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     width: "80%",
-    backgroundColor: "#3F5259",
+    backgroundColor: "#2F2F2F",
     borderRadius: 25,
     height: 50,
     marginBottom: 20,
