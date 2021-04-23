@@ -1,10 +1,11 @@
 import React from "react";
 // module.exports = {createAccount};
-import{ createAccount } from "../../all_scripts/newLogin.js";
-import{ getAllStockData} from "../../all_scripts/newStockData.js";
-import{ getAllNews} from "../../all_scripts/newNews.js";
-import{ getAllDataMethod} from "../../all_scripts/getAllData.js";
-import{getFollowedArray} from "../../all_scripts/newStockArrays.js";
+import { createAccount } from "../../all_scripts/newLogin.js";
+import { getAllStockData } from "../../all_scripts/newStockData.js";
+import { getAllNews } from "../../all_scripts/newNews.js";
+import { getAllDataMethod } from "../../all_scripts/getAllData.js";
+import { getFollowedArray } from "../../all_scripts/newStockArrays.js";
+import firebase from "firebase";
 
 import {
   StyleSheet,
@@ -28,38 +29,25 @@ export default class Register extends React.Component {
     this.onSignUp = this.onSignUp.bind(this);
   }
 
-
-  //enter user name and password then hit button
-  async onSignUp() {
-
-    //const { name, email, password } = this.state;
-    //createAccount(name, password);
-    const {name, password} = this.state;
-    
-    //await getAllStockData();
-    //await getAllNews();
-    let userData = await getAllDataMethod(name, password);
-    if (userData === false) 
-    {
-      alert("User does not exit");
-      console.log("User does not exit");
-    }
-    else
-    {
-      console.log('\nStockUserObject ===\n')
-      
-      let stockKeys = Object.keys(userData.stocks);
-      for(let i = 0; i<5; i++)
-      {
-        console.log(userData.stocks[stockKeys[i]].symbol);
-        console.log(userData.stocks[stockKeys[i]].name);
-        console.log(userData.stocks[stockKeys[i]].prices);
-        console.log(userData.stocks[stockKeys[i]].news);
-      }
-      console.log(userData.username);
-      console.log(userData.password);
-      console.log(userData.followed);
-    }
+  onSignUp() {
+    const { name, email, password } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid)
+          .set({
+            name,
+            email,
+          });
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
