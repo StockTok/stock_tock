@@ -56,7 +56,7 @@ const name = {
 "Activision" : "ATVI"
 };
 
-const stocksLowerCase = ['aapl', 'msft', 'amzn', 'fb', 'googl', 'tsla', 'tgt', 'nke', 'jnj', 'mu', 'mcd', 'ko', 'dis', 'pypl', 'xom', 
+const stocksLowerCase = ['aapl', 'msft', 'amzn', 'tsla', 'googl', 'fb', 'tgt', 'nke', 'jnj', 'mu', 'mcd', 'ko', 'dis', 'pypl', 'xom', 
 'unh', 'ma', 'hd', 'bac', 'intc', 'nflx', 'atvi', 'adbe', 'vz', 'ba']
 
 module.exports = { symbol, name, stocksLowerCase }
