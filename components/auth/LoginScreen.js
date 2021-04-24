@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import firebase from "firebase";
-// import GlobalState from "../GlobalState";
+import GlobalState from "../GlobalState";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
