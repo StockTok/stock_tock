@@ -1,101 +1,50 @@
-import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
 
-import { withNavigation } from "react-navigation";
-import LoginScreen from "../auth/LoginScreen";
-// import GlobalState from '../GlobalState';
-// GLOBAL = require("../GlobalState");
+import firebase from "firebase";
+require("firebase/firestore");
 
-/** 
-class LoginBox extends Component {
+export default function Setting(props) {
+  const [user, setUser] = useState(null);
 
-  constructor(props) {
-    super(props);
-    this.login = this.login.bind(this);
-}
+  useEffect(() => {
+    const { currentUser } = props;
 
-  login() {    
-    this.props.changeState;
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists) {
+          setUser(snapshot.data());
+          console.log(snapshot.data());
+        } else {
+          console.log("does not exist");
+        }
+      });
+  }, [firebase.auth().currentUser.uid]);
+
+  const onLogout = () => {
+    firebase.auth().signOut();
+  };
+
+  if (user === null) {
+    return <View />;
   }
 
-  render() {
-    return (
-      {...}
-      <TouchableOpacity
-        style={styles.buttonStyle}
-        onPress={this.login} >                   >
-          <Text style={styles.textStyle}>Log In</Text>
-      </TouchableOpacity>
-    )
-  }
-}
-} */
-
-export default class Setting extends React.Component {
-  constructor(props) {
-    super(props);
-    this.signOut = this.signOut.bind(this);
-    //  this._username = GlobalState.username;
-  }
-
-  signOut() {
-    this.props.logout;
-    // this.props.navigation.navigate("LoginScreen");
-    console.log("onPress");
-  }
-
-  render() {
-    //  const { navigation } = useNavigation();
-
-    return (
-      <View style={styles.container}>
-        <Text style={styles.SettingsTitle}>Settings page</Text>
-        <TouchableOpacity
-          style={styles.SignOutBtn}
-          // onPress={() =>
-          //   //  console.log(GlobalState.username)
-          //   // console.log(GLOBAL.USERNAME)
-          // }
-        >
-          <Text style={styles.SignOutText}>Sign Out</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <Button title="Logout" onPress={() => onLogout()} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#212121",
+    backgroundColor: "#ebf5fc",
     alignItems: "center",
     justifyContent: "center",
-  },
-  SettingsTitle: {
-    fontSize: 30,
-    color: "#EEEEEE",
-    marginBottom: 300,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  SignOutText: {
-    fontSize: 20,
-    color: "#EEEEEE",
-  },
-  SignOutBtn: {
-    width: "125%",
-    backgroundColor: "#F2A950",
-    borderRadius: 25,
-    height: 40,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 100,
-    marginBottom: 10,
   },
 });
