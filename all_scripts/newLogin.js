@@ -4,12 +4,12 @@ Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5
 Parse.serverURL = 'https://parseapi.back4app.com/';
 
 
-const createAccount = async (username) => {
+const createAccount = async (username, password) => {
 
 const Account = Parse.Object.extend("Account");
 const account  = new Account()
   account.set("username", username);
-  account.set("followed", []);
+  account.set("password", password);
 
   try{
     let result = await account.save()
@@ -19,7 +19,7 @@ const account  = new Account()
   }
 }
 
-const confirmAccount = async (username) => {
+const confirmAccount = async (username, password) => {
   const Account = Parse.Object.extend("Account");
   const query = new Parse.Query(Account);
   try 
@@ -28,11 +28,11 @@ const confirmAccount = async (username) => {
     await query.first().then(function(response)
     {
       const name = response.get("username");
-      //const pass = response.get("password");
-      if((username === name))
+      const pass = response.get("password");
+      if((username === name) && (password === pass))
       {
         let followed = response.get("followed");
-        alert(`Username: ${name} Followed: ${followed}`);
+        alert(`Username: ${name} Password: ${pass} Followed: ${followed}`);
         console.log("confirm accout " + followed);
         return followed;
       }

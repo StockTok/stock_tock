@@ -4,10 +4,11 @@ Parse.serverURL = 'https://parseapi.back4app.com/';
 import {createAccount, confirmAccount} from "./newLogin.js";
 const { symbol, name, stocksLowerCase } = require('./newDictionary.js');
 
-const getAllDataMethod = async (user) => {
+const getAllDataMethod = async (user, password) => {
   let stockUserObject = 
   {
     username:user,
+    password:password,
     followed:[],
     stocks : {}
   };
@@ -21,10 +22,16 @@ const getAllDataMethod = async (user) => {
     await query.first().then(function(response)
     {
       const name = response.get("username");
-      let followed = response.get("followed");
-      alert(`Username: ${name} Followed: ${followed}`);
-      console.log("confirm accout " + followed);
-      tempFollowed = followed;
+      const pass = response.get("password");
+      if((user === name) && (password === pass))
+      {
+        let followed = response.get("followed");
+        alert(`Username: ${name} Password: ${pass} Followed: ${followed}`);
+        console.log("confirm accout " + followed);
+        tempFollowed = followed;
+      }
+      else
+        return false;
     })
   } catch (error) {
       alert(`User does not exist`);
