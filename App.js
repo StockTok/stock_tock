@@ -18,18 +18,20 @@ import keys from "./constants/keys.js";
 import * as firebase from "firebase";
 import "firebase/firestore";
 
+GLOBAL = require('./components/GlobalState');
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
-  authDomain: "stock-tock.firebaseapp.com",
-  databaseURL: "https://stock-tock-default-rtdb.firebaseio.com",
-  projectId: "stock-tock",
-  storageBucket: "stock-tock.appspot.com",
-  messagingSenderId: "253435229851",
-  appId: "1:253435229851:web:c330f33e863eb8fdb7b83e",
+    apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
+    authDomain: "stock-tock.firebaseapp.com",
+    databaseURL: "https://stock-tock-default-rtdb.firebaseio.com",
+    projectId: "stock-tock",
+    storageBucket: "stock-tock.appspot.com",
+    messagingSenderId: "253435229851",
+    appId: "1:253435229851:web:c330f33e863eb8fdb7b83e",
 };
 
 if (firebase.apps.length === 0) {
-  firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 }
 
 //Before using the SDK...
@@ -44,90 +46,101 @@ Parse.serverURL = keys.serverURL;
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: true,
-      loggedIn: false,
-    };
-  }
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      // user isn't logged in
-      if (!user) {
-        this.setState({
-          loggedIn: false,
-          loaded: true,
-        });
-      } else {
-        this.setState({
-          loggedIn: true,
-          loaded: true,
-        });
-      }
-    });
-  }
-  render() {
-    const { loggedIn, loaded } = this.state;
-    if (!loaded) {
-      useEffect(() => {
-        createInstallation = async () => {
-          const Installation = Parse.Object.extend(Parse.Installation);
-          const installation = new Installation();
-
-          installation.set("deviceType", Platform.OS);
-          await installation.save();
+    constructor(props) {
+        super(props);
+        this.state = {
+            loaded: true,
+            loggedIn: false,
         };
-
-        createInstallation();
-      }, []);
-      return (
-        <View>
-          <Text style={styles.container}>Loading...</Text>
-        </View>
-      );
     }
 
-    if (!loggedIn) {
-      return (
-        <NavigationContainer>
-          <Stack.Navigator initailRouteName="LoginScreen">
-            <Stack.Screen
-              name="LogIn"
-              component={LoginScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      );
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            // user isn't logged in
+            if (!user) {
+                this.setState({
+                    loggedIn: false,
+                    loaded: true,
+                });
+            } else {
+                this.setState({
+                    loggedIn: true,
+                    loaded: true,
+                });
+                GLOBAL.USERNAME = user.email;
+            }
+        });
     }
+    render() {
+        const { loggedIn, loaded } = this.state;
+        if (!loaded) {
+            useEffect(() => {
+                createInstallation = async() => {
+                    const Installation = Parse.Object.extend(Parse.Installation);
+                    const installation = new Installation();
 
-    return (
-      <NavigationContainer>
-        <Stack.Navigator initailRouteName="Main">
-          <Stack.Screen
-            name="Main"
-            component={MainScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="Explore" component={ExploreScreen} />
-          <Stack.Screen
-            name="Setting"
-            component={SettingScreen}
-            logout={this.logout}
+                    installation.set("deviceType", Platform.OS);
+                    await installation.save();
+                };
+
+                createInstallation();
+            }, []);
+            return ( <
+                View >
+                <
+                Text style = { styles.container } > Loading... < /Text> < /
+                View >
+            );
+        }
+
+        if (!loggedIn) {
+            return ( <
+                NavigationContainer >
+                <
+                Stack.Navigator initailRouteName = "LoginScreen" >
+                <
+                Stack.Screen name = "LogIn"
+                component = { LoginScreen }
+                options = {
+                    { headerShown: false }
+                }
+                /> <
+                Stack.Screen name = "Register"
+                component = { RegisterScreen }
+                /> < /
+                Stack.Navigator > <
+                /NavigationContainer>
+            );
+        }
+
+        return ( <
+            NavigationContainer >
+            <
+            Stack.Navigator initailRouteName = "Main" >
+            <
+            Stack.Screen name = "Main"
+            component = { MainScreen }
+            options = {
+                { headerShown: false }
+            }
+            /> <
+            Stack.Screen name = "Explore"
+            component = { ExploreScreen }
+            /> <
+            Stack.Screen name = "Setting"
+            component = { SettingScreen }
+            logout = { this.logout }
             // navigation = {props.navigation}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
+            /> < /
+            Stack.Navigator > <
+            /NavigationContainer>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+    },
 });
