@@ -1,3 +1,4 @@
+//is this why this isnt working you fucking fuck
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -17,6 +18,8 @@ import keys from "./constants/keys.js";
 
 import * as firebase from "firebase";
 import "firebase/firestore";
+
+GLOBAL = require('./components/GlobalState');
 
 const firebaseConfig = {
   apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
@@ -66,6 +69,7 @@ export default class App extends React.Component {
           loaded: true,
         });
       }
+      GLOBAL.USERNAME = user.email;
     });
   }
   render() {
