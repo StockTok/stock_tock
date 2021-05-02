@@ -22,8 +22,8 @@ const getAllDataMethod = async (user) => {
     {
       const name = response.get("username");
       let followed = response.get("followed");
-      alert(`Username: ${name} Followed: ${followed}`);
-      console.log("confirm accout " + followed);
+      //alert(`Username: ${name} Followed: ${followed}`);
+      //console.log("confirm accout " + followed);
       tempFollowed = followed;
     })
   } catch (error) {
@@ -32,7 +32,7 @@ const getAllDataMethod = async (user) => {
   }
 
   stockUserObject.followed = tempFollowed;
-  console.log("get all data " + stockUserObject.followed);
+  //console.log("get all data " + stockUserObject.followed);
   if(stockUserObject.followed === false) return false;
   
   const Stocks = Parse.Object.extend("Stocks");

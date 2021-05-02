@@ -11,19 +11,31 @@ import {
 
 import { SearchBar } from 'react-native-elements';
 import { getAllDataMethod } from '../../all_scripts/getAllData.js';
+GLOBAL = require('../GlobalState.js');
 
 export default function Watchlist() {
+  
+  const [stockUserArray, setStockUserArray] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
   const [modalVisible, setModalVisable] = useState(false);
-  
-  async function getMyData(){
-   let userData = getAllDataMethod();
-   return userData;
-  }
+  const [loadedArray, setLoadedArray] = useState(false);
+  //let stockUserObject = getMyData();
 
   useEffect(() => {
+    async function getMyData(){
+      let userData = await getAllDataMethod(GLOBAL.USERNAME);
+      console.log('inside getMyData ' + userData.followed);
+      setStockUserArray(userData.followed);
+     }
+     console.log('loaded? ' + loadedArray);
+    if(loadedArray === false){
+      console.log('call to database')
+      setLoadedArray(true);
+      getMyData();
+    }
+    //setStockUserObject(getMyData().followed)
     fetch('https://api.npoint.io/565c60051f6b1592e9da')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -34,6 +46,9 @@ export default function Watchlist() {
         console.error(error);
       });
   }, []);
+
+  console.log('from setter ' + stockUserArray);
+  
 
   const searchFilterFunction = (text) => {
     if (text) {
