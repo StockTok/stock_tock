@@ -8,13 +8,20 @@ import {
   Modal,
   TouchableOpacity, 
 } from 'react-native';
+
 import { SearchBar } from 'react-native-elements';
+import { getAllDataMethod } from '../../all_scripts/getAllData.js';
 
 export default function Watchlist() {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
   const [modalVisible, setModalVisable] = useState(false);
+  
+  async function getMyData(){
+   let userData = getAllDataMethod();
+   return userData;
+  }
 
   useEffect(() => {
     fetch('https://api.npoint.io/565c60051f6b1592e9da')
@@ -97,7 +104,7 @@ export default function Watchlist() {
           </SafeAreaView>
       </View>
     </SafeAreaView>
-  );
+  );    
 };
 
 const styles = StyleSheet.create({
