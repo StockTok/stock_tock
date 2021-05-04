@@ -6,7 +6,8 @@ import {
   View, 
   FlatList, 
   Modal,
-  TouchableOpacity, 
+  TouchableOpacity,
+  TouchableOpacityComponent, 
 } from 'react-native';
 
 import { SearchBar } from 'react-native-elements';
@@ -119,25 +120,32 @@ export default function Watchlist() {
           }}
         >
           <View style = {styles.modalView}>
-          <SearchBar
-          round
-          searchIcon={{ size: 24 }}
-          onChangeText={(text) => searchFilterFunction(text)}
-          //onClear={(text) => searchFilterFunction('')}
-          onClear = {() => setModalVisable(!modalVisible)}
-          placeholder="Type Here..."
-          value={search}
-        />
-
-        <FlatList
-          /*data = {Object.keys(stockUserArray)}
-          // renderItem = {({ item }) => <Text>{stockUserArray[item]}</Text>}*/
-          data = {filteredDataSource}
-          keyExtractor={(item, index) => index.toString()}
-          ItemSeparatorComponent={ItemSeparatorView}
-          renderItem={ItemView}
-        />
-        </View> 
+            <SearchBar
+            round
+            searchIcon={{ size: 24 }}
+            onChangeText={(text) => searchFilterFunction(text)}
+            //onClear={(text) => searchFilterFunction('')}
+            onClear={(text) => searchFilterFunction('')}
+            placeholder="Type Here..."
+            value={search}
+            />
+            <View style = {styles.flatListStyle} >
+              <FlatList
+                /*data = {Object.keys(stockUserArray)}
+                // renderItem = {({ item }) => <Text>{stockUserArray[item]}</Text>}*/
+                data = {filteredDataSource}
+                keyExtractor={(item, index) => index.toString()}
+                ItemSeparatorComponent={ItemSeparatorView}
+                renderItem={ItemView}
+                />
+            
+            </View>
+              <TouchableOpacity style = {styles.clearBtn} 
+                onPress={() => setModalVisable(!modalVisible)}>
+                  <Text style = {styles.search}>Back</Text>
+              </TouchableOpacity>
+            
+          </View> 
         </Modal>
       </View>
     </SafeAreaView>
@@ -163,11 +171,25 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 10,
   },
+  clearBtn: {
+    width: "100%",
+    backgroundColor: "#F2A950",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+    marginBottom: 10,
+  },
   search:{
     color: "#F2F3F7",  
   },
   modalView: {
     padding : 10,
     paddingTop: 50,
+  },
+  flatListStyle: {
+    height : "75%",
+
   }
 });
