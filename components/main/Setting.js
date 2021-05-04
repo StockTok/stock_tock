@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import firebase from "firebase";
 require("firebase/firestore");
 
+GLOBAL = require('../GlobalState.js');
+
 export default function Setting(props) {
   const [user, setUser] = useState(null);
 
@@ -26,6 +28,7 @@ export default function Setting(props) {
   }, [firebase.auth().currentUser.uid]);
 
   const onLogout = () => {
+    GLOBAL.USERNAME = " ";
     firebase.auth().signOut();
   };
 
