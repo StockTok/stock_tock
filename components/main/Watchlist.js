@@ -93,6 +93,11 @@ export default function Watchlist() {
   };
 
   const getItem = (item) => {
+    //var newArray = [...stockUserArray, item];
+    //setStockUserArray(newArray);
+
+    //alert(item.title + " has been added to your watchlist");
+
     alert(' Title: ' + item.title);
   };
 
@@ -106,6 +111,7 @@ export default function Watchlist() {
         <FlatList
           data = {Object.keys(stockUserArray)}
           renderItem = {({ item }) => <Text>{stockUserArray[item]}</Text>}
+          keyExtractor={(item, index) => index.toString()}
           /*data = {filteredDataSource}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={ItemSeparatorView}
