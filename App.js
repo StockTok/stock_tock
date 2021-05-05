@@ -68,8 +68,8 @@ export default class App extends React.Component {
           loggedIn: true,
           loaded: true,
         });
+        GLOBAL.USERNAME = user.email;
       }
-      GLOBAL.USERNAME = user.email;
     });
   }
   render() {
