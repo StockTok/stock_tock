@@ -106,7 +106,7 @@ export default function Watchlist() {
     // we must do a long press for it to delete
     return (
       //{item.title.toUpperCase()}
-      <Text style={styles.itemStyle} onLongPress={() => getItem_2(item)}>
+      <Text style={styles.info} onLongPress={() => getItem_2(item)}>
         {stockUserArray[item]}
       </Text>
     );
@@ -147,6 +147,7 @@ export default function Watchlist() {
           <Text style={styles.search}>Search</Text>
         </TouchableOpacity>
         <FlatList
+          style={styles.infoContainer}
           data={Object.keys(stockUserArray)}
           //renderItem={({ item }) => <Text>{stockUserArray[item]}</Text>}
           keyExtractor={(item, index) => index.toString()}
@@ -175,7 +176,7 @@ export default function Watchlist() {
               placeholder="Type Here..."
               value={search}
             />
-            <View style={styles.flatListStyle}>
+            <View>
               <FlatList
                 /*data = {Object.keys(stockUserArray)}
                 // renderItem = {({ item }) => <Text>{stockUserArray[item]}</Text>}*/
@@ -201,7 +202,7 @@ export default function Watchlist() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#dff9fb",
+    backgroundColor: "#212121",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   searchBtn: {
-    width: "100%",
+    width: "80%",
     backgroundColor: "#F2A950",
     borderRadius: 25,
     height: 50,
@@ -235,7 +236,15 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 50,
   },
-  flatListStyle: {
-    height: "75%",
+  infoContainer: {
+    marginTop: 30,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  info: {
+    fontSize: 20,
+    color: "#EEEEEE",
+    marginBottom: 15,
+    textTransform: "uppercase",
   },
 });
