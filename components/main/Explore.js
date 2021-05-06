@@ -1,10 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, Image, View } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
+import { Deck, ListItem, Button, Icon } from 'react-native-elements'
 import Watchlist from "./Watchlist.js";
 // import stocks from '../test.json';
 
 export default function Explore() {
+  
   return (
     <View style={styles.container}>
       <CardStack
@@ -17,23 +19,23 @@ export default function Explore() {
         ref={(swiper) => {
           swiper;
         }}
-        onSwiped={() => console.log("onSwiped")}
-        onSwipedLeft={() => console.log("onSwipedLeft")}
+        onSwiped={() => console.log("right swipe")}
+        onSwipedLeft={() => console.log("left swipe")}
       >
         <Card style={[styles.card]}>
-          <Text style={styles.label}>A</Text>
+          <Text style={styles.label}>amzn</Text>
         </Card>
         <Card style={[styles.card]}>
-          <Text style={styles.label}>B</Text>
+          <Text style={styles.label}>appl</Text>
         </Card>
         <Card style={[styles.card]}>
-          <Text style={styles.label}>C</Text>
+          <Text style={styles.label}>googl</Text>
         </Card>
         <Card style={[styles.card]}>
-          <Text style={styles.label}>D</Text>
+          <Text style={styles.label}>msft</Text>
         </Card>
         <Card style={[styles.card]}>
-          <Text style={styles.label}>E</Text>
+          <Text style={styles.label}>tsla</Text>
         </Card>
       </CardStack>
     </View>
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#ebf5fc",
+    backgroundColor: "#2f3640",
   },
   content: {
     flex: 5,
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
   card: {
     width: 320,
     height: 470,
-    backgroundColor: "#FE474C",
+    backgroundColor: "#dcdde1",
     borderRadius: 5,
     shadowColor: "rgba(0,0,0,0.5)",
     shadowOffset: {
@@ -63,13 +65,14 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
   },
-  // label: {
-  //   loader: "json-loader",
-  //   lineHeight: 400,
-  //   textAlign: "center",
-  //   fontSize: 55,
-  //   fontFamily: "System",
-  //   color: "#ffffff",
-  //   backgroundColor: "transparent",
-  // },
+   label: {
+    // loader: "json-loader",
+     lineHeight: 450,
+     textAlign: "center",
+     fontSize: 55,
+     fontFamily: "System",
+     color: "#2f3640",
+     backgroundColor: "transparent",
+     textTransform: 'uppercase'
+   },
 });

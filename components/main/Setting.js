@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 import firebase from "firebase";
 require("firebase/firestore");
 
-GLOBAL = require("../GlobalState.js");
+GLOBAL = require('../GlobalState.js');
 
 export default function Setting(props) {
   const [user, setUser] = useState(null);
@@ -38,9 +38,7 @@ export default function Setting(props) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.logoutBtn} onPress={() => onLogout()}>
-        <Text style={styles.logoutText}>Sign Out</Text>
-      </TouchableOpacity>
+      <Button title="Logout" onPress={() => onLogout()} />
     </View>
   );
 }
@@ -48,19 +46,8 @@ export default function Setting(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#212121",
+    backgroundColor: "#ebf5fc",
     alignItems: "center",
     justifyContent: "center",
-  },
-  logoutBtn: {
-    width: "50%%",
-    backgroundColor: "#F2A950",
-    borderRadius: 25,
-    height: 40,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logoutText: {
-    color: "#F2F3F7",
   },
 });
