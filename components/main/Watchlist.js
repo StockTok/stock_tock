@@ -101,6 +101,38 @@ export default function Watchlist() {
     alert(item.title + " has been added to your watchlist");
         }
       };
+      // this is a copy of line 72
+      const ItemView_2 = ({ item }) => { // we must do a long press for it to delete
+        return (//{item.title.toUpperCase()}
+          <Text style={styles.itemStyle} onLongPress={() => getItem_2(item)}>
+            {stockUserArray[item]}
+          </Text>
+        );
+      };
+    
+      const ItemSeparatorView_2 = () => {
+        return (
+          <View
+            style={{
+              height: 1,
+              width: 500,
+              backgroundColor: "#C8C8C8",
+            }}
+          />
+        );
+      };
+      const getItem_2 = (item) => { // this will delete from the added watchlist
+        var newArray = [...stockUserArray];
+        for( var i = 0; i < newArray.length; i++){ 
+          if ( newArray[i] === newArray[item]) { // this finds and deletes the item from the list
+            alert(newArray[i] + " has been deleted from your watchlist");
+            newArray.splice(i, 1); 
+            
+          }
+        }
+          setStockUserArray(newArray);
+          //saveAllData(GLOBAL.USERNAME, newArray);// we havent placed this just yet.
+        };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -113,8 +145,10 @@ export default function Watchlist() {
         </TouchableOpacity>
         <FlatList
           data={Object.keys(stockUserArray)}
-          renderItem={({ item }) => <Text>{stockUserArray[item]}</Text>}
+          //renderItem={({ item }) => <Text>{stockUserArray[item]}</Text>}
           keyExtractor={(item, index) => index.toString()}
+          ItemSeparatorComponent={ItemSeparatorView_2}
+          renderItem={ItemView_2}
           /*data = {filteredDataSource}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={ItemSeparatorView}
