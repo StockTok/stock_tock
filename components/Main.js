@@ -8,15 +8,7 @@ import WatchlistScreen from "./main/Watchlist";
 
 const Tab = createBottomTabNavigator();
 
-const EmptyScreen = () => {
-  return null;
-};
-
 export default class Main extends React.Component {
-  componentDidMount() {
-    // fetch user info
-    // fetch stock info
-  }
   render() {
     return (
       <Tab.Navigator

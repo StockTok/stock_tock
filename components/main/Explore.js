@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
-import Watchlist from "./Watchlist.js";
-// import stocks from '../test.json';
 
 export default function Explore() {
   return (
@@ -63,13 +61,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
   },
-   label: {
-  //   loader: "json-loader",
-     lineHeight: 400,
-     textAlign: "center",
-     fontSize: 55,
-     fontFamily: "System",
-     color: "#ffffff",
-     backgroundColor: "transparent",
+  label: {
+    lineHeight: 400,
+    textAlign: "center",
+    fontSize: 55,
+    fontFamily: "System",
+    color: "#ffffff",
+    backgroundColor: "transparent",
   },
 });

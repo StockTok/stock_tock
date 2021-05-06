@@ -7,7 +7,6 @@ import {
   FlatList,
   Modal,
   TouchableOpacity,
-  TouchableOpacityComponent,
 } from "react-native";
 
 import { SearchBar } from "react-native-elements";

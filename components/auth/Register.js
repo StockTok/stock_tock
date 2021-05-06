@@ -1,10 +1,4 @@
 import React from "react";
-// module.exports = {createAccount};
-import { createAccount } from "../../all_scripts/newLogin.js";
-import { getAllStockData } from "../../all_scripts/newStockData.js";
-import { getAllNews } from "../../all_scripts/newNews.js";
-import { getAllDataMethod } from "../../all_scripts/getAllData.js";
-import { getFollowedArray } from "../../all_scripts/newStockArrays.js";
 import firebase from "firebase";
 
 import {
@@ -14,7 +8,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { Alert } from "react-native";
 
 export default class Register extends React.Component {
   constructor(props) {
