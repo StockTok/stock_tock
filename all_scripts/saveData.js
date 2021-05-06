@@ -1,4 +1,7 @@
-var Parse = require('parse/node');
+
+import Parse from "parse/react-native.js";
+// this wasnt working so we will do the above^
+//var Parse = require('parse/node');
 
 Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
 Parse.serverURL = 'https://parseapi.back4app.com/'

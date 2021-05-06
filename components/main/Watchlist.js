@@ -12,6 +12,7 @@ import {
 
 import { SearchBar } from "react-native-elements";
 import { getAllDataMethod } from "../../all_scripts/getAllData.js";
+import { saveAllData } from "../../all_scripts/saveData.js";
 GLOBAL = require("../GlobalState.js");
 
 export default function Watchlist() {
@@ -89,16 +90,17 @@ export default function Watchlist() {
       />
     );
   };
-
   const getItem = (item) => {
-    var newArray = [...stockUserArray, item.title.toLowerCase()];
-    console.log(newArray);
-    setStockUserArray(newArray);
-
-    alert(" Title: " + item.title);
-
-
-  };
+    if(stockUserArray.includes(item.title.toLowerCase())){
+          alert("That stock is already in your watchlist");
+        }else{
+          var newArray = [...stockUserArray, item.title.toLowerCase()];
+          console.log(newArray);
+          setStockUserArray(newArray);
+          saveAllData(GLOBAL.USERNAME, newArray);// this might be working completely
+    alert(item.title + " has been added to your watchlist");
+        }
+      };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
