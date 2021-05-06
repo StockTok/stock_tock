@@ -46,7 +46,7 @@ export default function Setting(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ebf5fc",
+    backgroundColor: "#2f3640",
     alignItems: "center",
     justifyContent: "center",
   },
