@@ -100,7 +100,7 @@ export default function Watchlist() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 5 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.searchBtn}
@@ -160,6 +160,7 @@ export default function Watchlist() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#dff9fb",
     justifyContent: "center",
     alignItems: "center",
