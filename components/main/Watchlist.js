@@ -91,12 +91,24 @@ export default function Watchlist() {
   };
 
   const getItem = (item) => {
+<<<<<<< HEAD
     //var newArray = [...stockUserArray, item];
     //setStockUserArray(newArray);
 
     //alert(item.title + " has been added to your watchlist");
 
     alert(" Title: " + item.title);
+=======
+    if(stockUserArray.includes(item.title.toLowerCase())){
+      alert("That stock is already in your watchlist");
+    }else{
+      var newArray = [...stockUserArray, item.title.toLowerCase()];
+      console.log(newArray);
+      setStockUserArray(newArray);
+
+      alert(item.title + " has been added to your watchlist");
+    }
+>>>>>>> 6a152057a29f7a1a8cf9de98a1839cb67d266c76
   };
 
   return (
