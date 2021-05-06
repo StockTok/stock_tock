@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -25,7 +24,7 @@ export default class Main extends React.Component {
         tabBarOptions={{
           activeTintColor: "#f2a950",
           style: {
-            backgroundColor: "#fff",
+            backgroundColor: "#232526",
           },
         }}
       >
@@ -80,10 +79,3 @@ export default class Main extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-});
