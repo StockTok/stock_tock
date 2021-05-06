@@ -8,9 +8,7 @@ export default function Explore() {
       <CardStack
         style={styles.content}
         renderNoMoreCards={() => (
-          <Text style={{ fontWeight: "700", fontSize: 18, color: "gray" }}>
-            No more cards
-          </Text>
+          <Text style={styles.nomoreText}>No more cards</Text>
         )}
         ref={(swiper) => {
           swiper;
@@ -19,13 +17,13 @@ export default function Explore() {
         onSwipedLeft={() => console.log("onSwipedLeft")}
       >
         <Card style={[styles.card]}>
-          <Text style={styles.label}>A</Text>
+          <Text style={styles.label}>a</Text>
         </Card>
         <Card style={[styles.card]}>
-          <Text style={styles.label}>B</Text>
+          <Text style={styles.label}>b</Text>
         </Card>
         <Card style={[styles.card]}>
-          <Text style={styles.label}>C</Text>
+          <Text style={styles.label}>c</Text>
         </Card>
         <Card style={[styles.card]}>
           <Text style={styles.label}>D</Text>
@@ -37,12 +35,11 @@ export default function Explore() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#ebf5fc",
+    backgroundColor: "#212121",
   },
   content: {
     flex: 5,
@@ -52,21 +49,27 @@ const styles = StyleSheet.create({
   card: {
     width: 320,
     height: 470,
-    backgroundColor: "#FE474C",
+    backgroundColor: "#8E0E00",
     borderRadius: 5,
     shadowColor: "rgba(0,0,0,0.5)",
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.5,
   },
   label: {
-    lineHeight: 400,
+    lineHeight: 450,
     textAlign: "center",
     fontSize: 55,
     fontFamily: "System",
     color: "#ffffff",
     backgroundColor: "transparent",
+    textTransform: "uppercase",
+  },
+  nomoreText: {
+    fontWeight: "700",
+    fontSize: 20,
+    color: "gray",
   },
 });
