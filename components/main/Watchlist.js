@@ -50,7 +50,7 @@ export default function Watchlist() {
   }, []);
 
   console.log('from setter ' + stockUserArray);
-  
+  console.log(Array.isArray(stockUserArray));
 
   const searchFilterFunction = (text) => {
     if (text) {
@@ -93,12 +93,11 @@ export default function Watchlist() {
   };
 
   const getItem = (item) => {
-    //var newArray = [...stockUserArray, item];
-    //setStockUserArray(newArray);
+    var newArray = [...stockUserArray, item.title.toLowerCase()];
+    console.log(newArray);
+    setStockUserArray(newArray);
 
-    //alert(item.title + " has been added to your watchlist");
-
-    alert(' Title: ' + item.title);
+    alert(item.title + " has been added to your watchlist");
   };
 
   return (
