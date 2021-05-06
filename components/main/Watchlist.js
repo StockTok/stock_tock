@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  SafeAreaView, 
-  Text, 
-  StyleSheet, 
-  View, 
-  FlatList, 
+import React, { useState, useEffect } from "react";
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  View,
+  FlatList,
   Modal,
   TouchableOpacity,
-  TouchableOpacityComponent, 
-} from 'react-native';
+  TouchableOpacityComponent,
+} from "react-native";
 
-import { SearchBar } from 'react-native-elements';
-import { getAllDataMethod } from '../../all_scripts/getAllData.js';
-GLOBAL = require('../GlobalState.js');
+import { SearchBar } from "react-native-elements";
+import { getAllDataMethod } from "../../all_scripts/getAllData.js";
+GLOBAL = require("../GlobalState.js");
 
 export default function Watchlist() {
-  
   const [stockUserArray, setStockUserArray] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
   const [modalVisible, setModalVisable] = useState(false);
@@ -25,20 +24,20 @@ export default function Watchlist() {
   //let stockUserObject = getMyData();
 
   useEffect(() => {
-    async function getMyData(){
+    async function getMyData() {
       let userData = await getAllDataMethod(GLOBAL.USERNAME);
-      console.log('inside getMyData ' + userData.followed);
+      console.log("inside getMyData " + userData.followed);
       setStockUserArray(userData.followed);
-     }
-     console.log('loaded? ' + loadedArray);
-    if(loadedArray === false){
-      console.log('call to database')
+    }
+    console.log("loaded? " + loadedArray);
+    if (loadedArray === false) {
+      console.log("call to database");
       //anytime edits are made we need to setLoadedArray(false) to ensure a reload of the correct elements
       setLoadedArray(true);
       getMyData();
     }
     //setStockUserObject(getMyData().followed)
-    fetch('https://api.npoint.io/565c60051f6b1592e9da')
+    fetch("https://api.npoint.io/6cb04bc60bce8d32c683")
       .then((response) => response.json())
       .then((responseJson) => {
         setFilteredDataSource(responseJson);
@@ -49,8 +48,7 @@ export default function Watchlist() {
       });
   }, []);
 
-  console.log('from setter ' + stockUserArray);
-  
+  console.log(Array.isArray(stockUserArray));
 
   const searchFilterFunction = (text) => {
     if (text) {
@@ -58,7 +56,7 @@ export default function Watchlist() {
       const newData = masterDataSource.filter(function (item) {
         const itemData = item.title
           ? item.title.toUpperCase()
-          : ''.toUpperCase();
+          : "".toUpperCase();
         const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
@@ -74,7 +72,7 @@ export default function Watchlist() {
     return (
       <Text style={styles.itemStyle} onPress={() => getItem(item)}>
         {item.id}
-        {'.'}
+        {"."}
         {item.title.toUpperCase()}
       </Text>
     );
@@ -86,31 +84,34 @@ export default function Watchlist() {
         style={{
           height: 1,
           width: 500,
-          backgroundColor: '#C8C8C8',
+          backgroundColor: "#C8C8C8",
         }}
       />
     );
   };
 
   const getItem = (item) => {
-    //var newArray = [...stockUserArray, item];
-    //setStockUserArray(newArray);
+    var newArray = [...stockUserArray, item.title.toLowerCase()];
+    console.log(newArray);
+    setStockUserArray(newArray);
 
-    //alert(item.title + " has been added to your watchlist");
+    alert(" Title: " + item.title);
 
-    alert(' Title: ' + item.title);
+
   };
 
   return (
-    <SafeAreaView style={{ flex: 5 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <TouchableOpacity style = {styles.searchBtn} 
-          onPress={() => setModalVisable(!modalVisible)}>
-            <Text style = {styles.search}>Search</Text>
+        <TouchableOpacity
+          style={styles.searchBtn}
+          onPress={() => setModalVisable(!modalVisible)}
+        >
+          <Text style={styles.search}>Search</Text>
         </TouchableOpacity>
         <FlatList
-          data = {Object.keys(stockUserArray)}
-          renderItem = {({ item }) => <Text>{stockUserArray[item]}</Text>}
+          data={Object.keys(stockUserArray)}
+          renderItem={({ item }) => <Text>{stockUserArray[item]}</Text>}
           keyExtractor={(item, index) => index.toString()}
           /*data = {filteredDataSource}
           keyExtractor={(item, index) => index.toString()}
@@ -118,51 +119,52 @@ export default function Watchlist() {
           renderItem={ItemView}*/
         />
         <Modal
-          animationType = "slide"
+          animationType="slide"
           //transparent = {true}
-          visible = {modalVisible}
-          onRequestClose = {() => {
+          visible={modalVisible}
+          onRequestClose={() => {
             setModalVisable(!modalVisible);
           }}
         >
-          <View style = {styles.modalView}>
+          <View style={styles.modalView}>
             <SearchBar
-            round
-            searchIcon={{ size: 24 }}
-            onChangeText={(text) => searchFilterFunction(text)}
-            //onClear={(text) => searchFilterFunction('')}
-            onClear={(text) => searchFilterFunction('')}
-            placeholder="Type Here..."
-            value={search}
+              round
+              searchIcon={{ size: 24 }}
+              onChangeText={(text) => searchFilterFunction(text)}
+              //onClear={(text) => searchFilterFunction('')}
+              onClear={(text) => searchFilterFunction("")}
+              placeholder="Type Here..."
+              value={search}
             />
-            <View style = {styles.flatListStyle} >
+            <View style={styles.flatListStyle}>
               <FlatList
                 /*data = {Object.keys(stockUserArray)}
                 // renderItem = {({ item }) => <Text>{stockUserArray[item]}</Text>}*/
-                data = {filteredDataSource}
+                data={filteredDataSource}
                 keyExtractor={(item, index) => index.toString()}
                 ItemSeparatorComponent={ItemSeparatorView}
                 renderItem={ItemView}
-                />
-            
+              />
             </View>
-              <TouchableOpacity style = {styles.clearBtn} 
-                onPress={() => setModalVisable(!modalVisible)}>
-                  <Text style = {styles.search}>Back</Text>
-              </TouchableOpacity>
-            
-          </View> 
+            <TouchableOpacity
+              style={styles.clearBtn}
+              onPress={() => setModalVisable(!modalVisible)}
+            >
+              <Text style={styles.search}>Back</Text>
+            </TouchableOpacity>
+          </View>
         </Modal>
       </View>
     </SafeAreaView>
-  );    
-};
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#dff9fb",
-    justifyContent: "center", 
-    alignItems: "center"
+    justifyContent: "center",
+    alignItems: "center",
   },
   itemStyle: {
     padding: 10,
@@ -187,15 +189,14 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 10,
   },
-  search:{
-    color: "#F2F3F7",  
+  search: {
+    color: "#F2F3F7",
   },
   modalView: {
-    padding : 10,
+    padding: 10,
     paddingTop: 50,
   },
   flatListStyle: {
-    height : "75%",
-
-  }
+    height: "75%",
+  },
 });

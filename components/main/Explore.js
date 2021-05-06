@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
   },
-  // label: {
+   label: {
   //   loader: "json-loader",
-  //   lineHeight: 400,
-  //   textAlign: "center",
-  //   fontSize: 55,
-  //   fontFamily: "System",
-  //   color: "#ffffff",
-  //   backgroundColor: "transparent",
-  // },
+     lineHeight: 400,
+     textAlign: "center",
+     fontSize: 55,
+     fontFamily: "System",
+     color: "#ffffff",
+     backgroundColor: "transparent",
+  },
 });
