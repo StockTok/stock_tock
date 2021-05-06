@@ -12,7 +12,6 @@ import {
 
 import { SearchBar } from "react-native-elements";
 import { getAllDataMethod } from "../../all_scripts/getAllData.js";
-import { saveAllData } from "../../all_scripts/saveData.js";
 GLOBAL = require("../GlobalState.js");
 
 export default function Watchlist() {
