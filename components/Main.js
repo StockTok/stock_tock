@@ -23,9 +23,9 @@ export default class Main extends React.Component {
       <Tab.Navigator
         initialRouteName="Explore"
         tabBarOptions={{
-          activeTintColor: "#f5f6fa",
+          activeTintColor: "#f2a950",
           style: {
-            backgroundColor: "#353b48",
+            backgroundColor: "#fff",
           },
         }}
       >
