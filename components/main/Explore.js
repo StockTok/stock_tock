@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
+import { getAllDataMethod } from "../../all_scripts/getAllData.js";
+import { shuffleArticles } from "../../all_scripts/shuffleNews.js";
+GLOBAL = require("../GlobalState.js");
+
+
 
 export default function Explore() {
+
+  const [newsArray, setNewsArray] = useState([]);
+  const [loadedNewsArray, setLoadedNewsArray] = useState(false);
+
+
+  //useEffect(() => {
+   // console.log("hello world");
+   // async function getMyData() {
+    //  let userData = await getAllDataMethod(GLOBAL.USERNAME);
+    //  console.log(userData);
+    //  console.log("inside getMyData " + userData.followed);
+    //  setStockUserArray(userData.followed);
+    //  setStockDictionary(userData.stocks);
+    //  var newArray = await shuffleArticles(userData);
+     // console.log("newsArray called"+newArray);
+    //  setNewsArray(newArray);
+//}
+  //  console.log("loaded? " + loadedNewsArray);
+  //  if (loadedNewsArray === false) {
+ //     console.log("call to database");
+      //anytime edits are made we need to setLoadedArray(false) to ensure a reload of the correct elements
+  //    setLoadedNewsArray(true);
+  //    getMyData();
+  //  }
+ // }, []);
+
+  console.log(newsArray);
+
   return (
     <View style={styles.container}>
       <CardStack

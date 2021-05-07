@@ -21,6 +21,7 @@ export default function Watchlist() {
   const [masterDataSource, setMasterDataSource] = useState([]);
   const [modalVisible, setModalVisable] = useState(false);
   const [loadedArray, setLoadedArray] = useState(false);
+  const [stockDictonary, setStockDictionary] = useState([]);
   //let stockUserObject = getMyData();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ export default function Watchlist() {
       let userData = await getAllDataMethod(GLOBAL.USERNAME);
       console.log("inside getMyData " + userData.followed);
       setStockUserArray(userData.followed);
+      setStockDictionary(userData.stocks);
     }
     console.log("loaded? " + loadedArray);
     if (loadedArray === false) {
@@ -37,7 +39,7 @@ export default function Watchlist() {
       getMyData();
     }
     //setStockUserObject(getMyData().followed)
-    fetch("https://api.npoint.io/6cb04bc60bce8d32c683")
+    fetch("https://api.npoint.io/071d7585a3ce3997e152")
       .then((response) => response.json())
       .then((responseJson) => {
         setFilteredDataSource(responseJson);
@@ -49,6 +51,7 @@ export default function Watchlist() {
   }, []);
 
   console.log(Array.isArray(stockUserArray));
+ // console.log(stockDictonary);
 
   const searchFilterFunction = (text) => {
     if (text) {
@@ -168,7 +171,10 @@ export default function Watchlist() {
           <View style={styles.modalView}>
             <SearchBar
               round
-              searchIcon={{ size: 24 }}
+              containerStyle={{backgroundColor: 'white'}}
+              inputContainerStyle={{backgroundColor: 'white'}}
+              inputStyle={{backgroundColor: 'white'}}
+              searchIcon={{backgroundColor: 'white', size: 24 }}
               onChangeText={(text) => searchFilterFunction(text)}
               //onClear={(text) => searchFilterFunction('')}
               onClear={(text) => searchFilterFunction("")}
@@ -210,7 +216,7 @@ const styles = StyleSheet.create({
   },
   searchBtn: {
     width: "80%",
-    backgroundColor: "#F2A950",
+    backgroundColor: "#2F2F2F",
     borderRadius: 25,
     height: 50,
     alignItems: "center",
@@ -233,7 +239,9 @@ const styles = StyleSheet.create({
   },
   modalView: {
     padding: 10,
-    paddingTop: 50,
+    paddingTop: 60,
+    backgroundColor: "#fff",
+    
   },
   infoContainer: {
     marginTop: 30,
