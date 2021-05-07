@@ -13,9 +13,9 @@ const account  = new Account()
 
   try{
     let result = await account.save()
-    alert('New object created with objectId: ' + result.id);
+    //alert('New object created with objectId: ' + result.id);
   }catch(error){
-      alert('Failed to create new object, with error code: ' + error.message);
+      //alert('Failed to create new object, with error code: ' + error.message);
   }
 }
 
@@ -32,7 +32,7 @@ const confirmAccount = async (username) => {
       if((username === name))
       {
         let followed = response.get("followed");
-        alert(`Username: ${name} Followed: ${followed}`);
+        //alert(`Username: ${name} Followed: ${followed}`);
         console.log("confirm accout " + followed);
         return followed;
       }
@@ -40,7 +40,7 @@ const confirmAccount = async (username) => {
         return false;
     })
   } catch (error) {
-      alert(`User does not exist`);
+      //alert(`User does not exist`);
       return false;
   }
 }
