@@ -54,7 +54,7 @@ const getAllDataMethod = async (user) => {
         };
       })
     } catch (error) {
-        alert(`Failed: ${error.message}`);
+        //alert(`Failed: ${error.message}`);
     }
   }
   return stockUserObject;
