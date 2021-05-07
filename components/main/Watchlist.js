@@ -133,7 +133,7 @@ export default function Watchlist() {
       }
     }
     setStockUserArray(newArray);
-    //saveAllData(GLOBAL.USERNAME, newArray);// we havent placed this just yet.
+    saveAllData(GLOBAL.USERNAME, newArray);// we havent placed this just yet.
   };
 
   return (
