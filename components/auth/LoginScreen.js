@@ -47,7 +47,17 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity
         style={styles.loginBtn}
         onPress={
-          () => firebase.auth().signInWithEmailAndPassword(email, password)
+          () =>
+            firebase
+              .auth()
+              .signInWithEmailAndPassword(email, password)
+              .then((result) => {
+                console.log(result);
+              })
+              .catch((error) => {
+                alert("Your emaill address or password is incorrect");
+                console.log(error);
+              })
           // console.log(GlobalState.username)
         }
       >
