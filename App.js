@@ -20,6 +20,8 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 
 GLOBAL = require('./components/GlobalState');
+import { getAllStockData } from "./all_scripts/newStockData.js";
+import { getAllDataMethod } from "./all_scripts/getAllData.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
@@ -56,6 +58,9 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    async function updateData() {
+      await getAllStockData();
+    }  
     firebase.auth().onAuthStateChanged((user) => {
       // user isn't logged in
       if (!user) {
@@ -68,6 +73,7 @@ export default class App extends React.Component {
           loggedIn: true,
           loaded: true,
         });
+        updateData();
         GLOBAL.USERNAME = user.email;
       }
     });

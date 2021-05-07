@@ -12,31 +12,41 @@ import {
 import { SearchBar } from "react-native-elements";
 import { getAllDataMethod } from "../../all_scripts/getAllData.js";
 import { saveAllData } from "../../all_scripts/saveData.js";
+//import { getAllStockData } from "../../all_scripts/newStockData.js";
 GLOBAL = require("../GlobalState.js");
 
 export default function Watchlist() {
+  const [stockDictionary, setStockDictionary] = useState(null);
   const [stockUserArray, setStockUserArray] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
   const [modalVisible, setModalVisable] = useState(false);
   const [loadedArray, setLoadedArray] = useState(false);
-  const [stockDictonary, setStockDictionary] = useState([]);
+  //const [stockDictonary, setStockDictionary] = useState([]);
   //let stockUserObject = getMyData();
 
   useEffect(() => {
+    //getAllStockData();
     async function getMyData() {
+      //await getAllStockData();
       let userData = await getAllDataMethod(GLOBAL.USERNAME);
-      console.log("inside getMyData " + userData.followed);
+      //console.log("stock dictionary is : " + stockDictionary["aapl"]["prices"]["one"]);
       setStockUserArray(userData.followed);
+      //console.log(userData);
       setStockDictionary(userData.stocks);
+      //console.log("inside getMyData " + userData.followed);
+      //console.log("inside get my Data2 " + userData.stocks);
+      //alert(JSON.stringify(stockDictionary));
+      //console.log(stockDictionary);
+      
     }
-    console.log("loaded? " + loadedArray);
-    if (loadedArray === false) {
-      console.log("call to database");
+    //console.log("loaded? " + loadedArray);
+    if ((stockDictionary === null) || (loadedArray === false)) {
+      //console.log("call to database");
       //anytime edits are made we need to setLoadedArray(false) to ensure a reload of the correct elements
-      setLoadedArray(true);
       getMyData();
+      setLoadedArray(true);
     }
     //setStockUserObject(getMyData().followed)
     fetch("https://api.npoint.io/071d7585a3ce3997e152")
@@ -50,9 +60,9 @@ export default function Watchlist() {
       });
   }, []);
 
-  console.log(Array.isArray(stockUserArray));
- // console.log(stockDictonary);
-
+  //console.log(Array.isArray(stockUserArray));
+  //console.log("stock dictionary is : " + stockDictionary);
+  //console.log(JSON.stringify(stockDictionary));
   const searchFilterFunction = (text) => {
     if (text) {
       setModalVisable(true);
@@ -107,9 +117,14 @@ export default function Watchlist() {
   const ItemView_2 = ({ item }) => {
     // we must do a long press for it to delete
     return (
+      //console.log("item is : " + stockDictionary[stockUserArray[item]]), 
+      //{stockDictionary[stockUserArray[item]]["prices"]["one"]}
+   // {stockDictionary === null ? 'null? ' : stockDictionary[stockUserArray[item]]["prices"]["one"]}
       //{item.title.toUpperCase()}
       <Text style={styles.info} onLongPress={() => getItem_2(item)}>
         {stockUserArray[item]}
+        {" :  "}
+        {stockDictionary === null ? 'null? ' : stockDictionary[stockUserArray[item]]["prices"]["one"]}
       </Text>
     );
   };
@@ -136,7 +151,7 @@ export default function Watchlist() {
       }
     }
     setStockUserArray(newArray);
-    //saveAllData(GLOBAL.USERNAME, newArray);// we havent placed this just yet.
+    saveAllData(GLOBAL.USERNAME, newArray);// we havent placed this just yet.
   };
 
   return (

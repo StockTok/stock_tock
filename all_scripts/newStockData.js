@@ -115,12 +115,10 @@ async function updateStock(symbol,array,percentChange)
         await stocks.first().then(function(response){
             response.set("prices", {one : array[0], two : array[1], three : array[2], percent : percentChange});
             response.save();
-            //alert(allStocksObject['aapl']['name']);
-            alert(symbol);
+            //alert(symbol);
         });
         
     } catch (error) {
-        alert('Error Occured Oh No!')
     }
 }
 
