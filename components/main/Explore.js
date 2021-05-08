@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CardStack, { Card } from "react-native-card-stack-swiper";
+import SwipeCards from 'react-native-swipe-cards';
 import { getAllDataMethod } from "../../all_scripts/getAllData.js";
 import { saveAllData } from "../../all_scripts/saveData.js";
+import { Linking } from 'react-native';
+
+//import SwipeCards from './SwipeCards.js'
 
 // import { shuffleArticles } from "../../all_scripts/shuffleNews.js";
 GLOBAL = require("../GlobalState.js");
@@ -16,6 +20,8 @@ export default function Explore() {
   const [userObject, setUserObject] = useState(null);
   const [title, setTitle] = useState("news");
   const [count, setCount] = useState(0);
+  const [cardStack, setCardStack] = useState(["hello", "world"]);
+
 
   /*
   we need to keep the double await so dont delete it
@@ -26,7 +32,6 @@ export default function Explore() {
       //await getAllStockData();
       let userData = await getAllDataMethod(GLOBAL.USERNAME);
         userData = await getAllDataMethod(GLOBAL.USERNAME);// we need this double
-        maxi++;
         setUserObject(userData);
         setFollowedArray(userData.followed);
         setUserDictionary(userData.stocks);
@@ -51,7 +56,6 @@ export default function Explore() {
       setLoadedNewsArray(true);
       getMyData();
     }
-    console.log("hello world"); 
     console.log("loaded? " + loadedNewsArray);
 
     function shuffle(a) {
@@ -74,29 +78,93 @@ export default function Explore() {
 
   }, []);
 
+  const Cards = [
+    {text: 'Tomato',    backgroundColor: 'red'},
+    {text: 'Aubergine', backgroundColor: 'purple'},
+    {text: 'Courgette', backgroundColor: 'green'},
+    {text: 'Blueberry', backgroundColor: 'blue'},
+    {text: 'Umm...',    backgroundColor: 'cyan'},
+    {text: 'orange',    backgroundColor: 'orange'},
+  ]
+
+  const Card = ({ text }) => {
+
+    if(proof > newsArray.length){
+      proof = 0;
+    }
+
+    return (
+      <View style={[styles.card]}>
+        <Text>{newsArray[proof]["title"]}
+        
+        
+        </Text>
+        <Text style={{color: 'blue'}}
+      onPress={() => Linking.openURL(newsArray[proof]["url"])}> 
+      {newsArray[proof++]["url"]}
+    </Text>
+      </View>
+    )
+  }
+
+  const NoMoreCards = () => {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    )
+  }
 
   return (
-    <View style={styles.container}>
-      <CardStack
-        style={styles.content}
-        loop = {true}
-        renderNoMoreCards={() => (
-          <Text style={styles.nomoreText}>No more cards</Text>
-        )}
-        ref={(swiper) => {
-          swiper;
-        }}
-        onSwipeStart={() => proof++}
+    //<View style={styles.container}>
+    //  <CardStack
+     //   style={styles.content}
+     //   loop = {true}
+     //   renderNoMoreCards={() => (
+     //     <Text style={styles.nomoreText}>No more cards</Text>
+     //   )}
+      //  ref={(swiper) => {
+       //   swiper;
+      //  }}
+     //   onSwipeStart={() => proof++}
         // onSwipedLeft={() => swipeNews()}
-      >
-        <Card style={[styles.card]}>
-          <Text style={styles.label}>{newsArray}</Text>
-        </Card>
-      </CardStack>
-    </View>
+      //>
+       // <Card style={[styles.card]}>
+       //   <Text style={styles.label}>{(proof++)}</Text>
+      //  </Card>
+     // </CardStack>
+   // </View>
+
+   <SwipeCards
+  // cards={newsArray}
+  showRight = {false}
+  rightView = {null}
+  //leftText = "hello"
+  leftStyle = {{leftText : "hello"}}
+   cards = {newsArray}
+   
+   renderCard={(cardData) => <Card {...cardData} />}
+   renderNoMoreCards={() => <NoMoreCards />}
+
+   onRightSwipe={console.log("right swipping ")}
+   onLeftSwipe={console.log("left swipping")}
+   stack = {false}
+  />
+
   );
 }
+
 const styles = StyleSheet.create({
+    card: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 300,
+      height: 300,
+    },
+    noMoreCardsText: {
+      fontSize: 22,
+    },
   container: {
     flex: 1,
     flexDirection: "column",
