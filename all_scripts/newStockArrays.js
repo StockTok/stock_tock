@@ -14,9 +14,6 @@ const getFollowedArray = async (username) => {
         await query.first().then(function(response)
         {
             followedArray = response.get("followed");
-            //response.set("followed", ['msft','fb', 'amzn']);
-            //response.save();
-            alert(`followed: ${followedArray}`);
         })
     } catch (error) {
         alert(`Failed to retrieve the object, with error code: ${error.message}`);

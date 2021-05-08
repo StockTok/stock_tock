@@ -28,7 +28,6 @@ const confirmAccount = async (username) => {
     await query.first().then(function(response)
     {
       const name = response.get("username");
-      //const pass = response.get("password");
       if((username === name))
       {
         let followed = response.get("followed");

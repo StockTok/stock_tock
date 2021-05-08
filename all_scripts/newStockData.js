@@ -6,37 +6,7 @@ Parse.serverURL = 'https://parseapi.back4app.com/';
 const { symbol, name, stocksLowerCase } = require('./newDictionary');
 
 const alphaVantage = require('alphavantage') ({key: 'UVTP5HMN7EXSDLLV'});
-/*
-const alphaVantage2 = require('alphavantage') ({key: 'LRYPE1SFTV3IB20I'});
-const alphaVantage3 = require('alphavantage') ({key: '4DC9TBV26C1MXSQV'});
-const alphaVantage4 = require('alphavantage') ({key: 'FS91QNJX525CJ7I5'});
-const alphaVantage5 = require('alphavantage') ({key: 'H519FCGYYRX90RPE'});*/
-
-//const alphaVantageArray = [alphaVantage1,alphaVantage2,alphaVantage3,alphaVantage4,alphaVantage5];
-//let currentAlphaVantageNum = 0;
 let allStocks = [];
-
-/*
-const saveAllData = async () => 
-{
-    const Stocks = Parse.Object.extend("Stocks");
-    const stocks  = new Parse.Query(Stocks);
-    
-    /*
-    try {
-        stocks.equalTo("name", "stocks");
-        await stocks.first().then(function(response){
-            response.set("allStocks", allStocksObject);
-            response.save();
-            //alert(allStocksObject['aapl']['name']);
-            alert(response.get('allStocks'));
-        });
-        
-    } catch (error) {
-        alert('Error Occured Oh No!')
-    }
-    
-}*/
 
 /*
 const createStock = async (symbol, name) => {
@@ -115,7 +85,6 @@ async function updateStock(symbol,array,percentChange)
         await stocks.first().then(function(response){
             response.set("prices", {one : array[0], two : array[1], three : array[2], percent : percentChange});
             response.save();
-            //alert(symbol);
         });
         
     } catch (error) {

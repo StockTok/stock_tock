@@ -17,7 +17,6 @@ const getNews = async (stockSymbol, url) =>
   let symbolOfStock = stockSymbol.toUpperCase();
   let stockName = symbol[symbolOfStock];
 
-  //console.log(stockName);
   let result = await fetch(url).then((response) => (response = response.json()));
   let articles = result.articles;
   for(let j = 0; ;j++)
@@ -33,7 +32,6 @@ const getNews = async (stockSymbol, url) =>
     } 
     catch (error) 
     {
-      //console.log(outNewsArticleArray);
       updateNews(stockSymbol, outNewsArticleArray);
       break;
     }
@@ -61,7 +59,6 @@ const getAllNews = () =>
 {
     for(let i = 0; i<5; i++)
     {
-      //console.log(i);
       let stockName = symbol[stocksLowerCase[i].toUpperCase()];
       stockName = stockName.toLowerCase();
       let newsURL = `http://newsapi.org/v2/everything?q=${stockName}&language=en&sortBy=business&apiKey=2bc6b32f847f4361ab90a79c93fe9474`;
