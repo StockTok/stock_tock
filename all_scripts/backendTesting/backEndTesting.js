@@ -61,31 +61,36 @@ const testGetPriceData = async (symbolOfStock, todaysPrice) =>
   }
 }
 
-const testGetNews = async (symbolOfStock) =>
+const testGetNews = async () =>
 { 
+  await getAllNews();
   const Stocks = Parse.Object.extend("Stocks");
   const stocks = new Parse.Query(Stocks);
   
-  try {
-    stocks.equalTo("symbol", symbolOfStock);
-    await stocks.first().then(function(response)
-    {
-      let news = response.get("news");
-      for (let i=0; i<news.length; i++)
+  for(let i = 0; i < 5; i++)
+  {
+    let symbolOfStock = availableStocks[i];
+    try {
+      stocks.equalTo("symbol", symbolOfStock);
+      await stocks.first().then(function(response)
       {
-        let stockName = symbol[symbolOfStock];
-        let title = news[i]['title'].toLowerCase();
-        if(title.includes('your') || title.includes('you') || title.includes('how') || !titleOfArticle.includes(stockName.toLowerCase()))
+        let news = response.get("news");
+        for (let i=0; i<news.length; i++)
         {
-          console.log("FALSE news included forbidden keywords - Failed Test Case");
-          return;
+          let stockName = symbol[symbolOfStock];
+          let title = news[i]['title'].toLowerCase();
+          if(title.includes('your') || title.includes('you') || title.includes('how') || !titleOfArticle.includes(stockName.toLowerCase()))
+          {
+            console.log("FALSE " + symbolOfStock + " news included forbidden keywords - Failed Test Case");
+            return;
+          }
         }
-      }
-      console.log("TRUE news contains stock name and approved keywords - Passed Test Case");
-    });
-      
-  } catch (error) {
-    console.log("ERROR news errors");
+        console.log("TRUE  " + symbolOfStock + "  news contains stock name and approved keywords - Passed Test Case");
+      });
+        
+    } catch (error) {
+      console.log("ERROR news errors");
+    }
   }
 }
 
