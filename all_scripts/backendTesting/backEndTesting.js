@@ -155,7 +155,7 @@ else if(process.argv[2] === "Prices")
 
 else if(process.argv[2] === "News")
 {
-  testGetNews([process.argv[3]]);
+  testGetNews();
 }
 
 else if(process.argv[2] === "Data")
