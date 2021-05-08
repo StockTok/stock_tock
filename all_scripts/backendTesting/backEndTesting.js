@@ -120,18 +120,6 @@ const testGetAllDataMethod = async () =>
     console.log("Failed followed array test case");
   }
 
-  function validStocksFilter(symbolOfStock)
-  {
-
-    for(let i=0;i<5;i++)
-    {
-      if(symbolOfStock === availableStocks[i])
-        return true;
-      else 
-        return false;
-    }
-  }
-
   let keysArray = Object.keys(userObject.stocks);
   let filteredArray = keysArray.filter(item => keysArray.indexOf(item) !== -1);
   if(filteredArray.length === 5) 
@@ -160,5 +148,5 @@ else if(process.argv[2] === "News")
 
 else if(process.argv[2] === "Data")
 {
-  testGetPriceData();
+  testGetAllDataMethod();
 }
