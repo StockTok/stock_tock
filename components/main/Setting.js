@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logoutBtn: {
-    width: "50%%",
+    width: "50%",
     backgroundColor: "#F2A950",
     borderRadius: 25,
     height: 40,

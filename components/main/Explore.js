@@ -75,6 +75,7 @@ export default function Explore() {
     if (proof > newsArray.length) {
       proof = 0;
     }
+    proof++;
     return (
       <View style={[styles.card]}>
         <Text style={styles.cardTitile}>{newsArray[proof]["title"]}</Text>
@@ -82,7 +83,7 @@ export default function Explore() {
           style={styles.urlInfo}
           onPress={() => Linking.openURL(newsArray[proof]["url"])}
         >
-          {newsArray[proof++]["url"]}
+          Click to read article
         </Text>
       </View>
     );
@@ -120,22 +121,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#212121",
   },
   card: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: 300,
-    height: 300,
-    backgroundColor: "#212121",
-  },
-  noMoreCardsText: {
-    fontSize: 22,
-  },
-  content: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  card: {
     width: 320,
     height: 470,
     backgroundColor: "#F2A950",
@@ -146,6 +131,14 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.5,
+  },
+  noMoreCardsText: {
+    fontSize: 22,
+  },
+  content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   label: {
     lineHeight: 450,

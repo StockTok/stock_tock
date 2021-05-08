@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import { createAccount } from "../../all_scripts/newLogin.js";
+
 export default class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +26,9 @@ export default class Register extends React.Component {
 
   onSignUp() {
     const { name, email, password } = this.state;
+
+    createAccount(email);
+
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)

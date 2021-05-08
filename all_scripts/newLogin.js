@@ -1,47 +1,43 @@
 import Parse from "parse/react-native.js";
 import { Flow } from "react-native-animated-spinkit";
-Parse.initialize("jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf","cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N");
-Parse.serverURL = 'https://parseapi.back4app.com/';
-
+Parse.initialize(
+  "jiM3dxKMrJoyJ3OFSOvKjkNVlWCfJ3GsNknSuqsf",
+  "cuRUV83XrqhpyKKMzc5UnHTWxQLmcQSA7lDjSx6N"
+);
+Parse.serverURL = "https://parseapi.back4app.com/";
 
 const createAccount = async (username) => {
-
-const Account = Parse.Object.extend("Account");
-const account  = new Account()
+  const Account = Parse.Object.extend("Account");
+  const account = new Account();
   account.set("username", username);
-  account.set("followed", []);
+  account.set("followed", ["aapl"]);
 
-  try{
-    let result = await account.save()
+  try {
+    let result = await account.save();
     //alert('New object created with objectId: ' + result.id);
-  }catch(error){
-      //alert('Failed to create new object, with error code: ' + error.message);
+  } catch (error) {
+    //alert('Failed to create new object, with error code: ' + error.message);
   }
-}
+};
 
 const confirmAccount = async (username) => {
   const Account = Parse.Object.extend("Account");
   const query = new Parse.Query(Account);
-  try 
-  {
-    query.equalTo("username", username)
-    await query.first().then(function(response)
-    {
+  try {
+    query.equalTo("username", username);
+    await query.first().then(function (response) {
       const name = response.get("username");
-      if((username === name))
-      {
+      if (username === name) {
         let followed = response.get("followed");
         //alert(`Username: ${name} Followed: ${followed}`);
         console.log("confirm accout " + followed);
         return followed;
-      }
-      else
-        return false;
-    })
+      } else return false;
+    });
   } catch (error) {
-      //alert(`User does not exist`);
-      return false;
+    //alert(`User does not exist`);
+    return false;
   }
-}
+};
 
-module.exports = {createAccount, confirmAccount}
+module.exports = { createAccount, confirmAccount };

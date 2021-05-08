@@ -19,9 +19,9 @@ import keys from "./constants/keys.js";
 import * as firebase from "firebase";
 import "firebase/firestore";
 
-GLOBAL = require('./components/GlobalState');
+GLOBAL = require("./components/GlobalState");
 import { getAllStockData } from "./all_scripts/newStockData.js";
-import { getAllDataMethod } from "./all_scripts/getAllData.js";
+import { getAllNews } from "./all_scripts/newNews.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDbCKvWMj2drK9wUzkO6I2ViXx9-cwXLIc",
@@ -60,7 +60,8 @@ export default class App extends React.Component {
   componentDidMount() {
     async function updateData() {
       await getAllStockData();
-    }  
+      await getAllNews();
+    }
     firebase.auth().onAuthStateChanged((user) => {
       // user isn't logged in
       if (!user) {
