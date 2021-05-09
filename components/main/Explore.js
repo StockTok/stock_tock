@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: "center",
     color: "#FFFF",
+    padding: 25,
   },
   urlInfo: {
     fontSize: 18,
